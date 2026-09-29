@@ -4,11 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indian Automotive Specification & Performance Intelligence Portal</title>
+  <meta name="description" content="Indian Automotive Specification & Performance Intelligence Portal. Enterprise benchmark analytics, 30 OEM vehicles, technical specs, powertrain comparison, and Tableau dashboard integration.">
+  <meta name="keywords" content="Automotive Specifications, Indian Cars, Tableau Dashboard, Electric Vehicles, Commercial Vehicles, Tata Motors, Mahindra, Maruti Suzuki, Hyundai">
+  <meta name="author" content="Enterprise Automotive Intelligence">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="canonical" href="https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/">
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Indian Automotive Specification & Performance Intelligence Portal">
+  <meta property="og:description" content="Enterprise technical benchmark & multi-dimensional persona analytics across 30 leading Indian automotive models.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/">
+  <meta property="og:image" content="https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/assets/vehicles/tata_nexon_ev.png">
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Indian Automotive Specification & Performance Intelligence Portal">
+  <meta name="twitter:description" content="Enterprise Technical Benchmark & Multi-Dimensional Persona Analytics across Indian OEM vehicles.">
+  <meta name="twitter:image" content="https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/assets/vehicles/tata_nexon_ev.png">
+
+  <!-- Favicon (Inline SVG to prevent 404 /favicon.ico) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1a2b'/><circle cx='50' cy='50' r='38' fill='none' stroke='%2360a5fa' stroke-width='8'/><path d='M35 52 L48 65 L68 35' fill='none' stroke='%2338bdf8' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <script src="assets/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    if (typeof window.gsap === "undefined") {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
+    }
+  </script>
   <style>
     :root {
       /* Official Tableau-like Palette Specification */
@@ -1178,6 +1203,168 @@
       transform: scale(calc(var(--vehicle-scale) * 1.05)) translateY(-3px);
     }
 
+    /* Stage C: Specification Conflict Notice Stage */
+    .conflict-notice-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      padding: 6px;
+    }
+
+    .conflict-card-inner {
+      background: radial-gradient(circle at 50% 0%, rgba(225, 87, 89, 0.22) 0%, rgba(15, 26, 43, 0.98) 75%);
+      border: 1px solid rgba(225, 87, 89, 0.55);
+      border-radius: 10px;
+      padding: 10px 16px;
+      width: 96%;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(225, 87, 89, 0.18);
+      backdrop-filter: blur(14px);
+      animation: fadeInConflict 0.28s ease-out;
+    }
+
+    @keyframes fadeInConflict {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .conflict-top-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .conflict-pulse-icon {
+      font-size: 1.15rem;
+      animation: pulseAlert 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.22); filter: drop-shadow(0 0 6px #e15759); }
+    }
+
+    .conflict-tag-badge {
+      font-size: 0.60rem;
+      font-weight: 900;
+      color: #e15759;
+      background: rgba(225, 87, 89, 0.16);
+      border: 1px solid rgba(225, 87, 89, 0.4);
+      border-radius: 4px;
+      padding: 1px 7px;
+      letter-spacing: 0.08em;
+    }
+
+    .conflict-main-heading {
+      font-size: 1.02rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .conflict-desc-text {
+      font-size: 0.70rem;
+      color: #e5e7eb;
+      line-height: 1.38;
+      margin-bottom: 7px;
+      max-width: 94%;
+    }
+
+    .conflict-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .conflict-chip {
+      background: rgba(15, 26, 43, 0.9);
+      border: 1px solid rgba(225, 87, 89, 0.5);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #fca5a5;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .conflict-chip-vs {
+      font-size: 0.62rem;
+      font-weight: 900;
+      color: #e15759;
+    }
+
+    .conflict-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-conflict-action {
+      border-radius: 6px;
+      padding: 4px 11px;
+      font-size: 0.66rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-conflict-action.primary {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: #ffffff;
+      border: 1px solid #93c5fd;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-conflict-action.primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-conflict-action.secondary {
+      background: rgba(31, 42, 68, 0.85);
+      color: #e5e7eb;
+      border: 1px solid #1f2a44;
+    }
+
+    .btn-conflict-action.secondary:hover {
+      background: #1f2a44;
+      border-color: #60a5fa;
+      color: #ffffff;
+    }
+
+    /* Practical Filter Availability / Dimming */
+    .filter-opt-zero {
+      opacity: 0.32 !important;
+      position: relative;
+    }
+
+    .brand-logo-tile.brand-opt-zero {
+      opacity: 0.25 !important;
+      filter: grayscale(0.9);
+    }
+
     /* Model Stepper & Quick Variant Chips */
     .hero-bottom-controls {
       display: flex;
@@ -1395,6 +1582,45 @@
       }
       .kpi-row {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 6px 8px 20px 8px;
+      }
+      .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .header-badges {
+        flex-wrap: wrap;
+      }
+      .control-ribbon {
+        grid-template-columns: 1fr;
+      }
+      .mini-showroom-card {
+        flex: 0 0 110px;
+        min-width: 110px;
+      }
+      .specs-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-text h1 {
+        font-size: 0.85rem;
+      }
+      .header-badges {
+        display: none;
+      }
+      .hero-title-left h2 {
+        font-size: 1.15rem;
+      }
+      .kpi-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1736,7 +1962,32 @@
           <!-- Stage B: Single Vehicle Studio Pedestal -->
           <div class="single-vehicle-stage" id="singleVehicleStage">
             <div class="pedestal-glow-ellipse"></div>
-            <img id="heroVehicleImg" class="vehicle-isolated-cutout" src="assets/vehicles/tata_nexon_ev.png" alt="Vehicle Cutout">
+            <img id="heroVehicleImg" class="vehicle-isolated-cutout" src="assets/vehicles/tata_nexon_ev.png" alt="Vehicle Cutout" onerror="handleVehicleImgError(this)">
+          </div>
+
+          <!-- Stage C: Specification Conflict Notice Stage -->
+          <div class="conflict-notice-stage" id="conflictNoticeStage" style="display: none;">
+            <div class="conflict-card-inner">
+              <div class="conflict-top-header">
+                <span class="conflict-pulse-icon">⚠️</span>
+                <span class="conflict-tag-badge">SPECIFICATION CONFLICT DETECTED</span>
+              </div>
+              <h3 class="conflict-main-heading">Please select appropriate choice of specifications</h3>
+              <p class="conflict-desc-text" id="conflictDescText">
+                Electric architecture is incompatible with Petrol fuel. Zero models in the Indian automotive catalog match these combined criteria.
+              </p>
+              <div class="conflict-chips-row" id="conflictChipsRow">
+                <!-- Dynamically populated active conflicting filters -->
+              </div>
+              <div class="conflict-actions-bar">
+                <button class="btn-conflict-action primary" id="btnSmartResolve" onclick="resolveSmartConflict()">
+                  ✨ Auto-Resolve Incompatibility
+                </button>
+                <button class="btn-conflict-action secondary" onclick="resetAllFiltersToShowroom()">
+                  ↺ View All 30 Models
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2780,7 +3031,7 @@
         card.innerHTML = `
           <span class="mini-fuel-indicator fuel-${v.fuel.toLowerCase()}" title="${v.fuel}"></span>
           <div class="mini-card-img-wrap">
-            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}">
+            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" loading="lazy" decoding="async" onerror="handleVehicleImgError(this)">
           </div>
           <div class="mini-card-info">
             <span class="mini-card-name">${v.model}</span>
@@ -2804,7 +3055,10 @@
     }
 
     function toggleShowroomMode() {
-      if (isAllShowroomMode) {
+      if (isConflictActive) {
+        resetAllFiltersToShowroom();
+        transitionToShowroom("toShowroom");
+      } else if (isAllShowroomMode) {
         transitionToShowroom("toSingle");
       } else {
         resetAllFiltersToShowroom();
@@ -2873,7 +3127,26 @@
     }
 
     function stepVehicleOrShowroom(dir) {
-      if (isAllShowroomMode) {
+      if (isConflictActive) {
+        if (titleEl) titleEl.textContent = "Specification Conflict";
+        if (subEl) subEl.textContent = "Please select appropriate choice of specifications";
+
+        // Draw alert in center of radar
+        ctx.fillStyle = "#e15759";
+        ctx.font = "24px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("⚠️", centerX, centerY - 14);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 10px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillText("Conflict Detected", centerX, centerY + 8);
+
+        ctx.fillStyle = "#9ca3af";
+        ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillText("Please select appropriate specifications", centerX, centerY + 22);
+
+      } else if (isAllShowroomMode) {
         const grid = document.getElementById("showroomMosaicGrid");
         if (grid) grid.scrollBy({ left: dir * 240, behavior: "smooth" });
       } else {
@@ -3318,7 +3591,299 @@
       });
     }
 
+    // --- SPECIFICATION CONFLICT DIAGNOSTICS & RESOLUTION ENGINE ---
+    let isConflictActive = false;
+    let smartAutoResolveHandler = null;
+
+    function diagnoseConflict() {
+      let title = "Please select appropriate choice of specifications";
+      let reason = "";
+      let conflictPairs = [];
+      let autoFixFn = null;
+
+      // 1. EV Skateboard Silhouette vs Non-Electric Fuel
+      if (activeBodyStyle === "Electric" && activePowertrain !== "Electric" && activePowertrain !== "ALL") {
+        reason = `Electric Skateboard architecture is incompatible with ${activePowertrain} fuel. Pure electric vehicles operate exclusively on high-voltage battery powertrains without internal combustion fuel tanks.`;
+        conflictPairs = [
+          { label: `Silhouette: Electric Skateboard`, type: 'style' },
+          { label: `Fuel: ${activePowertrain}`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Electric");
+      }
+      // 2. Electric Powertrain vs Non-EV Silhouette
+      else if (activePowertrain === "Electric" && activeBodyStyle !== "Electric" && activeBodyStyle !== "ALL") {
+        reason = `In this automotive catalog, pure Electric powertrains are engineered as dedicated modern EV crossover platforms (Nexon EV, XUV400, ZS EV). Traditional ${activeBodyStyle} models operate on ICE powertrains.`;
+        conflictPairs = [
+          { label: `Fuel: Electric`, type: 'fuel' },
+          { label: `Silhouette: ${activeBodyStyle}`, type: 'style' }
+        ];
+        autoFixFn = () => selectBodyStyle("Electric");
+      }
+      // 3. Two-Wheeler vs Diesel/CNG
+      else if (activeBodyStyle === "Two-Wheeler" && activePowertrain !== "Petrol" && activePowertrain !== "ALL") {
+        reason = `Two-wheelers (Motorcycles and Scooters) in India are powered by high-efficiency Petrol engines. ${activePowertrain} powertrains are not configured for this category.`;
+        conflictPairs = [
+          { label: `Body: Two-Wheeler`, type: 'style' },
+          { label: `Fuel: ${activePowertrain}`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Petrol");
+      }
+      // 4. Commercial / Bus / Truck vs Petrol
+      else if (["Bus", "Commercial", "Truck"].includes(activeBodyStyle) && activePowertrain === "Petrol") {
+        reason = `Heavy commercial prime movers and passenger transit buses require high low-end torque and operate on heavy-duty Turbo-Diesel engines, not Petrol.`;
+        conflictPairs = [
+          { label: `Body: ${activeBodyStyle}`, type: 'style' },
+          { label: `Fuel: Petrol`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Diesel");
+      }
+      // 5. Seating vs Body Style
+      else if (activeSeats === "10+" && ["Two-Wheeler", "Hatchback", "Sedan", "SUV", "Electric"].includes(activeBodyStyle)) {
+        reason = `Seating capacity of 10+ passengers requires multi-axle Commercial Buses or Passenger Vans (e.g. Starbus, JanBus, Traveller), physically incompatible with compact ${activeBodyStyle} passenger platforms.`;
+        conflictPairs = [
+          { label: `Seating: 10+ Seats`, type: 'seats' },
+          { label: `Body: ${activeBodyStyle}`, type: 'style' }
+        ];
+        autoFixFn = () => selectSeats("ALL");
+      }
+      else if (activeSeats === "2" && ["Bus", "Van"].includes(activeBodyStyle)) {
+        reason = `Commercial passenger buses and vans have high-density seating configurations ranging from 7 to 49 seats, not 2-seater layouts.`;
+        conflictPairs = [
+          { label: `Seating: 2 Seats`, type: 'seats' },
+          { label: `Body: ${activeBodyStyle}`, type: 'style' }
+        ];
+        autoFixFn = () => selectSeats("ALL");
+      }
+      // 6. Brand Specialization vs Fuel / Category
+      else if (["Ashok Leyland", "Eicher", "Volvo"].includes(activeBrand) && activePowertrain !== "Diesel" && activePowertrain !== "ALL") {
+        reason = `${activeBrand} exclusively manufactures commercial heavy-duty diesel trucks and buses in this benchmark fleet.`;
+        conflictPairs = [
+          { label: `Brand: ${activeBrand}`, type: 'brand' },
+          { label: `Fuel: ${activePowertrain}`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Diesel");
+      }
+      else if (["Hero", "Bajaj", "TVS"].includes(activeBrand) && activePowertrain === "Diesel") {
+        reason = `${activeBrand} specializes in two-wheeler vehicles (Motorcycles & Scooters) powered by Petrol, not Diesel.`;
+        conflictPairs = [
+          { label: `Brand: ${activeBrand}`, type: 'brand' },
+          { label: `Fuel: Diesel`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Petrol");
+      }
+      else if (activeBrand === "MG" && activePowertrain !== "Electric" && activePowertrain !== "ALL") {
+        reason = `MG's featured representative benchmark vehicle in this catalog is the ZS EV (Pure Electric).`;
+        conflictPairs = [
+          { label: `Brand: MG`, type: 'brand' },
+          { label: `Fuel: ${activePowertrain}`, type: 'fuel' }
+        ];
+        autoFixFn = () => selectPowertrain("Electric");
+      }
+      // 7. Budget vs Category
+      else if (activeBudget < 1500000 && ["Bus", "Truck"].includes(activeBodyStyle)) {
+        reason = `Heavy commercial buses and prime mover trucks are capital assets priced between ₹28L and ₹125L, exceeding entry-level passenger budgets (< ₹15L).`;
+        conflictPairs = [
+          { label: `Budget: < ₹15.0L`, type: 'budget' },
+          { label: `Body: ${activeBodyStyle}`, type: 'style' }
+        ];
+        autoFixFn = () => selectBudgetBin("ALL");
+      }
+      // Generic Fallback
+      else {
+        reason = `No vehicle in the 30-model fleet satisfies all currently selected constraints simultaneously. Adjust one or more specifications to match available market configurations.`;
+        if (activePowertrain !== "ALL") conflictPairs.push({ label: `Fuel: ${activePowertrain}`, type: 'fuel' });
+        if (activeBodyStyle !== "ALL") conflictPairs.push({ label: `Body: ${activeBodyStyle}`, type: 'style' });
+        if (activeBrand !== "ALL") conflictPairs.push({ label: `Brand: ${activeBrand}`, type: 'brand' });
+        if (activeSeats !== "ALL") conflictPairs.push({ label: `Seats: ${activeSeats}`, type: 'seats' });
+        autoFixFn = () => resetAllFiltersToShowroom();
+      }
+
+      return { title, reason, conflictPairs, autoFixFn };
+    }
+
+    function showConflictNotice() {
+      isConflictActive = true;
+      const conflictStage = document.getElementById("conflictNoticeStage");
+      const showroomStage = document.getElementById("allModelsShowroomStage");
+      const singleStage = document.getElementById("singleVehicleStage");
+
+      if (showroomStage) showroomStage.style.display = "none";
+      if (singleStage) singleStage.style.display = "none";
+      if (conflictStage) conflictStage.style.display = "flex";
+
+      const diag = diagnoseConflict();
+      smartAutoResolveHandler = diag.autoFixFn;
+
+      document.getElementById("conflictDescText").textContent = diag.reason;
+      const chipsRow = document.getElementById("conflictChipsRow");
+      chipsRow.innerHTML = "";
+
+      diag.conflictPairs.forEach((pair, idx) => {
+        if (idx > 0) {
+          const vsSpan = document.createElement("span");
+          vsSpan.className = "conflict-chip-vs";
+          vsSpan.textContent = "✕";
+          chipsRow.appendChild(vsSpan);
+        }
+        const chip = document.createElement("div");
+        chip.className = "conflict-chip";
+        chip.textContent = pair.label;
+        chipsRow.appendChild(chip);
+      });
+
+      // Update Top Identity Bar for Conflict Notice
+      document.getElementById("heroBrandName").textContent = "Specification Conflict";
+      document.getElementById("heroModelName").textContent = "No Matching Vehicle";
+      document.getElementById("heroPriceLakh").textContent = "₹0.0 Lakh";
+      document.getElementById("heroPriceInr").textContent = "0 of 30 Models Match Combined Filters";
+      document.getElementById("heroBrandLogo").src = "assets/logos/fleet.svg";
+      document.getElementById("heroPersonaBadge").textContent = "⚠️ Please select appropriate choice of specifications";
+      document.getElementById("heroInterestBadge").textContent = "Incompatible Specs";
+
+      // Update Flank Cards to Incompatible State
+      document.getElementById("specFuelBadge").textContent = "Conflict";
+      document.getElementById("specEngine").textContent = "Incompatible Specification Profile";
+      document.getElementById("specTransDrive").textContent = "No matching powertrain & drivetrain combination";
+
+      document.getElementById("specHp").textContent = "—";
+      document.getElementById("gaugeHp").style.width = "0%";
+      document.getElementById("specHpSub").textContent = "Please select compatible specifications";
+      const hpPctlEl = document.getElementById("specHpPctl");
+      hpPctlEl.textContent = "Conflict";
+      hpPctlEl.style.color = "var(--accent-rose)";
+
+      document.getElementById("specTorque").textContent = "—";
+      document.getElementById("gaugeTorque").style.width = "0%";
+      document.getElementById("specTorqueSub").textContent = "Please select compatible specifications";
+
+      document.getElementById("specAccel").textContent = "—";
+      document.getElementById("specTopSpeed").textContent = "—";
+      document.getElementById("specDriveLayoutSub").textContent = "No vehicle configuration available";
+
+      document.getElementById("specEff").textContent = "—";
+      document.getElementById("gaugeEff").style.width = "0%";
+      document.getElementById("specEffSub").textContent = "No certified benchmark available";
+
+      document.getElementById("specSafetyStars").textContent = "☆☆☆☆☆";
+      document.getElementById("specSafetyScore").textContent = "(0.0 / 5.0)";
+      document.getElementById("specAirbags").textContent = "0 Airbags";
+      document.getElementById("gaugeSafety").style.width = "0%";
+      document.getElementById("specSafetySub").textContent = "No safety compliance data for conflict";
+
+      document.getElementById("specSeats").textContent = "—";
+      document.getElementById("specBoot").textContent = "—";
+      document.getElementById("specTank").textContent = "—";
+      document.getElementById("specBootSub").textContent = "No cabin space available";
+
+      document.getElementById("specClearance").textContent = "—";
+      document.getElementById("gaugeClearance").style.width = "0%";
+      document.getElementById("specClearanceSub").textContent = "No stance data";
+
+      updateMacroKpis([]);
+      drawScatterPlot();
+      drawRadarChart();
+    }
+
+    function resolveSmartConflict() {
+      if (typeof smartAutoResolveHandler === "function") {
+        smartAutoResolveHandler();
+      } else {
+        resetAllFiltersToShowroom();
+      }
+    }
+
+    // Practical Filter Availability & Visual Compatibility Highlighting
+    function updateFilterAvailability() {
+      // 1. Check Powertrain buttons
+      document.querySelectorAll("#powertrainPillsBar .pill-btn").forEach(btn => {
+        const fuel = btn.dataset.fuel;
+        if (!fuel || fuel === "ALL") {
+          btn.classList.remove("filter-opt-zero");
+          return;
+        }
+        const hasMatch = MASTER_VEHICLES.some(v => {
+          if (activeBrand !== "ALL" && v.brand !== activeBrand) return false;
+          if (v.price_inr > activeBudget) return false;
+          if (activeBodyStyle !== "ALL") {
+            if (activeBodyStyle === "Electric" && v.fuel !== "Electric") return false;
+            else if (activeBodyStyle !== "Electric" && v.category !== activeBodyStyle) {
+              if (activeBodyStyle === "Two-Wheeler" && !["Motorcycle", "Scooter"].includes(v.category)) return false;
+              else if (activeBodyStyle === "Commercial" && !["Truck", "Pickup Truck"].includes(v.category)) return false;
+              else if (!["Two-Wheeler", "Commercial"].includes(activeBodyStyle)) return false;
+            }
+          }
+          if (activeSeats !== "ALL") {
+            if (activeSeats === "2" && v.seats > 2) return false;
+            if (activeSeats === "5" && (v.seats < 4 || v.seats > 5)) return false;
+            if (activeSeats === "7" && (v.seats < 6 || v.seats > 7)) return false;
+            if (activeSeats === "10+" && v.seats < 10) return false;
+          }
+          return v.fuel === fuel;
+        });
+        btn.classList.toggle("filter-opt-zero", !hasMatch);
+      });
+
+      // 2. Check Body Style buttons
+      document.querySelectorAll("#bodyStylesBar .body-style-btn").forEach(btn => {
+        const style = btn.dataset.style;
+        if (!style || style === "ALL") {
+          btn.classList.remove("filter-opt-zero");
+          return;
+        }
+        const hasMatch = MASTER_VEHICLES.some(v => {
+          if (activeBrand !== "ALL" && v.brand !== activeBrand) return false;
+          if (v.price_inr > activeBudget) return false;
+          if (activePowertrain !== "ALL" && v.fuel !== activePowertrain) return false;
+          if (style === "Electric") return v.fuel === "Electric";
+          if (style === "Two-Wheeler") return ["Motorcycle", "Scooter"].includes(v.category);
+          if (style === "Commercial") return ["Truck", "Pickup Truck"].includes(v.category);
+          return v.category === style;
+        });
+        btn.classList.toggle("filter-opt-zero", !hasMatch);
+      });
+
+      // 3. Check Seating buttons
+      document.querySelectorAll("#seatingPillsBar .pref-pill-mini").forEach(btn => {
+        const seats = btn.dataset.seats;
+        if (!seats || seats === "ALL") {
+          btn.classList.remove("filter-opt-zero");
+          return;
+        }
+        const hasMatch = MASTER_VEHICLES.some(v => {
+          if (activeBrand !== "ALL" && v.brand !== activeBrand) return false;
+          if (activePowertrain !== "ALL" && v.fuel !== activePowertrain) return false;
+          if (activeBodyStyle !== "ALL") {
+            if (activeBodyStyle === "Electric" && v.fuel !== "Electric") return false;
+            else if (activeBodyStyle !== "Electric" && v.category !== activeBodyStyle) return false;
+          }
+          if (seats === "2") return v.seats <= 2;
+          if (seats === "5") return v.seats >= 4 && v.seats <= 5;
+          if (seats === "7") return v.seats >= 6 && v.seats <= 7;
+          if (seats === "10+") return v.seats >= 10;
+          return true;
+        });
+        btn.classList.toggle("filter-opt-zero", !hasMatch);
+      });
+
+      // 4. Check Brand Logo Tiles
+      document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+        const brand = tile.dataset.brand;
+        if (!brand) return;
+        const hasMatch = MASTER_VEHICLES.some(v => {
+          if (v.brand !== brand) return false;
+          if (activePowertrain !== "ALL" && v.fuel !== activePowertrain) return false;
+          if (activeBodyStyle !== "ALL") {
+            if (activeBodyStyle === "Electric" && v.fuel !== "Electric") return false;
+            else if (activeBodyStyle !== "Electric" && v.category !== activeBodyStyle) return false;
+          }
+          return true;
+        });
+        tile.classList.toggle("brand-opt-zero", !hasMatch);
+      });
+    }
+
     function updateFilteredView(forceSingle = false) {
+      updateFilterAvailability();
       const filtered = getFilteredVehicles();
       populateModelDropdown();
 
@@ -3335,9 +3900,23 @@
       );
 
       if (isDefaultState && !forceSingle) {
+        isConflictActive = false;
+        const conflictStage = document.getElementById("conflictNoticeStage");
+        if (conflictStage) conflictStage.style.display = "none";
         transitionToShowroom("toShowroom");
         return;
       }
+
+      // Check for Specification Conflict (0 models match)
+      if (filtered.length === 0) {
+        showConflictNotice();
+        return;
+      }
+
+      // Valid matches exist -> Hide conflict notice if previously shown
+      isConflictActive = false;
+      const conflictStage = document.getElementById("conflictNoticeStage");
+      if (conflictStage) conflictStage.style.display = "none";
 
       if (isAllShowroomMode || forceSingle) {
         isAllShowroomMode = false;
@@ -3381,6 +3960,7 @@
       updateMacroKpis(filtered);
       drawScatterPlot();
       drawRadarChart();
+      syncUrlState();
     }
 
     // Step through vehicles
@@ -3633,6 +4213,14 @@
       const plotW = width - padding.left - padding.right;
       const plotH = height - padding.top - padding.bottom;
 
+      if (isConflictActive) {
+        ctx.fillStyle = "rgba(225, 87, 89, 0.95)";
+        ctx.font = "bold 11px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("⚠️ 0 Models Match Conflicting Criteria - Please select appropriate specifications", padding.left + plotW / 2, padding.top + plotH / 2);
+        return;
+      }
+
       const minPrice = 0;
       const maxPrice = 65;
       const minHp = 0;
@@ -3822,6 +4410,16 @@
         ctx.fillText(axesLabels[i], labelX, labelY);
       }
 
+      if (isConflictActive) {
+        const titleEl = document.getElementById("radarChartTitle");
+        if (titleEl) titleEl.textContent = "Specification Conflict";
+        ctx.fillStyle = "rgba(225, 87, 89, 0.95)";
+        ctx.font = "bold 11px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("⚠️ Radar Unavailable - Incompatible Specs", centerX, centerY);
+        return;
+      }
+
       if (isAllShowroomMode) {
         // A. OVERALL FLEET SPECTRUM MODE:
         // Polygon 1: 30-Model Fleet Average
@@ -3977,25 +4575,113 @@
       }
     }
 
-    // URL parameter support (Tableau Web Page Action integration)
-    function handleUrlParameters() {
-      const params = new URLSearchParams(window.location.search);
-      const paramBrand = params.get("brand");
-      const paramModel = params.get("model");
-      const paramBudget = params.get("budget");
-
-      if (paramBrand) selectBrand(paramBrand);
-      if (paramModel) {
-        const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === paramModel.toLowerCase());
-        if (match) selectModelByName(match.model);
-      }
-      if (paramBudget) onBudgetSliderInput(parseInt(paramBudget, 10));
+    // Global Image Error Fallback Placeholder (Fail-Proof)
+    function handleVehicleImgError(img) {
+      img.onerror = null;
+      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120"><rect width="200" height="120" fill="%230f1a2b" rx="8"/><path d="M40 75 L65 45 L135 45 L160 75 Z" fill="%231f2a44"/><circle cx="65" cy="80" r="14" fill="%2360a5fa"/><circle cx="135" cy="80" r="14" fill="%2360a5fa"/><text x="100" y="30" font-family="sans-serif" font-size="11" font-weight="bold" fill="%239ca3af" text-anchor="middle">Vehicle Preview</text></svg>';
     }
 
+    // Bidirectional State Synchronization for Tableau Deep Linking & Bookmarks
+    function syncUrlState() {
+      try {
+        const url = new URL(window.location.href);
+        if (activeBrand !== "ALL") url.searchParams.set("brand", activeBrand);
+        else url.searchParams.delete("brand");
+
+        if (activePowertrain !== "ALL") url.searchParams.set("fuel", activePowertrain);
+        else url.searchParams.delete("fuel");
+
+        if (activeBodyStyle !== "ALL") url.searchParams.set("style", activeBodyStyle);
+        else url.searchParams.delete("style");
+
+        if (activeSeats !== "ALL") url.searchParams.set("seats", activeSeats);
+        else url.searchParams.delete("seats");
+
+        if (!isAllShowroomMode && selectedVehicle) url.searchParams.set("model", selectedVehicle.model);
+        else url.searchParams.delete("model");
+
+        window.history.replaceState({}, "", url.toString());
+      } catch (e) {}
+    }
+
+    // Enterprise URL Parameter Support (Tableau Dashboard Actions & Deep Linking)
+    function handleUrlParameters() {
+      const params = new URLSearchParams(window.location.search);
+      const brand = params.get("brand");
+      const model = params.get("model");
+      const fuel = params.get("fuel") || params.get("powertrain");
+      const drive = params.get("drive") || params.get("drivetrain");
+      const style = params.get("style") || params.get("bodystyle") || params.get("silhouette");
+      const seats = params.get("seats");
+      const budget = params.get("budget");
+      const interest = params.get("interest");
+      const safety = params.get("safety");
+      const view = params.get("view") || params.get("mode");
+
+      if (brand) selectBrand(brand);
+      if (fuel) selectPowertrain(fuel);
+      if (drive) selectDrivetrain(drive);
+      if (style) selectBodyStyle(style);
+      if (seats) selectSeats(seats);
+      if (interest) selectInterest(interest);
+      if (safety) selectSafety(parseInt(safety, 10));
+      if (budget) onBudgetSliderInput(parseInt(budget, 10));
+
+      if (model) {
+        const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === model.toLowerCase());
+        if (match) {
+          selectedVehicle = match;
+          activeModel = match.model;
+          const modelDd = document.getElementById("modelSelectDropdown");
+          if (modelDd) modelDd.value = match.model;
+          updateFilteredView(true);
+        }
+      }
+
+      if (view === "showroom") {
+        resetAllFiltersToShowroom();
+        transitionToShowroom("toShowroom");
+      } else if (view === "single") {
+        transitionToShowroom("toSingle");
+      }
+    }
+
+    // Tableau Embedded Iframe postMessage API
+    window.addEventListener("message", (event) => {
+      try {
+        const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+        if (!data) return;
+        if (data.action === "FILTER" || data.type === "FILTER") {
+          if (data.brand) selectBrand(data.brand);
+          if (data.fuel || data.powertrain) selectPowertrain(data.fuel || data.powertrain);
+          if (data.drive || data.drivetrain) selectDrivetrain(data.drive || data.drivetrain);
+          if (data.style || data.bodystyle) selectBodyStyle(data.style || data.bodystyle);
+          if (data.seats) selectSeats(String(data.seats));
+          if (data.budget) onBudgetSliderInput(parseInt(data.budget, 10));
+          if (data.model) {
+            const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === data.model.toLowerCase());
+            if (match) selectModelByName(match.model);
+          }
+        } else if (data.action === "RESET" || data.type === "RESET") {
+          resetAllFiltersToShowroom();
+          transitionToShowroom("toShowroom");
+        }
+      } catch (err) {
+        // Safe ignore for non-JSON post messages
+      }
+    });
+
+    window.addEventListener("popstate", handleUrlParameters);
     window.addEventListener("DOMContentLoaded", initDashboard);
+
+    // Debounced Canvas Resize Listener for Smooth Responsive Rendering
+    let resizeRafId = null;
     window.addEventListener("resize", () => {
-      drawScatterPlot();
-      drawRadarChart();
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(() => {
+        drawScatterPlot();
+        drawRadarChart();
+      });
     });
   </script>
 </body>
