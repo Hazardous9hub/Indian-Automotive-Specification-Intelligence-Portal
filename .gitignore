@@ -1,0 +1,6 @@
+# Raw temporary files
+*.jpg
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 45">
+  <!-- Passenger Coach Bus: White Body with Panoramic Dark Windows -->
+  <rect x="10" y="8" width="100" height="22" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <path d="M102 12h6c1 0 2 1 2 3v7h-8V12z" fill="#090e1a"/>
+  <rect x="86" y="12" width="12" height="10" fill="#090e1a"/>
+  <rect x="70" y="12" width="12" height="10" fill="#090e1a"/>
+  <rect x="54" y="12" width="12" height="10" fill="#090e1a"/>
+  <rect x="38" y="12" width="12" height="10" fill="#090e1a"/>
+  <rect x="22" y="12" width="12" height="10" fill="#090e1a"/>
+  <!-- Wheels -->
+  <circle cx="30" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="30" cy="33" r="4.8" fill="#ffffff"/>
+  <circle cx="92" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="92" cy="33" r="4.8" fill="#ffffff"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 45">
+  <!-- SUV Profile: High Stance White Body with Dark Windows & All-Terrain Wheels -->
+  <path d="M10 28c2-6 5-11 12-12l18-4c6-1 26-1 38 2l12 6c4 3 7 7 8 8H10z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <!-- Roof Rails -->
+  <path d="M40 9h36v2H40z" fill="#cbd5e1"/>
+  <!-- Windows -->
+  <path d="M41 15h18v10H41z" fill="#090e1a"/>
+  <path d="M62 15h14l8 6v4H62z" fill="#090e1a"/>
+  <path d="M26 17l12-2v10H23c1-4 2-6 3-8z" fill="#090e1a"/>
+  <!-- Large Wheels -->
+  <circle cx="28" cy="32" r="9" fill="#090e1a"/>
+  <circle cx="28" cy="32" r="5.5" fill="#ffffff"/>
+  <circle cx="28" cy="32" r="2.8" fill="#090e1a"/>
+  <circle cx="82" cy="32" r="9" fill="#090e1a"/>
+  <circle cx="82" cy="32" r="5.5" fill="#ffffff"/>
+  <circle cx="82" cy="32" r="2.8" fill="#090e1a"/>
+</svg>

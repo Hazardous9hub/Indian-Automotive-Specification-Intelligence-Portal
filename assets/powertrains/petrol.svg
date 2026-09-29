@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Fuel Pump Body -->
+  <rect x="8" y="10" width="22" height="32" rx="3" stroke="#f59e0b" stroke-width="3.5" fill="#f59e0b" fill-opacity="0.15"/>
+  <!-- Pump Display -->
+  <rect x="12" y="15" width="14" height="10" rx="1.5" fill="#f59e0b" fill-opacity="0.3"/>
+  <!-- Hose & Nozzle -->
+  <path d="M30 18h4c2.5 0 4 1.5 4 4v14c0 2 1.5 3 3 3s2-1 2-3V24l-3-4" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

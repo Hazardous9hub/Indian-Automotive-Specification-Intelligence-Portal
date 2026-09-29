@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 45">
+  <!-- EV Crossover: Aerodynamic White Body with Lightning Accent & Aero Rims -->
+  <path d="M9 28c2-6 6-11 14-12l22-5c8-1 20 0 28 5l17 6c5 3 7 7 8 7H9z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <!-- EV Aero Glass -->
+  <path d="M46 14h18c6 0 11 3 15 7l-1 5H44l2-12z" fill="#090e1a"/>
+  <path d="M31 17l12-3v12H27c2-4 3-7 4-9z" fill="#090e1a"/>
+  <!-- Lightning Bolt -->
+  <polygon points="56,7 50,15 55,15 51,23 60,13 54,13" fill="#10b981"/>
+  <!-- Aero Wheels -->
+  <circle cx="27" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="27" cy="33" r="5" fill="#10b981"/>
+  <circle cx="27" cy="33" r="2" fill="#090e1a"/>
+  <circle cx="83" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="83" cy="33" r="5" fill="#10b981"/>
+  <circle cx="83" cy="33" r="2" fill="#090e1a"/>
+</svg>

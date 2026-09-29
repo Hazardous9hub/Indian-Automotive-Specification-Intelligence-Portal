@@ -1,0 +1,4002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Automotive Specification & Performance Intelligence Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="assets/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    :root {
+      /* Official Tableau-like Palette Specification */
+      --bg-dark: #0b1220;
+      --bg-surface: #0f1a2b;
+      --card-bg: #0f1a2b;
+      --card-border: #1f2a44;
+      --card-border-hover: #60a5fa;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-dim: #9ca3af;
+      --table-accent: #60a5fa;
+
+      /* Tableau 8 Core Data Colors */
+      --tab-blue: #4e79a7;
+      --tab-orange: #f28e2c;
+      --tab-red: #e15759;
+      --tab-teal: #76b7b2;
+      --tab-green: #59a14f;
+      --tab-yellow: #edc948;
+      --tab-purple: #b07aa1;
+      --tab-pink: #ff9da7;
+
+      /* Visual Accents */
+      --accent-cyan: #60a5fa;
+      --accent-sky: #60a5fa;
+      --accent-emerald: #59a14f;
+      --accent-amber: #f28e2c;
+      --accent-rose: #e15759;
+      --accent-indigo: #4e79a7;
+      --accent-purple: #b07aa1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b1220; background: radial-gradient(circle at 50% 0%, #16243d 0%, #0b1220 75%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 8px 16px 24px 16px;
+      line-height: 1.35;
+    }
+
+    /* 1. TOP HEADER BAR (Compact) */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 10px 6px 10px;
+      margin-bottom: 7px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portal-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+    }
+
+    .header-text h1 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 40%, #bae6fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-text p {
+      font-size: 0.64rem;
+      color: var(--text-muted);
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .header-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2px 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .header-chip.live-dot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    /* PRIORITY 1: BRAND LOGO STRIP (Compact & Mouse-Scrollable) */
+    .brand-strip-container {
+      background: #0f1a2b;
+      border-radius: 10px;
+      padding: 6px 10px 7px 10px;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      border: 1px solid #1f2a44;
+    }
+
+    .brand-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      padding: 0 2px;
+    }
+
+    .brand-filter-title {
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .brand-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .brand-scroll-arrow {
+      background: #1f2a44;
+      border: 1px solid #1f2a44;
+      color: #e5e7eb;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .brand-scroll-arrow:hover {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+    }
+
+    .btn-reset-all {
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #1f2a44;
+      color: #e5e7eb;
+      border: 1px solid #1f2a44;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-reset-all:hover, .btn-reset-all.active {
+      background: #60a5fa;
+      color: #0b1220;
+      border-color: #60a5fa;
+      font-weight: 900;
+    }
+
+    .brands-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 3px;
+      padding-top: 1px;
+      scroll-behavior: smooth;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .brands-strip.active-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .brands-strip::-webkit-scrollbar {
+      height: 4px;
+    }
+    .brands-strip::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 2px;
+    }
+
+    .brand-logo-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 8px 3px 8px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 2px solid #1f2a44;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+      min-width: 106px;
+      height: 72px;
+    }
+
+    .brand-logo-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(96, 165, 250, 0.35);
+      border-color: #60a5fa;
+      background: #ffffff;
+    }
+
+    .brand-logo-tile.active {
+      border-color: #60a5fa;
+      background: #ffffff;
+      box-shadow: 0 0 14px rgba(96, 165, 250, 0.65);
+      transform: scale(1.03);
+    }
+
+    .brand-img-box {
+      width: 100%;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo-tile img {
+      max-height: 34px;
+      max-width: 82px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-logo-tile:hover img {
+      transform: scale(1.05);
+    }
+
+    .brand-tile-name {
+      display: block;
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+      white-space: nowrap;
+      margin-top: 1px;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-logo-tile.active .brand-tile-name {
+      color: #2563eb;
+    }
+
+    /* PRIORITY 2: UNIFIED CONTROL RIBBON (Tight & Space-Saving) */
+    .control-ribbon {
+      display: grid;
+      grid-template-columns: 1.1fr 1.6fr 1.6fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .control-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 7px 11px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .control-card-title {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .val-highlight {
+      color: var(--accent-cyan);
+      font-weight: 800;
+      font-size: 0.7rem;
+    }
+
+    /* Dual Dropdown Box */
+    .dropdown-pair {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dropdown-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .dropdown-sublabel {
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .executive-dropdown {
+      width: 100%;
+      background: #0b1220;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 4px 7px;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .executive-dropdown:focus, .executive-dropdown:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Budget Slider Box */
+    .budget-slider-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .slider-range-bar {
+      width: 100%;
+      height: 5px;
+      background: #1f2a44;
+      border-radius: 3px;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .slider-range-bar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      cursor: pointer;
+      border: 2px solid #ffffff;
+    }
+
+    .budget-bins-strip {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .bin-btn {
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .bin-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .bin-btn.active {
+      background: var(--accent-cyan) !important;
+      color: #070d1e !important;
+      border-color: var(--accent-cyan) !important;
+      font-weight: 900 !important;
+      box-shadow: 0 0 8px rgba(6, 182, 212, 0.5) !important;
+    }
+
+    /* Category Buttons (Powertrain & Drivetrain) */
+    .category-pills-row {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 14px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pill-btn img {
+      width: 14px;
+      height: 14px;
+    }
+
+    .pill-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* DYNAMIC CATEGORY COLORS (Powertrain & Drivetrain) */
+    .pill-btn.fuel-all.active {
+      background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #f59e0b 100%) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.5) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.fuel-ev.active {
+      background: #10b981 !important;
+      color: #ffffff !important;
+      border-color: #10b981 !important;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.fuel-petrol.active {
+      background: #f59e0b !important;
+      color: #070d1e !important;
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.fuel-diesel.active {
+      background: #2563eb !important;
+      color: #ffffff !important;
+      border-color: #2563eb !important;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.drive-all.active {
+      background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f59e0b 100%) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.5) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.drive-fwd.active {
+      background: #06b6d4 !important;
+      color: #070d1e !important;
+      border-color: #06b6d4 !important;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.drive-rwd.active {
+      background: #f59e0b !important;
+      color: #070d1e !important;
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    .pill-btn.drive-awd.active {
+      background: #8b5cf6 !important;
+      color: #ffffff !important;
+      border-color: #8b5cf6 !important;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.7) !important;
+      font-weight: 900 !important;
+    }
+
+    /* PRIORITY 2.5: DUAL SIDE-BY-SIDE SHELF (BODY STYLES 2-ROWS & CUSTOMER INTERESTS 2-ROWS) */
+    .dual-selector-shelf {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .shelf-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 7px 11px 8px 11px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .shelf-header {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    /* Available Body Styles 2-Row Grid */
+    .body-styles-2row-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+    }
+
+    .body-style-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 4px 4px 3px 4px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      cursor: pointer;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #ffffff;
+      height: 40px;
+    }
+
+    .body-style-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(6, 182, 212, 0.3);
+    }
+
+    .body-style-btn.active {
+      background: rgba(6, 182, 212, 0.24) !important;
+      border-color: var(--accent-cyan) !important;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.55) !important;
+      color: var(--accent-cyan) !important;
+      transform: scale(1.03);
+    }
+
+    .body-style-btn img {
+      width: 44px;
+      height: 20px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
+    }
+
+    .body-style-btn span {
+      font-size: 0.62rem;
+      font-weight: 800;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* Primary Customer Interest 2-Row Grid (4 buttons per row) */
+    .interest-2row-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .pref-pill {
+      padding: 6px 3px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.15s;
+    }
+
+    .pref-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .pref-pill.active {
+      background: rgba(56, 189, 248, 0.22) !important;
+      border-color: var(--accent-sky) !important;
+      color: #ffffff !important;
+      font-weight: 900 !important;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4) !important;
+    }
+
+    /* Mini Inline Filters for Safety & Seats */
+    .inline-sub-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mini-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mini-sublabel {
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .pref-pill-mini {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .pref-pill-mini:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .pref-pill-mini.active {
+      background: var(--accent-sky) !important;
+      color: #070d1e !important;
+      border-color: var(--accent-sky) !important;
+      font-weight: 900 !important;
+    }
+
+    /* PRIORITY 3: HERO VEHICLE COCKPIT SHOWCASE (Tight, Low-Profile Panoramic Layout) */
+    .hero-cockpit-section {
+      margin-bottom: 10px;
+    }
+
+    .cockpit-grid {
+      display: grid;
+      grid-template-columns: 275px 1fr 275px;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    /* Flank Spec Cards */
+    .spec-flank {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .spec-module-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 9px;
+      padding: 6px 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: all 0.18s ease;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .spec-module-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.2);
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .module-icon-tag {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .val-metric-large {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .val-metric-unit {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      margin-left: 2px;
+    }
+
+    .spec-gauge-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 2px 0 1px 0;
+    }
+
+    .spec-gauge-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.35s ease;
+    }
+
+    .fill-cyan { background: linear-gradient(90deg, #0284c7, #06b6d4); }
+    .fill-amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .fill-emerald { background: linear-gradient(90deg, #059669, #10b981); }
+    .fill-purple { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+
+    .module-subtext {
+      font-size: 0.63rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* CENTER HERO VEHICLE SHOWCASE */
+    .hero-center-box {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 9px 13px 8px 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-center-box::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 360px;
+      height: 180px;
+      background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .vehicle-top-identity {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      margin-bottom: 2px;
+    }
+
+    .identity-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-brand-logo-frame {
+      width: 38px;
+      height: 38px;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
+    }
+
+    .hero-brand-logo-frame img {
+      max-height: 32px;
+      max-width: 34px;
+      object-fit: contain;
+    }
+
+    .hero-naming h2 {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-naming .sub-brand {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-identity-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-showroom-toggle {
+      background: rgba(96, 165, 250, 0.12);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #60a5fa;
+      border-radius: 7px;
+      padding: 4px 9px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .btn-showroom-toggle:hover {
+      background: rgba(96, 165, 250, 0.25);
+      border-color: #60a5fa;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+    }
+
+    .btn-showroom-toggle.active {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: #ffffff;
+      border-color: #93c5fd;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+    }
+
+    .hero-price-badge {
+      text-align: right;
+      background: rgba(96, 165, 250, 0.12);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: 8px;
+      padding: 3px 8px;
+      backdrop-filter: blur(8px);
+    }
+
+    .price-main {
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: #60a5fa;
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.1;
+    }
+
+    .price-sub-inr {
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Vehicle Cutout Studio Pedestal / Stage Viewport (Strict 205px Height) */
+    .vehicle-cutout-pedestal {
+      position: relative;
+      height: 205px;
+      margin: 2px 0;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    /* Stage A: All Models Miniature Showroom Mosaic */
+    .all-models-showroom-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 3;
+    }
+
+    .showroom-hint-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.15) 0%, rgba(15, 26, 43, 0.95) 100%);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 6px;
+      padding: 3px 8px;
+      height: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .hint-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .hint-pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #10b981;
+      flex-shrink: 0;
+      animation: pulseHintDot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseHintDot {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.4); opacity: 1; filter: drop-shadow(0 0 5px #10b981); }
+    }
+
+    .hint-text {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: #e5e7eb;
+      letter-spacing: 0.02em;
+    }
+
+    .hint-count-pill {
+      font-size: 0.60rem;
+      font-weight: 800;
+      color: #60a5fa;
+      background: rgba(96, 165, 250, 0.2);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      border-radius: 10px;
+      padding: 1px 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .showroom-mosaic-grid {
+      height: 176px;
+      display: grid;
+      grid-template-rows: repeat(3, 53px);
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(78px, 1fr);
+      gap: 5px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 2px;
+      scroll-behavior: smooth;
+    }
+
+    .showroom-mosaic-grid::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .showroom-mosaic-grid::-webkit-scrollbar-track {
+      background: rgba(15, 26, 43, 0.7);
+      border-radius: 4px;
+    }
+
+    .showroom-mosaic-grid::-webkit-scrollbar-thumb {
+      background: #1f2a44;
+      border-radius: 4px;
+    }
+
+    .showroom-mosaic-grid::-webkit-scrollbar-thumb:hover {
+      background: #60a5fa;
+    }
+
+    .mini-showroom-card {
+      position: relative;
+      background: rgba(15, 26, 43, 0.88);
+      border: 1px solid rgba(31, 42, 68, 0.95);
+      border-radius: 6px;
+      padding: 2px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .mini-showroom-card:hover {
+      transform: scale(1.08) translateY(-2px);
+      border-color: #60a5fa;
+      box-shadow: 0 4px 12px rgba(96, 165, 250, 0.35);
+      background: rgba(26, 42, 70, 0.95);
+      z-index: 10;
+    }
+
+    .mini-showroom-card.active {
+      border-color: #60a5fa;
+      box-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+      background: rgba(30, 50, 85, 0.95);
+    }
+
+    .mini-fuel-indicator {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    .mini-fuel-indicator.fuel-electric { background: #10b981; box-shadow: 0 0 4px #10b981; }
+    .mini-fuel-indicator.fuel-petrol { background: #f59e0b; box-shadow: 0 0 4px #f59e0b; }
+    .mini-fuel-indicator.fuel-diesel { background: #3b82f6; box-shadow: 0 0 4px #3b82f6; }
+    .mini-fuel-indicator.fuel-cng { background: #06b6d4; box-shadow: 0 0 4px #06b6d4; }
+
+    .mini-card-img-wrap {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mini-card-thumb {
+      max-height: 28px;
+      max-width: 94%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
+      transition: transform 0.2s ease;
+    }
+
+    .mini-showroom-card:hover .mini-card-thumb {
+      transform: scale(1.08);
+    }
+
+    .mini-card-info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .mini-card-name {
+      font-size: 0.56rem;
+      font-weight: 700;
+      color: #e5e7eb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 65%;
+    }
+
+    .mini-card-price {
+      font-size: 0.52rem;
+      font-weight: 800;
+      color: #60a5fa;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Stage B: Single Vehicle Studio Pedestal */
+    .single-vehicle-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .pedestal-glow-ellipse {
+      position: absolute;
+      bottom: 14px;
+      width: 80%;
+      height: 36px;
+      background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.45) 0%, rgba(78, 121, 167, 0.18) 50%, transparent 80%);
+      border-radius: 50%;
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    .vehicle-isolated-cutout {
+      --vehicle-scale: 1.15;
+      max-height: 182px;
+      max-width: 96%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.88));
+      transform: scale(var(--vehicle-scale));
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 2;
+    }
+
+    .vehicle-isolated-cutout:hover {
+      transform: scale(calc(var(--vehicle-scale) * 1.05)) translateY(-3px);
+    }
+
+    /* Model Stepper & Quick Variant Chips */
+    .hero-bottom-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .model-stepper-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stepper-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .stepper-btn:hover {
+      background: var(--accent-cyan);
+      color: #070d1e;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+    }
+
+    .model-quick-chips-strip {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .model-quick-chips-strip::-webkit-scrollbar {
+      height: 3px;
+    }
+    .model-quick-chips-strip::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .model-chip-pill {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .model-chip-pill:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    .model-chip-pill.active {
+      background: var(--accent-cyan) !important;
+      color: #070d1e !important;
+      border-color: var(--accent-cyan) !important;
+      font-weight: 900 !important;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6) !important;
+      transform: scale(1.04);
+    }
+
+    .hero-persona-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .persona-badge {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .interest-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* PRIORITY 4: MARKET INTELLIGENCE & ANALYTICAL DECK */
+    .analytics-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 7px 11px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    .kpi-card.blue { border-left: 3px solid #4e79a7; }
+    .kpi-card.purple { border-left: 3px solid #b07aa1; }
+    .kpi-card.green { border-left: 3px solid #59a14f; }
+    .kpi-card.amber { border-left: 3px solid #f28e2c; }
+
+    .kpi-label {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .kpi-value {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .kpi-sub {
+      font-size: 0.58rem;
+      color: var(--text-dim);
+    }
+
+    /* Charts Row */
+    .charts-row {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 8px;
+    }
+
+    .chart-panel-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 9px 13px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .chart-title {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .chart-canvas-wrap {
+      width: 100%;
+      height: 200px;
+      position: relative;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .cockpit-grid {
+        grid-template-columns: 250px 1fr 250px;
+      }
+      .control-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+      .dual-selector-shelf {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .cockpit-grid {
+        grid-template-columns: 1fr;
+      }
+      .charts-row {
+        grid-template-columns: 1fr;
+      }
+      .kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="brand-title-wrap">
+      <div class="portal-icon">⚡</div>
+      <div class="header-text">
+        <h1>Indian Automotive Specification & Performance Intelligence Portal</h1>
+        <p>Enterprise Technical Benchmark & Multi-Dimensional Persona Analytics</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <div class="header-chip live-dot">Live Cockpit View</div>
+      <div class="header-chip">30 OEM Models</div>
+      <div class="header-chip">₹10L – ₹65L Dataset</div>
+    </div>
+  </header>
+
+  <!-- PRIORITY 1: OFFICIAL BRAND LOGO FILTER STRIP (Mouse Wheel & Drag Scrollable) -->
+  <div class="brand-strip-container">
+    <div class="brand-section-header">
+      <span class="brand-filter-title">
+        <span>🔘</span> Click Brand Logo to Filter (<span id="txtBrandCount">16 Brands</span>) • Scroll with Mouse Wheel or Drag
+      </span>
+      <div class="brand-nav-controls">
+        <button class="brand-scroll-arrow" onclick="scrollBrandsStrip(-260)" title="Scroll Left">‹</button>
+        <button class="brand-scroll-arrow" onclick="scrollBrandsStrip(260)" title="Scroll Right">›</button>
+        <button class="btn-reset-all active" id="btnResetBrand" onclick="selectBrand('ALL')">View All Brands</button>
+      </div>
+    </div>
+    <div class="brands-strip" id="brandsStrip">
+      <!-- 16 Brand Logo tiles generated dynamically -->
+    </div>
+  </div>
+
+  <!-- PRIORITY 2: UNIFIED EXECUTIVE CONTROL RIBBON (Cascading Pickers, Budget Slider, Powertrain/Drivetrain) -->
+  <div class="control-ribbon">
+    <!-- 1. Cascading Brand & Model Pickers -->
+    <div class="control-card">
+      <div class="control-card-title">
+        <span>Select OEM &amp; Vehicle Model</span>
+        <span class="val-highlight" id="lblModelCount">30 Active</span>
+      </div>
+      <div class="dropdown-pair">
+        <div class="dropdown-group">
+          <span class="dropdown-sublabel">Step 1: Brand</span>
+          <select id="brandSelectDropdown" class="executive-dropdown" onchange="onBrandDropdownChange(this.value)">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        <div class="dropdown-group">
+          <span class="dropdown-sublabel">Step 2: Model</span>
+          <select id="modelSelectDropdown" class="executive-dropdown" onchange="onModelDropdownChange(this.value)">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Budget Limit Parameter Slider (p_Budget) & Bins -->
+    <div class="control-card">
+      <div class="control-card-title">
+        <span>Max Budget Limit (p_Budget)</span>
+        <span class="val-highlight" id="lblBudgetVal">All Budgets (≤ ₹65.0L)</span>
+      </div>
+      <div class="budget-slider-box">
+        <input type="range" class="slider-range-bar" id="budgetRange" min="1000000" max="6500000" step="250000" value="6500000" oninput="onBudgetSliderInput(this.value)">
+        <div class="budget-bins-strip" id="budgetBinsBar">
+          <button class="bin-btn active" data-bin="ALL" onclick="selectBudgetBin('ALL')">All Budgets</button>
+          <button class="bin-btn" data-bin="ENTRY" onclick="selectBudgetBin('ENTRY')">&lt; ₹15L</button>
+          <button class="bin-btn" data-bin="MID" onclick="selectBudgetBin('MID')">₹15L – ₹30L</button>
+          <button class="bin-btn" data-bin="EXEC" onclick="selectBudgetBin('EXEC')">₹30L – ₹45L</button>
+          <button class="bin-btn" data-bin="PREMIUM" onclick="selectBudgetBin('PREMIUM')">&gt; ₹45L</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Powertrain & Drivetrain Quick Filters (With Dynamic Category Colors) -->
+    <div class="control-card">
+      <div class="control-card-title">
+        <span>Powertrain &amp; Drivetrain Layout</span>
+        <span class="val-highlight" id="lblCategoryPills">Dynamic Colors</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px;">
+        <div class="category-pills-row" id="powertrainPillsBar">
+          <button class="pill-btn fuel-all active" data-fuel="ALL" onclick="selectPowertrain('ALL')">All Fuels</button>
+          <button class="pill-btn fuel-ev" data-fuel="Electric" onclick="selectPowertrain('Electric')">
+            <img src="assets/powertrains/electric.svg" alt="EV"> Electric
+          </button>
+          <button class="pill-btn fuel-petrol" data-fuel="Petrol" onclick="selectPowertrain('Petrol')">
+            <img src="assets/powertrains/petrol.svg" alt="Petrol"> Petrol
+          </button>
+          <button class="pill-btn fuel-diesel" data-fuel="Diesel" onclick="selectPowertrain('Diesel')">
+            <img src="assets/powertrains/diesel.svg" alt="Diesel"> Diesel
+          </button>
+        </div>
+        <div class="category-pills-row" id="drivetrainPillsBar">
+          <button class="pill-btn drive-all active" data-drive="ALL" onclick="selectDrivetrain('ALL')">All Drives</button>
+          <button class="pill-btn drive-fwd" data-drive="FWD" onclick="selectDrivetrain('FWD')">
+            <img src="assets/drivetrains/fwd.svg" alt="FWD"> FWD
+          </button>
+          <button class="pill-btn drive-rwd" data-drive="RWD" onclick="selectDrivetrain('RWD')">
+            <img src="assets/drivetrains/rwd.svg" alt="RWD"> RWD
+          </button>
+          <button class="pill-btn drive-awd" data-drive="AWD" onclick="selectDrivetrain('AWD')">
+            <img src="assets/drivetrains/awd.svg" alt="AWD"> AWD / 4WD
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY 2.5: DUAL SIDE-BY-SIDE SHELF (BODY STYLES 2-ROWS & PRIMARY CUSTOMER INTERESTS 2-ROWS) -->
+  <div class="dual-selector-shelf">
+    <!-- LEFT COLUMN: AVAILABLE BODY STYLE SILHOUETTES (2 ROWS) -->
+    <div class="shelf-card">
+      <div class="shelf-header">
+        <span>Available Body Style Silhouettes (Select Silhouette to Filter)</span>
+        <button class="btn-reset-all active" id="btnResetStyle" onclick="selectBodyStyle('ALL')">All Styles</button>
+      </div>
+      <div class="body-styles-2row-grid" id="bodyStylesBar">
+        <!-- Row 1: All Styles, Hatchback, Sedan, SUV, EV, Pickup -->
+        <button class="body-style-btn active" data-style="ALL" onclick="selectBodyStyle('ALL')">
+          <div style="height:20px; display:flex; align-items:center; font-size:1.05rem;">🚗</div>
+          <span>All Styles</span>
+        </button>
+        <button class="body-style-btn" data-style="Hatchback" onclick="selectBodyStyle('Hatchback')">
+          <img src="assets/body_styles/hatchback.svg" alt="Hatchback">
+          <span>Hatchback</span>
+        </button>
+        <button class="body-style-btn" data-style="Sedan" onclick="selectBodyStyle('Sedan')">
+          <img src="assets/body_styles/sedan.svg" alt="Sedan">
+          <span>Sedan</span>
+        </button>
+        <button class="body-style-btn" data-style="SUV" onclick="selectBodyStyle('SUV')">
+          <img src="assets/body_styles/suv.svg" alt="SUV">
+          <span>SUV</span>
+        </button>
+        <button class="body-style-btn" data-style="Electric" onclick="selectBodyStyle('Electric')">
+          <img src="assets/body_styles/electric_vehicle.svg" alt="EV">
+          <span>EV</span>
+        </button>
+        <button class="body-style-btn" data-style="Pickup" onclick="selectBodyStyle('Pickup')">
+          <img src="assets/body_styles/pickup_truck.svg" alt="Pickup">
+          <span>Pickup</span>
+        </button>
+
+        <!-- Row 2: Truck, Bus, Van, Motorcycle, Scooter, (All/Reset spacer) -->
+        <button class="body-style-btn" data-style="Truck" onclick="selectBodyStyle('Truck')">
+          <img src="assets/body_styles/truck.svg" alt="Truck">
+          <span>Truck</span>
+        </button>
+        <button class="body-style-btn" data-style="Bus" onclick="selectBodyStyle('Bus')">
+          <img src="assets/body_styles/bus.svg" alt="Bus">
+          <span>Bus</span>
+        </button>
+        <button class="body-style-btn" data-style="Van" onclick="selectBodyStyle('Van')">
+          <img src="assets/body_styles/van.svg" alt="Van">
+          <span>Van</span>
+        </button>
+        <button class="body-style-btn" data-style="Motorcycle" onclick="selectBodyStyle('Motorcycle')">
+          <img src="assets/body_styles/motorcycle.svg" alt="Motorcycle">
+          <span>Motorcycle</span>
+        </button>
+        <button class="body-style-btn" data-style="Scooter" onclick="selectBodyStyle('Scooter')">
+          <img src="assets/body_styles/scooter.svg" alt="Scooter">
+          <span>Scooter</span>
+        </button>
+        <div style="display:flex; align-items:center; justify-content:center; font-size:0.58rem; color:var(--text-dim); font-weight:800; text-transform:uppercase;">
+          10 Silhouettes
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: PRIMARY CUSTOMER INTEREST PROFILE (2 ROWS) + SAFETY & SEATS -->
+    <div class="shelf-card">
+      <div class="shelf-header">
+        <span>Primary Customer Interest Profile (p_Primary_Interest)</span>
+        <div class="mini-filter-group" id="safetyPillsBar">
+          <span class="mini-sublabel">Min Safety:</span>
+          <button class="pref-pill-mini active" data-safety="0" onclick="selectSafety(0)">All</button>
+          <button class="pref-pill-mini" data-safety="3" onclick="selectSafety(3)">3★+</button>
+          <button class="pref-pill-mini" data-safety="4" onclick="selectSafety(4)">4★+</button>
+          <button class="pref-pill-mini" data-safety="5" onclick="selectSafety(5)">5★</button>
+        </div>
+      </div>
+
+      <!-- 2 Rows of Customer Interests (4 pills per row) -->
+      <div class="interest-2row-grid" id="interestPillsBar">
+        <!-- Row 1 -->
+        <button class="pref-pill active" data-interest="ALL" onclick="selectInterest('ALL')">All Profiles</button>
+        <button class="pref-pill" data-interest="Balanced" onclick="selectInterest('Balanced')">Balanced</button>
+        <button class="pref-pill" data-interest="Performance" onclick="selectInterest('Performance')">Performance</button>
+        <button class="pref-pill" data-interest="Economy" onclick="selectInterest('Economy')">Economy</button>
+
+        <!-- Row 2 -->
+        <button class="pref-pill" data-interest="Safety" onclick="selectInterest('Safety')">Safety</button>
+        <button class="pref-pill" data-interest="Family / Space" onclick="selectInterest('Family / Space')">Family / Space</button>
+        <button class="pref-pill" data-interest="Utility" onclick="selectInterest('Utility')">Utility</button>
+        <button class="pref-pill" data-interest="EV Range" onclick="selectInterest('EV Range')">EV Range</button>
+      </div>
+
+      <!-- Inline Seating Capacity Strip -->
+      <div class="inline-sub-strip">
+        <span class="mini-sublabel">Seating Capacity:</span>
+        <div style="display:flex; gap:4px;" id="seatingPillsBar">
+          <button class="pref-pill-mini active" data-seats="ALL" onclick="selectSeats('ALL')">All</button>
+          <button class="pref-pill-mini" data-seats="2" onclick="selectSeats('2')">2 Seats</button>
+          <button class="pref-pill-mini" data-seats="5" onclick="selectSeats('5')">4-5 Seats</button>
+          <button class="pref-pill-mini" data-seats="7" onclick="selectSeats('7')">6-7 Seats</button>
+          <button class="pref-pill-mini" data-seats="10+" onclick="selectSeats('10+')">10+ Seats</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY 3: HERO VEHICLE COCKPIT SHOWCASE (COMPACT PANORAMIC SPECS AROUND VEHICLE!) -->
+  <section class="hero-cockpit-section">
+    <div class="cockpit-grid">
+
+      <!-- LEFT FLANK: POWERTRAIN, POWER, TORQUE & ACCELERATION -->
+      <div class="spec-flank">
+        <!-- Card 1: Engine & Transmission -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">⚡ Engine &amp; Transmission</span>
+            <span id="specFuelBadge" class="persona-badge">EV</span>
+          </div>
+          <div class="val-metric-large" id="specEngine" style="font-size:0.95rem; font-family:'Plus Jakarta Sans', sans-serif; font-weight:800;">
+            143 HP Permanent Magnet
+          </div>
+          <div class="module-subtext" id="specTransDrive">
+            Single-Speed Automatic • FWD
+          </div>
+        </div>
+
+        <!-- Card 2: Horsepower -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">🐎 Max Horsepower</span>
+            <span id="specHpPctl" style="color:var(--accent-sky); font-weight:700;">Benchmark</span>
+          </div>
+          <div>
+            <span class="val-metric-large" id="specHp">143</span>
+            <span class="val-metric-unit">HP</span>
+          </div>
+          <div class="spec-gauge-track">
+            <div class="spec-gauge-fill fill-cyan" id="gaugeHp" style="width: 48%;"></div>
+          </div>
+          <div class="module-subtext" id="specHpSub">
+            Electric Category Benchmark: 157 HP
+          </div>
+        </div>
+
+        <!-- Card 3: Peak Torque -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">⚙️ Peak Torque</span>
+            <span id="specTorquePctl" style="color:var(--accent-amber); font-weight:700;">Instant</span>
+          </div>
+          <div>
+            <span class="val-metric-large" id="specTorque">250</span>
+            <span class="val-metric-unit">Nm</span>
+          </div>
+          <div class="spec-gauge-track">
+            <div class="spec-gauge-fill fill-amber" id="gaugeTorque" style="width: 36%;"></div>
+          </div>
+          <div class="module-subtext" id="specTorqueSub">
+            Instant electric motor response
+          </div>
+        </div>
+
+        <!-- Card 4: 0-100 Accel & Top Speed -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">⏱️ Performance Velocity</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1px;">
+            <div>
+              <span class="val-metric-large" id="specAccel">8.9</span>
+              <span class="val-metric-unit">sec (0-100)</span>
+            </div>
+            <div style="text-align:right;">
+              <span class="val-metric-large" id="specTopSpeed">150</span>
+              <span class="val-metric-unit">km/h</span>
+            </div>
+          </div>
+          <div class="module-subtext" id="specDriveLayoutSub">
+            Electronic Speed Limiter Active
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER HERO: VEHICLE SHOWCASE & PEDESTAL -->
+      <div class="hero-center-box">
+        <!-- Top Identity Bar -->
+        <div class="vehicle-top-identity">
+          <div class="identity-main">
+            <div class="hero-brand-logo-frame" id="heroBrandLogoFrame">
+              <img id="heroBrandLogo" src="assets/logos/fleet.svg" alt="Brand Logo">
+            </div>
+            <div class="hero-naming">
+              <div class="sub-brand" id="heroBrandName">All Indian Brands (16 OEMs)</div>
+              <h2 id="heroModelName">30-Model Fleet Showcase</h2>
+            </div>
+          </div>
+          <div class="hero-identity-actions">
+            <button id="btnToggleShowroom" class="btn-showroom-toggle active" onclick="toggleShowroomMode()" title="Toggle Fleet Mosaic / Single Cockpit">
+              <span class="toggle-icon">▦</span>
+              <span class="toggle-text" id="lblToggleShowroom">Showroom Mosaic (30)</span>
+            </button>
+            <div class="hero-price-badge">
+              <div class="price-main" id="heroPriceLakh">₹0.8L – ₹125L</div>
+              <div class="price-sub-inr" id="heroPriceInr">Fleet Price Spectrum • 30 Models</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Viewport (Dual-Mode: All Models Mosaic or Single Cutout) -->
+        <div class="vehicle-cutout-pedestal" id="heroStageViewport">
+          <!-- Stage A: All Models Miniature Showroom Mosaic (Default View) -->
+          <div class="all-models-showroom-stage" id="allModelsShowroomStage">
+            <div class="showroom-hint-banner">
+              <div class="hint-left">
+                <span class="hint-pulse-dot"></span>
+                <span class="hint-text">Select your preference from the filters above or click any model to inspect</span>
+              </div>
+              <span class="hint-count-pill" id="showroomCountPill">30 Models Fleet</span>
+            </div>
+            <div class="showroom-mosaic-grid" id="showroomMosaicGrid">
+              <!-- Dynamically populated 30 miniature vehicle cards -->
+            </div>
+          </div>
+
+          <!-- Stage B: Single Vehicle Studio Pedestal -->
+          <div class="single-vehicle-stage" id="singleVehicleStage">
+            <div class="pedestal-glow-ellipse"></div>
+            <img id="heroVehicleImg" class="vehicle-isolated-cutout" src="assets/vehicles/tata_nexon_ev.png" alt="Vehicle Cutout">
+          </div>
+        </div>
+
+        <!-- Bottom Controls & Model Quick-Pills -->
+        <div class="hero-bottom-controls">
+          <div class="model-stepper-row" id="modelStepperRow">
+            <button class="stepper-btn" onclick="stepVehicleOrShowroom(-1)">‹ Prev</button>
+            <div class="model-quick-chips-strip" id="modelQuickChips">
+              <!-- Dynamically populated model pills or segment shortcuts -->
+            </div>
+            <button class="stepper-btn" onclick="stepVehicleOrShowroom(1)">Next ›</button>
+          </div>
+          <div class="hero-persona-strip">
+            <span class="persona-badge" id="heroPersonaBadge">🇮🇳 30 Representative Indian Models across 16 OEMs</span>
+            <span class="interest-badge" id="heroInterestBadge">Tableau Intelligence Spectrum</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT FLANK: RANGE, SAFETY, SPACE, BOOT & TANK CAPACITY -->
+      <div class="spec-flank">
+        <!-- Card 5: Range / Fuel Economy -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">🔋 Range / Economy</span>
+            <span id="specEffUnitTag" style="color:var(--accent-emerald); font-weight:700;">Certified</span>
+          </div>
+          <div>
+            <span class="val-metric-large" id="specEff">453</span>
+            <span class="val-metric-unit" id="specEffUnit">km (ARAI)</span>
+          </div>
+          <div class="spec-gauge-track">
+            <div class="spec-gauge-fill fill-emerald" id="gaugeEff" style="width: 75%;"></div>
+          </div>
+          <div class="module-subtext" id="specEffSub">
+            Electric Category Benchmark: 461 km (ARAI)
+          </div>
+        </div>
+
+        <!-- Card 6: Global NCAP Safety Rating -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">🛡️ Safety Rating (NCAP)</span>
+            <span id="specAirbags" style="color:var(--accent-sky); font-weight:700;">6 Airbags</span>
+          </div>
+          <div>
+            <span class="val-metric-large" id="specSafetyStars" style="color:#fbbf24; font-size:1.15rem;">★ ★ ★ ★ ★</span>
+            <span class="val-metric-unit" id="specSafetyScore">(5.0 / 5.0)</span>
+          </div>
+          <div class="spec-gauge-track">
+            <div class="spec-gauge-fill fill-purple" id="gaugeSafety" style="width: 100%;"></div>
+          </div>
+          <div class="module-subtext" id="specSafetySub">
+            5-Star Occupant Protection • ABS &amp; ESC
+          </div>
+        </div>
+
+        <!-- Card 7: RENAMED SPEC SECTION: Cabin, Boot & Tank Capacity (Seats, Cargo & Fuel/Battery) -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">💺 Cabin, Boot &amp; Tank Capacity</span>
+            <span id="specTankTag" class="persona-badge">40.5 kWh Pack</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1px;">
+            <div>
+              <span class="val-metric-large" id="specSeats">5</span>
+              <span class="val-metric-unit">Seats</span>
+            </div>
+            <div style="text-align:center;">
+              <span class="val-metric-large" id="specBoot">350</span>
+              <span class="val-metric-unit">L Boot</span>
+            </div>
+            <div style="text-align:right;">
+              <span class="val-metric-large" id="specTank">40.5</span>
+              <span class="val-metric-unit" id="specTankUnit">kWh Batt</span>
+            </div>
+          </div>
+          <div class="module-subtext" id="specBootSub">
+            5 Adult Seats • 350L Cargo • 40.5 kWh Battery Pack
+          </div>
+        </div>
+
+        <!-- Card 8: Ground Clearance & Utility -->
+        <div class="spec-module-card">
+          <div class="module-header">
+            <span class="module-icon-tag">🏔️ Ground Clearance</span>
+            <span class="persona-badge" id="specBodyCategory">SUV</span>
+          </div>
+          <div>
+            <span class="val-metric-large" id="specClearance">205</span>
+            <span class="val-metric-unit">mm</span>
+          </div>
+          <div class="spec-gauge-track">
+            <div class="spec-gauge-fill fill-cyan" id="gaugeClearance" style="width: 68%;"></div>
+          </div>
+          <div class="module-subtext" id="specClearanceSub">
+            205 mm Stance for Indian Terrains
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRIORITY 4: MARKET INTELLIGENCE & ANALYTICAL DECK -->
+  <section class="analytics-section">
+    <!-- Macro KPIs -->
+    <div class="kpi-row">
+      <div class="kpi-card blue">
+        <div class="kpi-label">Average Acquisition Price</div>
+        <div class="kpi-value" id="kpiAvgPrice">₹24.8L</div>
+        <div class="kpi-sub" id="kpiAvgPriceSub">Across filtered segment</div>
+      </div>
+      <div class="kpi-card purple">
+        <div class="kpi-label" id="kpiAvgHpLabel">Average Engine Power</div>
+        <div class="kpi-value" id="kpiAvgHp">157 HP</div>
+        <div class="kpi-sub" id="kpiAvgHpSub">Electric Category Benchmark</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label" id="kpiAvgRangeLabel">Average Real-World Range / Eff</div>
+        <div class="kpi-value" id="kpiAvgRange">461 km</div>
+        <div class="kpi-sub" id="kpiAvgRangeSub">Electric Category Benchmark</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">5-Star Safety Compliance</div>
+        <div class="kpi-value" id="kpiSafetyRate">78.5%</div>
+        <div class="kpi-sub">Global NCAP compliant</div>
+      </div>
+    </div>
+
+    <!-- Comparative Analytics & Scatter Plots -->
+    <div class="charts-row">
+      <!-- Price vs Power Scatter Plot -->
+      <div class="chart-panel-card">
+        <div class="chart-header">
+          <span class="chart-title" id="scatterChartTitle">Market Positioning: Price vs Horsepower</span>
+          <span id="scatterChartSub" style="font-size:0.65rem; color:var(--accent-sky); font-weight:700;">Cyan Dot = Selected Vehicle</span>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="scatterCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Performance Multi-Axis Radar -->
+      <div class="chart-panel-card">
+        <div class="chart-header">
+          <span class="chart-title" id="radarChartTitle">Fleet-Wide Performance Spectrum</span>
+          <span id="radarChartSub" style="font-size:0.65rem; color:var(--text-muted); font-weight:700;">Overall Fleet Average (30 Models) vs EV Benchmark</span>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="radarCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT DATA & DYNAMIC INTERACTION ENGINE -->
+  <script>
+    const MASTER_VEHICLES = [
+  {
+    "brand": "Ashok Leyland",
+    "model": "Boss",
+    "category": "Truck",
+    "fuel": "Diesel",
+    "trans": "AMT",
+    "drive": "FWD",
+    "price": 32.7,
+    "price_inr": 3270000,
+    "hp": 204,
+    "torque": 613,
+    "eff": 39.7,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 3,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 230,
+    "boot_space": 12500,
+    "top_speed": 110,
+    "accel": 16.5,
+    "engine_disp": "3,839 cc H-Series Turbo Diesel",
+    "photo": "assets/vehicles/ashok_leyland_boss.png",
+    "logo": "assets/logos/ashok_leyland.svg",
+    "tank_capacity": 208,
+    "tank_unit": "L",
+    "tank_label": "208L Diesel Tank"
+  },
+  {
+    "brand": "Ashok Leyland",
+    "model": "JanBus",
+    "category": "Bus",
+    "fuel": "Diesel",
+    "trans": "Manual",
+    "drive": "AWD",
+    "price": 33.5,
+    "price_inr": 3350000,
+    "hp": 222,
+    "torque": 580,
+    "eff": 38.8,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 42,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 210,
+    "boot_space": 6500,
+    "top_speed": 100,
+    "accel": 18.2,
+    "engine_disp": "5,660 cc i-Gen6 Heavy Diesel",
+    "photo": "assets/vehicles/ashok_leyland_janbus.png",
+    "logo": "assets/logos/ashok_leyland.svg",
+    "tank_capacity": 250,
+    "tank_unit": "L",
+    "tank_label": "250L Diesel Tank"
+  },
+  {
+    "brand": "Bajaj",
+    "model": "Pulsar",
+    "category": "Motorcycle",
+    "fuel": "Petrol",
+    "trans": "CVT",
+    "drive": "RWD",
+    "price": 1.45,
+    "price_inr": 145000,
+    "hp": 24,
+    "torque": 21,
+    "eff": 43.8,
+    "safety": 3.5,
+    "bags": 2,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Performance",
+    "ground_clearance": 165,
+    "boot_space": 15,
+    "top_speed": 138,
+    "accel": 4.8,
+    "engine_disp": "249 cc DTS-i Dual Spark",
+    "photo": "assets/vehicles/bajaj_pulsar.png",
+    "logo": "assets/logos/bajaj.svg",
+    "tank_capacity": 15,
+    "tank_unit": "L",
+    "tank_label": "15L Petrol Tank"
+  },
+  {
+    "brand": "Eicher",
+    "model": "Pro 3015",
+    "category": "Truck",
+    "fuel": "Diesel",
+    "trans": "Manual",
+    "drive": "AWD",
+    "price": 32.4,
+    "price_inr": 3240000,
+    "hp": 211,
+    "torque": 568,
+    "eff": 39.8,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 3,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 225,
+    "boot_space": 14000,
+    "top_speed": 115,
+    "accel": 17.0,
+    "engine_disp": "3,760 cc E494 CRS Diesel",
+    "photo": "assets/vehicles/eicher_pro_3015.png",
+    "logo": "assets/logos/eicher.svg",
+    "tank_capacity": 190,
+    "tank_unit": "L",
+    "tank_label": "190L Diesel Tank"
+  },
+  {
+    "brand": "Force",
+    "model": "Traveller",
+    "category": "Van",
+    "fuel": "Diesel",
+    "trans": "Manual",
+    "drive": "FWD",
+    "price": 18.2,
+    "price_inr": 1820000,
+    "hp": 115,
+    "torque": 350,
+    "eff": 44.0,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 14,
+    "style": "Commercial",
+    "interest": "Family / Space",
+    "ground_clearance": 200,
+    "boot_space": 1800,
+    "top_speed": 120,
+    "accel": 15.4,
+    "engine_disp": "2,596 cc FM 2.6 CR Diesel",
+    "photo": "assets/vehicles/force_traveller.png",
+    "logo": "assets/logos/force.svg",
+    "tank_capacity": 70,
+    "tank_unit": "L",
+    "tank_label": "70L Diesel Tank"
+  },
+  {
+    "brand": "Hero",
+    "model": "Splendor",
+    "category": "Motorcycle",
+    "fuel": "Petrol",
+    "trans": "Manual",
+    "drive": "RWD",
+    "price": 0.85,
+    "price_inr": 85000,
+    "hp": 8,
+    "torque": 9,
+    "eff": 65.5,
+    "safety": 3.0,
+    "bags": 1,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Economy",
+    "ground_clearance": 165,
+    "boot_space": 10,
+    "top_speed": 95,
+    "accel": 8.2,
+    "engine_disp": "97.2 cc xSens Programmed FI",
+    "photo": "assets/vehicles/hero_splendor.png",
+    "logo": "assets/logos/hero.svg",
+    "tank_capacity": 9.8,
+    "tank_unit": "L",
+    "tank_label": "9.8L Fuel Tank"
+  },
+  {
+    "brand": "Honda",
+    "model": "Activa",
+    "category": "Scooter",
+    "fuel": "Petrol",
+    "trans": "AMT",
+    "drive": "FWD",
+    "price": 0.88,
+    "price_inr": 88000,
+    "hp": 8,
+    "torque": 9,
+    "eff": 50.0,
+    "safety": 3.5,
+    "bags": 2,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Economy",
+    "ground_clearance": 162,
+    "boot_space": 18,
+    "top_speed": 85,
+    "accel": 7.9,
+    "engine_disp": "109.5 cc PGM-FI eSP Engine",
+    "photo": "assets/vehicles/honda_activa.png",
+    "logo": "assets/logos/honda.svg",
+    "tank_capacity": 5.3,
+    "tank_unit": "L",
+    "tank_label": "5.3L Fuel Tank"
+  },
+  {
+    "brand": "Honda",
+    "model": "City",
+    "category": "Sedan",
+    "fuel": "Petrol",
+    "trans": "CVT",
+    "drive": "RWD",
+    "price": 16.2,
+    "price_inr": 1620000,
+    "hp": 121,
+    "torque": 145,
+    "eff": 18.4,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Family",
+    "interest": "Balanced",
+    "ground_clearance": 165,
+    "boot_space": 506,
+    "top_speed": 190,
+    "accel": 10.1,
+    "engine_disp": "1,498 cc i-VTEC DOHC",
+    "photo": "assets/vehicles/honda_city.png",
+    "logo": "assets/logos/honda.svg",
+    "tank_capacity": 40,
+    "tank_unit": "L",
+    "tank_label": "40L Petrol Tank"
+  },
+  {
+    "brand": "Hyundai",
+    "model": "Creta",
+    "category": "SUV",
+    "fuel": "Petrol",
+    "trans": "CVT",
+    "drive": "RWD",
+    "price": 18.8,
+    "price_inr": 1880000,
+    "hp": 160,
+    "torque": 253,
+    "eff": 18.2,
+    "safety": 4.5,
+    "bags": 6,
+    "seats": 5,
+    "style": "Adventure",
+    "interest": "Balanced",
+    "ground_clearance": 190,
+    "boot_space": 433,
+    "top_speed": 195,
+    "accel": 8.9,
+    "engine_disp": "1,482 cc Turbo GDi Petrol",
+    "photo": "assets/vehicles/hyundai_creta.png",
+    "logo": "assets/logos/hyundai.svg",
+    "tank_capacity": 50,
+    "tank_unit": "L",
+    "tank_label": "50L Fuel Tank"
+  },
+  {
+    "brand": "Hyundai",
+    "model": "Verna",
+    "category": "Sedan",
+    "fuel": "Petrol",
+    "trans": "Automatic",
+    "drive": "RWD",
+    "price": 17.4,
+    "price_inr": 1740000,
+    "hp": 160,
+    "torque": 253,
+    "eff": 20.6,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Family",
+    "interest": "Performance",
+    "ground_clearance": 170,
+    "boot_space": 528,
+    "top_speed": 210,
+    "accel": 8.1,
+    "engine_disp": "1,482 cc Turbo GDi Petrol",
+    "photo": "assets/vehicles/hyundai_verna.png",
+    "logo": "assets/logos/hyundai.svg",
+    "tank_capacity": 45,
+    "tank_unit": "L",
+    "tank_label": "45L Fuel Tank"
+  },
+  {
+    "brand": "Hyundai",
+    "model": "i20",
+    "category": "Hatchback",
+    "fuel": "Petrol",
+    "trans": "Automatic",
+    "drive": "AWD",
+    "price": 11.2,
+    "price_inr": 1120000,
+    "hp": 120,
+    "torque": 172,
+    "eff": 20.0,
+    "safety": 4.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "City Commuter",
+    "interest": "Performance",
+    "ground_clearance": 170,
+    "boot_space": 311,
+    "top_speed": 185,
+    "accel": 9.9,
+    "engine_disp": "998 cc Turbo GDi Petrol",
+    "photo": "assets/vehicles/hyundai_i20.png",
+    "logo": "assets/logos/hyundai.svg",
+    "tank_capacity": 37,
+    "tank_unit": "L",
+    "tank_label": "37L Fuel Tank"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max",
+    "category": "Pickup Truck",
+    "fuel": "Diesel",
+    "trans": "CVT",
+    "drive": "AWD",
+    "price": 24.5,
+    "price_inr": 2450000,
+    "hp": 163,
+    "torque": 360,
+    "eff": 14.5,
+    "safety": 4.5,
+    "bags": 6,
+    "seats": 5,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 220,
+    "boot_space": 1120,
+    "top_speed": 175,
+    "accel": 12.2,
+    "engine_disp": "1,898 cc Ddi V-Cross Turbo",
+    "photo": "assets/vehicles/isuzu_d-max.png",
+    "logo": "assets/logos/isuzu.svg",
+    "tank_capacity": 76,
+    "tank_unit": "L",
+    "tank_label": "76L Diesel Tank"
+  },
+  {
+    "brand": "MG",
+    "model": "ZS EV",
+    "category": "Electric Vehicle",
+    "fuel": "Electric",
+    "trans": "AMT",
+    "drive": "FWD",
+    "price": 25.8,
+    "price_inr": 2580000,
+    "hp": 177,
+    "torque": 280,
+    "eff": 461.0,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Electric",
+    "interest": "EV Range",
+    "ground_clearance": 175,
+    "boot_space": 470,
+    "top_speed": 175,
+    "accel": 8.5,
+    "engine_disp": "50.3 kWh Prismatic Battery",
+    "photo": "assets/vehicles/mg_zs_ev.png",
+    "logo": "assets/logos/mg.svg",
+    "tank_capacity": 50.3,
+    "tank_unit": "kWh",
+    "tank_label": "50.3 kWh Battery"
+  },
+  {
+    "brand": "Mahindra",
+    "model": "Bolero Pickup",
+    "category": "Pickup Truck",
+    "fuel": "Diesel",
+    "trans": "Manual",
+    "drive": "FWD",
+    "price": 9.8,
+    "price_inr": 980000,
+    "hp": 76,
+    "torque": 200,
+    "eff": 14.3,
+    "safety": 3.0,
+    "bags": 2,
+    "seats": 2,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 180,
+    "boot_space": 2500,
+    "top_speed": 115,
+    "accel": 17.5,
+    "engine_disp": "2,523 cc m2DiCR Turbo Diesel",
+    "photo": "assets/vehicles/mahindra_bolero_pickup.png",
+    "logo": "assets/logos/mahindra.svg",
+    "tank_capacity": 60,
+    "tank_unit": "L",
+    "tank_label": "60L Diesel Tank"
+  },
+  {
+    "brand": "Mahindra",
+    "model": "Scorpio N",
+    "category": "SUV",
+    "fuel": "Petrol",
+    "trans": "AMT",
+    "drive": "FWD",
+    "price": 21.5,
+    "price_inr": 2150000,
+    "hp": 203,
+    "torque": 380,
+    "eff": 13.7,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 7,
+    "style": "Adventure",
+    "interest": "Family / Space",
+    "ground_clearance": 187,
+    "boot_space": 460,
+    "top_speed": 190,
+    "accel": 9.5,
+    "engine_disp": "1,997 cc mStallion TGDi",
+    "photo": "assets/vehicles/mahindra_scorpio_n.png",
+    "logo": "assets/logos/mahindra.svg",
+    "tank_capacity": 57,
+    "tank_unit": "L",
+    "tank_label": "57L Fuel Tank"
+  },
+  {
+    "brand": "Mahindra",
+    "model": "XUV400",
+    "category": "Electric Vehicle",
+    "fuel": "Electric",
+    "trans": "Manual",
+    "drive": "RWD",
+    "price": 18.9,
+    "price_inr": 1890000,
+    "hp": 150,
+    "torque": 310,
+    "eff": 456.0,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Electric",
+    "interest": "EV Range",
+    "ground_clearance": 180,
+    "boot_space": 378,
+    "top_speed": 160,
+    "accel": 8.3,
+    "engine_disp": "39.4 kWh High Energy Density",
+    "photo": "assets/vehicles/mahindra_xuv400.png",
+    "logo": "assets/logos/mahindra.svg",
+    "tank_capacity": 39.4,
+    "tank_unit": "kWh",
+    "tank_label": "39.4 kWh Battery"
+  },
+  {
+    "brand": "Maruti Suzuki",
+    "model": "Ciaz",
+    "category": "Sedan",
+    "fuel": "Petrol",
+    "trans": "Manual",
+    "drive": "FWD",
+    "price": 11.5,
+    "price_inr": 1150000,
+    "hp": 105,
+    "torque": 138,
+    "eff": 20.6,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 5,
+    "style": "Family",
+    "interest": "Economy",
+    "ground_clearance": 170,
+    "boot_space": 510,
+    "top_speed": 180,
+    "accel": 11.2,
+    "engine_disp": "1,462 cc K15B Smart Hybrid",
+    "photo": "assets/vehicles/maruti_suzuki_ciaz.png",
+    "logo": "assets/logos/maruti_suzuki.svg",
+    "tank_capacity": 43,
+    "tank_unit": "L",
+    "tank_label": "43L Fuel Tank"
+  },
+  {
+    "brand": "Maruti Suzuki",
+    "model": "Eeco",
+    "category": "Van",
+    "fuel": "Diesel",
+    "trans": "CVT",
+    "drive": "RWD",
+    "price": 6.2,
+    "price_inr": 620000,
+    "hp": 81,
+    "torque": 104,
+    "eff": 19.7,
+    "safety": 3.0,
+    "bags": 2,
+    "seats": 7,
+    "style": "Family",
+    "interest": "Economy",
+    "ground_clearance": 160,
+    "boot_space": 540,
+    "top_speed": 130,
+    "accel": 15.0,
+    "engine_disp": "1,197 cc K-Series Dual VVT",
+    "photo": "assets/vehicles/maruti_suzuki_eeco.png",
+    "logo": "assets/logos/maruti_suzuki.svg",
+    "tank_capacity": 40,
+    "tank_unit": "L",
+    "tank_label": "40L Fuel Tank"
+  },
+  {
+    "brand": "Maruti Suzuki",
+    "model": "Swift",
+    "category": "Hatchback",
+    "fuel": "Petrol",
+    "trans": "CVT",
+    "drive": "FWD",
+    "price": 8.5,
+    "price_inr": 850000,
+    "hp": 82,
+    "torque": 112,
+    "eff": 25.7,
+    "safety": 4.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "City Commuter",
+    "interest": "Economy",
+    "ground_clearance": 163,
+    "boot_space": 265,
+    "top_speed": 165,
+    "accel": 11.8,
+    "engine_disp": "1,197 cc Z12E 3-Cylinder",
+    "photo": "assets/vehicles/maruti_suzuki_swift.png",
+    "logo": "assets/logos/maruti_suzuki.svg",
+    "tank_capacity": 37,
+    "tank_unit": "L",
+    "tank_label": "37L Fuel Tank"
+  },
+  {
+    "brand": "Suzuki",
+    "model": "Access 125",
+    "category": "Scooter",
+    "fuel": "Petrol",
+    "trans": "Manual",
+    "drive": "AWD",
+    "price": 0.92,
+    "price_inr": 92000,
+    "hp": 9,
+    "torque": 10,
+    "eff": 48.0,
+    "safety": 3.5,
+    "bags": 2,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Balanced",
+    "ground_clearance": 160,
+    "boot_space": 22,
+    "top_speed": 92,
+    "accel": 7.4,
+    "engine_disp": "124 cc SEP Technology FI",
+    "photo": "assets/vehicles/suzuki_access_125.png",
+    "logo": "assets/logos/suzuki.svg",
+    "tank_capacity": 5.0,
+    "tank_unit": "L",
+    "tank_label": "5.0L Fuel Tank"
+  },
+  {
+    "brand": "TVS",
+    "model": "Apache",
+    "category": "Motorcycle",
+    "fuel": "Petrol",
+    "trans": "Manual",
+    "drive": "RWD",
+    "price": 1.65,
+    "price_inr": 165000,
+    "hp": 21,
+    "torque": 17,
+    "eff": 42.0,
+    "safety": 3.5,
+    "bags": 2,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Performance",
+    "ground_clearance": 180,
+    "boot_space": 12,
+    "top_speed": 132,
+    "accel": 4.9,
+    "engine_disp": "197.7 cc Oil-Cooled Race Tuned",
+    "photo": "assets/vehicles/tvs_apache.png",
+    "logo": "assets/logos/tvs.svg",
+    "tank_capacity": 12,
+    "tank_unit": "L",
+    "tank_label": "12L Fuel Tank"
+  },
+  {
+    "brand": "TVS",
+    "model": "Jupiter",
+    "category": "Scooter",
+    "fuel": "Petrol",
+    "trans": "AMT",
+    "drive": "AWD",
+    "price": 0.86,
+    "price_inr": 86000,
+    "hp": 8,
+    "torque": 9,
+    "eff": 51.5,
+    "safety": 3.5,
+    "bags": 2,
+    "seats": 2,
+    "style": "Two-Wheeler",
+    "interest": "Economy",
+    "ground_clearance": 163,
+    "boot_space": 33,
+    "top_speed": 86,
+    "accel": 8.0,
+    "engine_disp": "113.3 cc Ecothrust FI Engine",
+    "photo": "assets/vehicles/tvs_jupiter.png",
+    "logo": "assets/logos/tvs.svg",
+    "tank_capacity": 6.0,
+    "tank_unit": "L",
+    "tank_label": "6.0L Fuel Tank"
+  },
+  {
+    "brand": "Tata",
+    "model": "Nexon",
+    "category": "SUV",
+    "fuel": "Petrol",
+    "trans": "AMT",
+    "drive": "FWD",
+    "price": 13.8,
+    "price_inr": 1380000,
+    "hp": 120,
+    "torque": 170,
+    "eff": 17.4,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Adventure",
+    "interest": "Safety",
+    "ground_clearance": 208,
+    "boot_space": 382,
+    "top_speed": 180,
+    "accel": 10.2,
+    "engine_disp": "1,199 cc Turbocharged Revotron",
+    "photo": "assets/vehicles/tata_nexon.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 44,
+    "tank_unit": "L",
+    "tank_label": "44L Fuel Tank"
+  },
+  {
+    "brand": "Tata",
+    "model": "Nexon EV",
+    "category": "Electric Vehicle",
+    "fuel": "Electric",
+    "trans": "CVT",
+    "drive": "AWD",
+    "price": 17.5,
+    "price_inr": 1750000,
+    "hp": 145,
+    "torque": 215,
+    "eff": 465.0,
+    "safety": 5.0,
+    "bags": 6,
+    "seats": 5,
+    "style": "Electric",
+    "interest": "EV Range",
+    "ground_clearance": 190,
+    "boot_space": 350,
+    "top_speed": 150,
+    "accel": 8.9,
+    "engine_disp": "40.5 kWh Long Range Gen-2",
+    "photo": "assets/vehicles/tata_nexon_ev.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 40.5,
+    "tank_unit": "kWh",
+    "tank_label": "40.5 kWh Battery"
+  },
+  {
+    "brand": "Tata",
+    "model": "Prima",
+    "category": "Truck",
+    "fuel": "Diesel",
+    "trans": "AMT",
+    "drive": "AWD",
+    "price": 42.5,
+    "price_inr": 4250000,
+    "hp": 280,
+    "torque": 1100,
+    "eff": 3.8,
+    "safety": 4.5,
+    "bags": 4,
+    "seats": 2,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 260,
+    "boot_space": 32000,
+    "top_speed": 90,
+    "accel": 19.5,
+    "engine_disp": "6,700 cc Cummins ISBe Engine",
+    "photo": "assets/vehicles/tata_prima.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 300,
+    "tank_unit": "L",
+    "tank_label": "300L Diesel Tank"
+  },
+  {
+    "brand": "Tata",
+    "model": "Starbus",
+    "category": "Bus",
+    "fuel": "Diesel",
+    "trans": "Automatic",
+    "drive": "AWD",
+    "price": 28.5,
+    "price_inr": 2850000,
+    "hp": 140,
+    "torque": 400,
+    "eff": 12.0,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 36,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 210,
+    "boot_space": 4500,
+    "top_speed": 95,
+    "accel": 18.0,
+    "engine_disp": "3,783 cc 4SP CR Turbo",
+    "photo": "assets/vehicles/tata_starbus.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 160,
+    "tank_unit": "L",
+    "tank_label": "160L Diesel Tank"
+  },
+  {
+    "brand": "Tata",
+    "model": "Tiago",
+    "category": "Hatchback",
+    "fuel": "Petrol",
+    "trans": "Automatic",
+    "drive": "FWD",
+    "price": 7.2,
+    "price_inr": 720000,
+    "hp": 86,
+    "torque": 113,
+    "eff": 20.0,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 5,
+    "style": "City Commuter",
+    "interest": "Safety",
+    "ground_clearance": 170,
+    "boot_space": 242,
+    "top_speed": 160,
+    "accel": 13.5,
+    "engine_disp": "1,199 cc Revotron 1.2L",
+    "photo": "assets/vehicles/tata_tiago.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 35,
+    "tank_unit": "L",
+    "tank_label": "35L Fuel Tank"
+  },
+  {
+    "brand": "Tata",
+    "model": "Yodha",
+    "category": "Pickup Truck",
+    "fuel": "Diesel",
+    "trans": "Automatic",
+    "drive": "AWD",
+    "price": 10.5,
+    "price_inr": 1050000,
+    "hp": 100,
+    "torque": 250,
+    "eff": 14.8,
+    "safety": 4.0,
+    "bags": 4,
+    "seats": 5,
+    "style": "Commercial",
+    "interest": "Utility",
+    "ground_clearance": 210,
+    "boot_space": 2200,
+    "top_speed": 120,
+    "accel": 16.0,
+    "engine_disp": "2,200 cc VARICOR Turbo",
+    "photo": "assets/vehicles/tata_yodha.png",
+    "logo": "assets/logos/tata.svg",
+    "tank_capacity": 52,
+    "tank_unit": "L",
+    "tank_label": "52L Diesel Tank"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Innova",
+    "category": "Van",
+    "fuel": "Diesel",
+    "trans": "Automatic",
+    "drive": "RWD",
+    "price": 26.5,
+    "price_inr": 2650000,
+    "hp": 150,
+    "torque": 360,
+    "eff": 15.6,
+    "safety": 5.0,
+    "bags": 7,
+    "seats": 7,
+    "style": "Family",
+    "interest": "Family / Space",
+    "ground_clearance": 178,
+    "boot_space": 300,
+    "top_speed": 180,
+    "accel": 11.5,
+    "engine_disp": "2,393 cc 2GD-FTV Turbo Diesel",
+    "photo": "assets/vehicles/toyota_innova.png",
+    "logo": "assets/logos/toyota.png",
+    "tank_capacity": 55,
+    "tank_unit": "L",
+    "tank_label": "55L Diesel Tank"
+  },
+  {
+    "brand": "Volvo",
+    "model": "9400",
+    "category": "Bus",
+    "fuel": "Diesel",
+    "trans": "Automatic",
+    "drive": "RWD",
+    "price": 58.0,
+    "price_inr": 5800000,
+    "hp": 380,
+    "torque": 1750,
+    "eff": 4.5,
+    "safety": 5.0,
+    "bags": 8,
+    "seats": 49,
+    "style": "Commercial",
+    "interest": "Family / Space",
+    "ground_clearance": 240,
+    "boot_space": 9500,
+    "top_speed": 120,
+    "accel": 15.0,
+    "engine_disp": "10,800 cc Volvo D11A Euro-6",
+    "photo": "assets/vehicles/volvo_9400.png",
+    "logo": "assets/logos/volvo.svg",
+    "tank_capacity": 400,
+    "tank_unit": "L",
+    "tank_label": "400L Diesel Tank"
+  }
+];
+
+    // Application State (Dual-Mode: All Showroom Mosaic vs Focused Cockpit)
+    let isAllShowroomMode = true;
+    let activeBrand = "ALL";
+    let activeModel = "Nexon EV";
+    let activeBudget = 6500000;
+    let activeBudgetBin = "ALL";
+    let activePowertrain = "ALL";
+    let activeDrivetrain = "ALL";
+    let activeBodyStyle = "ALL";
+    let activeInterest = "ALL";
+    let activeSafety = 0;
+    let activeSeats = "ALL";
+
+    let selectedVehicle = MASTER_VEHICLES.find(v => v.model === "Nexon EV") || MASTER_VEHICLES[0];
+    let renderedBrandForChips = "";
+
+    // Initialization
+    function initDashboard() {
+      renderBrandStrip();
+      populateDropdowns();
+      // Start in All Models Showroom Mosaic by default
+      transitionToShowroom("toShowroom");
+      handleUrlParameters();
+    }
+
+    // --- DUAL-MODE SHOWROOM MOSAIC & STAGE TRANSITIONS ---
+    function renderShowroomMosaic() {
+      const grid = document.getElementById("showroomMosaicGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      MASTER_VEHICLES.forEach(v => {
+        const card = document.createElement("div");
+        const isCurrent = !isAllShowroomMode && v.model === selectedVehicle.model;
+        card.className = "mini-showroom-card" + (isCurrent ? " active" : "");
+        card.dataset.model = v.model;
+        card.title = `${v.brand} ${v.model} • ₹${v.price.toFixed(1)}L • ${v.fuel} • ${v.hp} HP`;
+        card.onclick = () => selectModelFromShowroom(v.model);
+
+        card.innerHTML = `
+          <span class="mini-fuel-indicator fuel-${v.fuel.toLowerCase()}" title="${v.fuel}"></span>
+          <div class="mini-card-img-wrap">
+            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}">
+          </div>
+          <div class="mini-card-info">
+            <span class="mini-card-name">${v.model}</span>
+            <span class="mini-card-price">₹${v.price.toFixed(1)}L</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectModelFromShowroom(modelName) {
+      const match = MASTER_VEHICLES.find(v => v.model === modelName);
+      if (!match) return;
+      selectedVehicle = match;
+      activeModel = match.model;
+
+      const modelDd = document.getElementById("modelSelectDropdown");
+      if (modelDd) modelDd.value = match.model;
+
+      transitionToShowroom("toSingle");
+    }
+
+    function toggleShowroomMode() {
+      if (isAllShowroomMode) {
+        transitionToShowroom("toSingle");
+      } else {
+        resetAllFiltersToShowroom();
+        transitionToShowroom("toShowroom");
+      }
+    }
+
+    function resetAllFiltersToShowroom() {
+      activeBrand = "ALL";
+      activePowertrain = "ALL";
+      activeDrivetrain = "ALL";
+      activeBodyStyle = "ALL";
+      activeInterest = "ALL";
+      activeSafety = 0;
+      activeSeats = "ALL";
+      activeBudgetBin = "ALL";
+      activeBudget = 6500000;
+
+      // Reset brand tiles
+      document.querySelectorAll(".brand-logo-tile").forEach(t => t.classList.remove("active"));
+      const btnResetBrand = document.getElementById("btnResetBrand");
+      if (btnResetBrand) btnResetBrand.classList.add("active");
+      const brandDd = document.getElementById("brandSelectDropdown");
+      if (brandDd) brandDd.value = "ALL";
+
+      // Reset filter button bars
+      document.querySelectorAll("#powertrainPillsBar .pill-btn").forEach(b => b.classList.toggle("active", b.dataset.fuel === "ALL"));
+      document.querySelectorAll("#drivetrainPillsBar .pill-btn").forEach(b => b.classList.toggle("active", b.dataset.drive === "ALL"));
+      document.querySelectorAll("#bodyStylesBar .body-style-btn").forEach(b => b.classList.toggle("active", b.dataset.style === "ALL"));
+      const resetBtnStyle = document.getElementById("btnResetStyle");
+      if (resetBtnStyle) resetBtnStyle.classList.add("active");
+
+      document.querySelectorAll("#interestPillsBar .pref-pill").forEach(b => b.classList.toggle("active", b.dataset.interest === "ALL"));
+      document.querySelectorAll("#safetyPillsBar .pref-pill-mini").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll("#seatingPillsBar .pref-pill-mini").forEach(b => b.classList.toggle("active", b.dataset.seats === "ALL"));
+
+      const slider = document.getElementById("budgetRange");
+      if (slider) slider.value = 6500000;
+      const lblBudget = document.getElementById("lblBudgetVal");
+      if (lblBudget) lblBudget.textContent = "All Budgets (≤ ₹65.0L)";
+      document.querySelectorAll("#budgetBinsBar .bin-btn").forEach(b => b.classList.toggle("active", b.dataset.bin === "ALL"));
+
+      populateModelDropdown();
+    }
+
+    function renderFleetSegmentChips() {
+      const container = document.getElementById("modelQuickChips");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const segments = [
+        { label: "⚡ 6 EVs", action: () => selectPowertrain("Electric") },
+        { label: "🚗 11 Hatch & Sedan", action: () => selectBodyStyle("Hatchback") },
+        { label: "🚙 6 SUVs", action: () => selectBodyStyle("SUV") },
+        { label: "🚚 4 Commercial", action: () => selectBodyStyle("Commercial") },
+        { label: "🏍️ 3 Two-Wheelers", action: () => selectBodyStyle("Two-Wheeler") }
+      ];
+
+      segments.forEach(seg => {
+        const pill = document.createElement("button");
+        pill.className = "model-chip-pill";
+        pill.textContent = seg.label;
+        pill.onclick = seg.action;
+        container.appendChild(pill);
+      });
+    }
+
+    function stepVehicleOrShowroom(dir) {
+      if (isAllShowroomMode) {
+        const grid = document.getElementById("showroomMosaicGrid");
+        if (grid) grid.scrollBy({ left: dir * 240, behavior: "smooth" });
+      } else {
+        stepVehicle(dir);
+      }
+    }
+
+    function transitionToShowroom(direction) {
+      const showroomStage = document.getElementById("allModelsShowroomStage");
+      const singleStage = document.getElementById("singleVehicleStage");
+      const toggleBtn = document.getElementById("btnToggleShowroom");
+      const toggleLbl = document.getElementById("lblToggleShowroom");
+      const brandLogoImg = document.getElementById("heroBrandLogo");
+
+      if (direction === "toShowroom") {
+        isAllShowroomMode = true;
+        if (toggleBtn) toggleBtn.classList.add("active");
+        if (toggleLbl) toggleLbl.textContent = "Showroom Mosaic (30)";
+
+        document.getElementById("heroBrandName").textContent = "All Indian Brands (16 OEMs)";
+        document.getElementById("heroModelName").textContent = "30-Model Fleet Showcase";
+        document.getElementById("heroPriceLakh").textContent = "₹0.8L – ₹125L";
+        document.getElementById("heroPriceInr").textContent = "Fleet Price Spectrum • 30 Models";
+        if (brandLogoImg) {
+          brandLogoImg.src = "assets/logos/fleet.svg";
+          brandLogoImg.alt = "Fleet Logo";
+        }
+        document.getElementById("heroPersonaBadge").textContent = "🇮🇳 30 Representative Indian Models across 16 OEMs";
+        document.getElementById("heroInterestBadge").textContent = "Tableau Intelligence Spectrum";
+
+        renderFleetSegmentChips();
+
+        if (window.gsap && singleStage && singleStage.style.display !== "none" && singleStage.style.display !== "") {
+          gsap.to(singleStage, {
+            opacity: 0,
+            scale: 0.90,
+            duration: 0.28,
+            ease: "power2.inOut",
+            onComplete: () => {
+              singleStage.style.display = "none";
+              showroomStage.style.display = "flex";
+              renderShowroomMosaic();
+              gsap.fromTo(showroomStage,
+                { opacity: 0, scale: 0.95 },
+                { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }
+              );
+              gsap.fromTo(".mini-showroom-card",
+                { opacity: 0, y: 10, scale: 0.9 },
+                { opacity: 1, y: 0, scale: 1, stagger: 0.012, duration: 0.28, ease: "power1.out" }
+              );
+            }
+          });
+        } else if (singleStage && showroomStage) {
+          singleStage.style.display = "none";
+          showroomStage.style.display = "flex";
+          showroomStage.style.opacity = "1";
+          renderShowroomMosaic();
+        }
+
+        renderFleetOverallFlanks();
+        updateMacroKpis(MASTER_VEHICLES);
+        drawScatterPlot();
+        drawRadarChart();
+
+      } else {
+        // toSingle: Focus on single cockpit
+        isAllShowroomMode = false;
+        if (toggleBtn) toggleBtn.classList.remove("active");
+        if (toggleLbl) toggleLbl.textContent = "▦ View All 30 Models";
+
+        renderVehicleCockpit(selectedVehicle);
+        renderQuickChips();
+
+        if (window.gsap && showroomStage && showroomStage.style.display !== "none" && showroomStage.style.display !== "") {
+          gsap.to(showroomStage, {
+            opacity: 0,
+            scale: 0.92,
+            duration: 0.28,
+            ease: "power2.inOut",
+            onComplete: () => {
+              showroomStage.style.display = "none";
+              singleStage.style.display = "flex";
+              gsap.fromTo(singleStage,
+                { opacity: 0, scale: 0.86 },
+                { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.2)" }
+              );
+            }
+          });
+        } else if (showroomStage && singleStage) {
+          showroomStage.style.display = "none";
+          singleStage.style.display = "flex";
+          singleStage.style.opacity = "1";
+        }
+
+        const filtered = getFilteredVehicles();
+        updateMacroKpis(filtered);
+        drawScatterPlot();
+        drawRadarChart();
+      }
+    }
+
+    function renderFleetOverallFlanks() {
+      // 1. Left Flank Spec Cards
+      document.getElementById("specFuelBadge").textContent = "Fleet Mix";
+      document.getElementById("specFuelBadge").className = "persona-badge";
+      document.getElementById("specEngine").textContent = "Petrol (11) • Diesel (9) • EV (6) • CNG (4)";
+      document.getElementById("specTransDrive").textContent = "Multi-Energy Transition • Manual, AT, AMT & EV";
+
+      document.getElementById("specHp").textContent = "142";
+      document.getElementById("gaugeHp").style.width = "48%";
+      document.getElementById("specHpSub").textContent = "Fleet Power Span: 8.2 HP (Scooter) to 380 HP (Volvo Coach)";
+      const hpPctlEl = document.getElementById("specHpPctl");
+      hpPctlEl.textContent = "Fleet Mean";
+      hpPctlEl.style.color = "var(--accent-sky)";
+
+      document.getElementById("specTorque").textContent = "248";
+      document.getElementById("gaugeTorque").style.width = "42%";
+      document.getElementById("specTorqueSub").textContent = "Torque Span: 8.7 Nm to 1,750 Nm Peak Torque";
+      const torquePctlEl = document.getElementById("specTorquePctl");
+      torquePctlEl.textContent = "Fleet Mean";
+      torquePctlEl.style.color = "var(--accent-amber)";
+
+      document.getElementById("specAccel").textContent = "10.8";
+      document.getElementById("specTopSpeed").textContent = "148";
+      document.getElementById("specDriveLayoutSub").textContent = "Regulated Road Dynamics Across Indian Segments";
+
+      // 2. Right Flank Spec Cards
+      document.getElementById("specEff").textContent = "461 / 19.8";
+      document.getElementById("specEffUnit").textContent = "km (EV) / km/l (ICE)";
+      document.getElementById("gaugeEff").style.width = "68%";
+      document.getElementById("specEffSub").textContent = "Certified ARAI Category Benchmarks Across Fuel Types";
+      document.getElementById("specEffUnitTag").textContent = "Market Avg";
+      document.getElementById("specEffUnitTag").style.color = "var(--accent-emerald)";
+
+      document.getElementById("specSafetyStars").textContent = "★★★★☆";
+      document.getElementById("specSafetyScore").textContent = "(4.2 / 5.0)";
+      document.getElementById("specAirbags").textContent = "3.8 Airbags Avg";
+      document.getElementById("gaugeSafety").style.width = "84%";
+      document.getElementById("specSafetySub").textContent = "80% of Lineup Meets 4★+ NCAP Standard • ABS & ESC Standard";
+
+      document.getElementById("specSeats").textContent = "2 – 49";
+      document.getElementById("specBoot").textContent = "350 – 9,500";
+      document.getElementById("specTank").textContent = "18 – 400";
+      document.getElementById("specTankUnit").textContent = "L / kWh";
+      document.getElementById("specTankTag").textContent = "Capacity Span";
+      document.getElementById("specBootSub").textContent = "2 to 49 Seats • 18L-400L Tanks • 30.2-50.3 kWh EV Battery Packs";
+
+      document.getElementById("specClearance").textContent = "186";
+      document.getElementById("gaugeClearance").style.width = "72%";
+      document.getElementById("specBodyCategory").textContent = "All Categories";
+      document.getElementById("specClearanceSub").textContent = "160 mm to 240 mm Stance for Diverse Indian Terrains";
+    }
+
+    // Helper: Category-Specific Benchmarks (Respective to Fuel, Engine, Transmission)
+    function getCategoryBenchmark(fuel, trans) {
+      let peers = MASTER_VEHICLES.filter(v => v.fuel === fuel);
+      if (peers.length === 0) peers = MASTER_VEHICLES;
+
+      const transPeers = peers.filter(v => v.trans === trans);
+      const effPeers = transPeers.length >= 2 ? transPeers : peers;
+
+      const avgHp = peers.reduce((s, x) => s + x.hp, 0) / peers.length;
+      const avgEff = effPeers.reduce((s, x) => s + x.eff, 0) / effPeers.length;
+      const avgTorque = peers.reduce((s, x) => s + x.torque, 0) / peers.length;
+
+      return {
+        fuel: fuel,
+        trans: trans,
+        peerCount: peers.length,
+        avgHp: Math.round(avgHp),
+        avgEff: fuel === "Electric" ? Math.round(avgEff) : parseFloat(avgEff.toFixed(1)),
+        avgTorque: Math.round(avgTorque),
+        unitEff: fuel === "Electric" ? "km (ARAI)" : "km/l (ARAI)"
+      };
+    }
+
+    // 1. Render Brand Logo Strip (Logo Above, Name Beneath, Mouse-Scrollable)
+    function renderBrandStrip() {
+      const strip = document.getElementById("brandsStrip");
+      strip.innerHTML = "";
+
+      const uniqueBrands = [...new Set(MASTER_VEHICLES.map(v => v.brand))].sort();
+      document.getElementById("txtBrandCount").textContent = `${uniqueBrands.length} Brands`;
+
+      uniqueBrands.forEach(brand => {
+        const brandObj = MASTER_VEHICLES.find(v => v.brand === brand);
+        const tile = document.createElement("div");
+        tile.className = "brand-logo-tile" + (activeBrand === brand ? " active" : "");
+        tile.dataset.brand = brand;
+        tile.onclick = () => selectBrand(brand);
+        tile.title = `${brand} (${MASTER_VEHICLES.filter(v => v.brand === brand).length} Models)`;
+        tile.innerHTML = `
+          <div class="brand-img-box">
+            <img src="${brandObj.logo}" alt="${brand} Official Logo" onerror="this.src='assets/logos/tata.svg'">
+          </div>
+          <span class="brand-tile-name">${brand}</span>
+        `;
+        strip.appendChild(tile);
+      });
+
+      setupBrandStripMouseScroll();
+    }
+
+    // Mouse wheel horizontal scrolling & click-drag scrolling for Brand Logo Strip
+    function setupBrandStripMouseScroll() {
+      const strip = document.getElementById("brandsStrip");
+      if (!strip || strip.dataset.scrollBound) return;
+      strip.dataset.scrollBound = "true";
+
+      // 1. Mouse wheel horizontal scrolling
+      strip.addEventListener("wheel", (evt) => {
+        if (evt.deltaY !== 0) {
+          evt.preventDefault();
+          strip.scrollLeft += evt.deltaY * 1.5;
+        }
+      }, { passive: false });
+
+      // 2. Mouse click-and-drag scrolling
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      strip.addEventListener("mousedown", (e) => {
+        isDown = true;
+        strip.classList.add("active-dragging");
+        startX = e.pageX - strip.offsetLeft;
+        scrollLeft = strip.scrollLeft;
+      });
+
+      strip.addEventListener("mouseleave", () => {
+        isDown = false;
+        strip.classList.remove("active-dragging");
+      });
+
+      strip.addEventListener("mouseup", () => {
+        isDown = false;
+        strip.classList.remove("active-dragging");
+      });
+
+      strip.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - strip.offsetLeft;
+        const walk = (x - startX) * 1.8;
+        strip.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    function scrollBrandsStrip(distance) {
+      const strip = document.getElementById("brandsStrip");
+      if (strip) {
+        strip.scrollBy({ left: distance, behavior: "smooth" });
+      }
+    }
+
+    // 2. Cascading Selectors (Brand Dropdown & Model Dropdown)
+    function populateDropdowns() {
+      const brandDd = document.getElementById("brandSelectDropdown");
+      const uniqueBrands = ["ALL", ...new Set(MASTER_VEHICLES.map(v => v.brand))].sort();
+
+      brandDd.innerHTML = "";
+      uniqueBrands.forEach(b => {
+        const opt = document.createElement("option");
+        opt.value = b;
+        opt.textContent = b === "ALL" ? "All OEM Brands" : b;
+        if (b === activeBrand) opt.selected = true;
+        brandDd.appendChild(opt);
+      });
+
+      populateModelDropdown();
+    }
+
+    function populateModelDropdown() {
+      const modelDd = document.getElementById("modelSelectDropdown");
+      modelDd.innerHTML = "";
+
+      const availableModels = getFilteredVehicles();
+      document.getElementById("lblModelCount").textContent = `${availableModels.length} Active`;
+
+      if (availableModels.length === 0) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "No models match filters";
+        modelDd.appendChild(opt);
+        return;
+      }
+
+      availableModels.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v.model;
+        opt.textContent = `${v.brand} ${v.model} (₹${v.price.toFixed(1)}L)`;
+        if (v.model === selectedVehicle.model) opt.selected = true;
+        modelDd.appendChild(opt);
+      });
+    }
+
+    function onBrandDropdownChange(val) {
+      selectBrand(val);
+    }
+
+    function onModelDropdownChange(val) {
+      if (!val) return;
+      selectModelByName(val);
+    }
+
+    // Filter Selection Handlers with Deterministic Dynamic Highlights
+    function selectBrand(brand) {
+      activeBrand = brand;
+      document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+        tile.classList.toggle("active", tile.dataset.brand === brand);
+      });
+
+      const btnReset = document.getElementById("btnResetBrand");
+      if (btnReset) btnReset.classList.toggle("active", brand === "ALL");
+
+      const brandDd = document.getElementById("brandSelectDropdown");
+      if (brandDd) brandDd.value = brand;
+
+      updateFilteredView();
+    }
+
+    function selectPowertrain(pt) {
+      activePowertrain = pt;
+      document.querySelectorAll("#powertrainPillsBar .pill-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.fuel === pt);
+      });
+      updateFilteredView();
+    }
+
+    function selectDrivetrain(dt) {
+      activeDrivetrain = dt;
+      document.querySelectorAll("#drivetrainPillsBar .pill-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.drive === dt);
+      });
+      updateFilteredView();
+    }
+
+    function selectBodyStyle(style) {
+      activeBodyStyle = style;
+      document.querySelectorAll("#bodyStylesBar .body-style-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.style === style);
+      });
+      const resetBtn = document.getElementById("btnResetStyle");
+      if (resetBtn) resetBtn.classList.toggle("active", style === "ALL");
+      updateFilteredView();
+    }
+
+    function selectInterest(interest) {
+      activeInterest = interest;
+      document.querySelectorAll("#interestPillsBar .pref-pill").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.interest === interest);
+      });
+      updateFilteredView();
+    }
+
+    function selectSafety(stars) {
+      activeSafety = stars;
+      document.querySelectorAll("#safetyPillsBar .pref-pill-mini").forEach(btn => {
+        btn.classList.toggle("active", String(btn.dataset.safety) === String(stars));
+      });
+      updateFilteredView();
+    }
+
+    function selectSeats(seats) {
+      activeSeats = seats;
+      document.querySelectorAll("#seatingPillsBar .pref-pill-mini").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.seats === seats);
+      });
+      updateFilteredView();
+    }
+
+    // Budget Slider & Bins Handlers
+    function onBudgetSliderInput(val) {
+      activeBudget = parseInt(val, 10);
+      activeBudgetBin = "CUSTOM";
+      const lakh = (activeBudget / 100000).toFixed(1);
+      document.getElementById("lblBudgetVal").textContent = `≤ ₹${lakh} Lakh`;
+      document.querySelectorAll("#budgetBinsBar .bin-btn").forEach(btn => btn.classList.remove("active"));
+      updateFilteredView();
+    }
+
+    function selectBudgetBin(bin) {
+      activeBudgetBin = bin;
+      document.querySelectorAll("#budgetBinsBar .bin-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.bin === bin);
+      });
+
+      const slider = document.getElementById("budgetRange");
+      if (bin === "ALL") {
+        activeBudget = 6500000;
+        slider.value = 6500000;
+        document.getElementById("lblBudgetVal").textContent = "All Budgets (≤ ₹65.0L)";
+      } else if (bin === "ENTRY") {
+        activeBudget = 1500000;
+        slider.value = 1500000;
+        document.getElementById("lblBudgetVal").textContent = "< ₹15.0 Lakh (Entry)";
+      } else if (bin === "MID") {
+        activeBudget = 3000000;
+        slider.value = 3000000;
+        document.getElementById("lblBudgetVal").textContent = "₹15L – ₹30L (Mid-Market)";
+      } else if (bin === "EXEC") {
+        activeBudget = 4500000;
+        slider.value = 4500000;
+        document.getElementById("lblBudgetVal").textContent = "₹30L – ₹45L (Executive)";
+      } else if (bin === "PREMIUM") {
+        activeBudget = 6500000;
+        slider.value = 6500000;
+        document.getElementById("lblBudgetVal").textContent = "> ₹45.0 Lakh (Premium)";
+      }
+      updateFilteredView();
+    }
+
+    // Filter Logic
+    function getFilteredVehicles() {
+      return MASTER_VEHICLES.filter(v => {
+        if (activeBrand !== "ALL" && v.brand !== activeBrand) return false;
+        if (v.price_inr > activeBudget) return false;
+
+        if (activeBudgetBin === "ENTRY" && v.price_inr >= 1500000) return false;
+        if (activeBudgetBin === "MID" && (v.price_inr < 1500000 || v.price_inr >= 3000000)) return false;
+        if (activeBudgetBin === "EXEC" && (v.price_inr < 3000000 || v.price_inr >= 4500000)) return false;
+        if (activeBudgetBin === "PREMIUM" && v.price_inr < 4500000) return false;
+
+        if (activePowertrain !== "ALL" && v.fuel !== activePowertrain) return false;
+        if (activeDrivetrain !== "ALL" && v.drive !== activeDrivetrain) return false;
+        if (activeBodyStyle !== "ALL") {
+          if (activeBodyStyle === "Electric" && v.fuel !== "Electric") return false;
+          else if (activeBodyStyle !== "Electric" && v.category !== activeBodyStyle) return false;
+        }
+
+        if (activeInterest !== "ALL" && v.interest !== activeInterest) return false;
+        if (activeSafety > 0 && v.safety < activeSafety) return false;
+
+        if (activeSeats !== "ALL") {
+          if (activeSeats === "2" && v.seats > 2) return false;
+          if (activeSeats === "5" && (v.seats < 4 || v.seats > 5)) return false;
+          if (activeSeats === "7" && (v.seats < 6 || v.seats > 7)) return false;
+          if (activeSeats === "10+" && v.seats < 10) return false;
+        }
+
+        return true;
+      });
+    }
+
+    function updateFilteredView(forceSingle = false) {
+      const filtered = getFilteredVehicles();
+      populateModelDropdown();
+
+      const isDefaultState = (
+        activeBrand === "ALL" &&
+        activePowertrain === "ALL" &&
+        activeDrivetrain === "ALL" &&
+        activeBodyStyle === "ALL" &&
+        activeInterest === "ALL" &&
+        activeSafety === 0 &&
+        activeSeats === "ALL" &&
+        activeBudgetBin === "ALL" &&
+        activeBudget >= 6500000
+      );
+
+      if (isDefaultState && !forceSingle) {
+        transitionToShowroom("toShowroom");
+        return;
+      }
+
+      if (isAllShowroomMode || forceSingle) {
+        isAllShowroomMode = false;
+        const toggleBtn = document.getElementById("btnToggleShowroom");
+        const toggleLbl = document.getElementById("lblToggleShowroom");
+        if (toggleBtn) toggleBtn.classList.remove("active");
+        if (toggleLbl) toggleLbl.textContent = "▦ View All 30 Models";
+
+        const showroomStage = document.getElementById("allModelsShowroomStage");
+        const singleStage = document.getElementById("singleVehicleStage");
+        if (window.gsap && showroomStage && showroomStage.style.display !== "none" && showroomStage.style.display !== "") {
+          gsap.to(showroomStage, {
+            opacity: 0,
+            scale: 0.92,
+            duration: 0.28,
+            ease: "power2.inOut",
+            onComplete: () => {
+              showroomStage.style.display = "none";
+              singleStage.style.display = "flex";
+              gsap.fromTo(singleStage,
+                { opacity: 0, scale: 0.86 },
+                { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(1.2)" }
+              );
+            }
+          });
+        } else if (showroomStage && singleStage) {
+          showroomStage.style.display = "none";
+          singleStage.style.display = "flex";
+          singleStage.style.opacity = "1";
+        }
+      }
+
+      // If selected vehicle is not in filtered, pick first available
+      if (filtered.length > 0 && !filtered.some(v => v.model === selectedVehicle.model)) {
+        selectedVehicle = filtered[0];
+        activeModel = selectedVehicle.model;
+      }
+
+      renderVehicleCockpit(selectedVehicle);
+      renderQuickChips();
+      updateMacroKpis(filtered);
+      drawScatterPlot();
+      drawRadarChart();
+    }
+
+    // Step through vehicles
+    function stepVehicle(dir) {
+      const filtered = getFilteredVehicles();
+      if (filtered.length <= 1) return;
+      const idx = filtered.findIndex(v => v.model === selectedVehicle.model);
+      let nextIdx = idx + dir;
+      if (nextIdx < 0) nextIdx = filtered.length - 1;
+      if (nextIdx >= filtered.length) nextIdx = 0;
+      selectedVehicle = filtered[nextIdx];
+      activeModel = selectedVehicle.model;
+
+      const modelDd = document.getElementById("modelSelectDropdown");
+      if (modelDd) modelDd.value = selectedVehicle.model;
+
+      renderVehicleCockpit(selectedVehicle);
+      drawScatterPlot();
+      drawRadarChart();
+    }
+
+    function selectModelByName(name) {
+      const match = MASTER_VEHICLES.find(v => v.model === name);
+      if (match) {
+        selectedVehicle = match;
+        activeModel = match.model;
+        const modelDd = document.getElementById("modelSelectDropdown");
+        if (modelDd) modelDd.value = match.model;
+        transitionToShowroom("toSingle");
+      }
+    }
+
+    // Render Quick Model Chips inside center hero box
+    function renderQuickChips() {
+      const container = document.getElementById("modelQuickChips");
+      if (!container) return;
+
+      container.innerHTML = "";
+      renderedBrandForChips = selectedVehicle.brand;
+
+      // Show models for currently selected vehicle's brand
+      const brandModels = MASTER_VEHICLES.filter(v => v.brand === selectedVehicle.brand);
+      brandModels.forEach(v => {
+        const pill = document.createElement("button");
+        const isActive = v.model === selectedVehicle.model;
+        pill.className = "model-chip-pill" + (isActive ? " active" : "");
+        pill.dataset.model = v.model;
+        pill.textContent = v.model;
+        pill.onclick = () => selectModelByName(v.model);
+        container.appendChild(pill);
+      });
+    }
+
+        // Calibrated Natural Zoom Factors per Model & Category
+    const VEHICLE_ZOOM_SCALES = {
+      // 2-Wheelers (Tall/Square profile: zoomed to naturally fill stage width & height)
+      "Access 125": 1.30,
+      "Activa": 1.28,
+      "Pulsar": 1.26,
+      "Apache": 1.22,
+      "Jupiter": 1.22,
+      "Splendor": 1.18,
+
+      // Compact Commercial Vans & Light Trucks
+      "Traveller": 1.25,
+      "Starbus": 1.22,
+      "Pro 3015": 1.22,
+      "Bolero Pickup": 1.20,
+      "Yodha": 1.18,
+      "Eeco": 1.16,
+
+      // Heavy Commercials & Buses
+      "Boss": 1.16,
+      "Prima": 1.14,
+      "JanBus": 1.12,
+      "9400": 1.12,
+
+      // Passenger Cars, SUVs & Sedans
+      "Swift": 1.18,
+      "Tiago": 1.18,
+      "i20": 1.16,
+      "Creta": 1.15,
+      "Nexon": 1.15,
+      "Nexon EV": 1.15,
+      "XUV400": 1.15,
+      "ZS EV": 1.15,
+      "Scorpio N": 1.14,
+      "City": 1.14,
+      "Verna": 1.14,
+      "Ciaz": 1.14,
+      "Innova": 1.14,
+      "D-Max": 1.15
+    };
+
+    // Render Center Hero Vehicle & Surrounding Spec Flank Cards (With Dynamic Benchmarks & Tank Capacity!)
+    function renderVehicleCockpit(v) {
+      if (!v) return;
+
+      // 1. Center Hero Area
+      document.getElementById("heroBrandName").textContent = v.brand;
+      document.getElementById("heroModelName").textContent = v.model;
+      document.getElementById("heroPriceLakh").textContent = `₹${v.price.toFixed(1)} Lakh`;
+      document.getElementById("heroPriceInr").textContent = `Ex-Showroom • ₹${v.price_inr.toLocaleString('en-IN')}`;
+      document.getElementById("heroBrandLogo").src = v.logo;
+      document.getElementById("heroBrandLogo").alt = `${v.brand} Logo`;
+
+      const vehicleImg = document.getElementById("heroVehicleImg");
+      vehicleImg.src = `${v.photo}?v=20260929_rev5`;
+      vehicleImg.alt = `${v.brand} ${v.model} Cutout`;
+      const targetScale = VEHICLE_ZOOM_SCALES[v.model] || 1.15;
+      vehicleImg.style.setProperty("--vehicle-scale", targetScale);
+
+      document.getElementById("heroPersonaBadge").textContent = `⚡ ${v.style} Persona • ${v.category}`;
+      document.getElementById("heroInterestBadge").textContent = `Profile: ${v.interest}`;
+
+      // 2. Compute Category-Specific Benchmarks (Respective to Fuel & Transmission)
+      const bench = getCategoryBenchmark(v.fuel, v.trans);
+
+      // 3. Left Flank Spec Cards
+      document.getElementById("specFuelBadge").textContent = v.fuel;
+      document.getElementById("specEngine").textContent = v.engine_disp;
+      document.getElementById("specTransDrive").textContent = `${v.trans} Transmission • ${v.drive} Drivetrain`;
+
+      document.getElementById("specHp").textContent = v.hp;
+      document.getElementById("gaugeHp").style.width = `${Math.min(100, Math.round((v.hp / 300) * 100))}%`;
+
+      // Dynamic HP benchmark subtitle and standing
+      const deltaHp = Math.round(((v.hp - bench.avgHp) / bench.avgHp) * 100);
+      document.getElementById("specHpSub").textContent = `${v.fuel} Benchmark: ${bench.avgHp} HP`;
+      const hpPctlEl = document.getElementById("specHpPctl");
+      if (deltaHp > 0) {
+        hpPctlEl.textContent = `+${deltaHp}% vs ${v.fuel} Avg`;
+        hpPctlEl.style.color = "var(--accent-emerald)";
+      } else if (deltaHp < 0) {
+        hpPctlEl.textContent = `${deltaHp}% vs ${v.fuel} Avg`;
+        hpPctlEl.style.color = "var(--accent-amber)";
+      } else {
+        hpPctlEl.textContent = `At ${v.fuel} Benchmark`;
+        hpPctlEl.style.color = "var(--accent-sky)";
+      }
+
+      document.getElementById("specTorque").textContent = v.torque;
+      document.getElementById("gaugeTorque").style.width = `${Math.min(100, Math.round((v.torque / 700) * 100))}%`;
+      document.getElementById("specTorqueSub").textContent = `${v.fuel} Avg Torque: ${bench.avgTorque} Nm`;
+
+      document.getElementById("specAccel").textContent = v.accel.toFixed(1);
+      document.getElementById("specTopSpeed").textContent = v.top_speed;
+      document.getElementById("specDriveLayoutSub").textContent = `${v.drive} Architecture • ${v.category} Dynamics`;
+
+      // 4. Right Flank Spec Cards
+      document.getElementById("specEff").textContent = v.eff;
+      document.getElementById("specEffUnit").textContent = bench.unitEff;
+      const gaugeMaxEff = v.fuel === "Electric" ? 550 : 35;
+      document.getElementById("gaugeEff").style.width = `${Math.min(100, Math.round((v.eff / gaugeMaxEff) * 100))}%`;
+
+      // Dynamic Efficiency benchmark subtitle
+      document.getElementById("specEffSub").textContent = `${v.fuel} (${v.trans}) Benchmark: ${bench.avgEff} ${bench.unitEff}`;
+      document.getElementById("specEffUnitTag").textContent = v.fuel === "Electric" ? "Zero Emission" : `${v.fuel} Fuel`;
+
+      // NCAP Stars
+      const starsCount = Math.floor(v.safety);
+      let starsHtml = "";
+      for (let i = 0; i < 5; i++) {
+        starsHtml += i < starsCount ? "★ " : "☆ ";
+      }
+      document.getElementById("specSafetyStars").textContent = starsHtml;
+      document.getElementById("specSafetyScore").textContent = `(${v.safety.toFixed(1)} / 5.0)`;
+      document.getElementById("specAirbags").textContent = `${v.bags} Airbags`;
+      document.getElementById("gaugeSafety").style.width = `${Math.round((v.safety / 5.0) * 100)}%`;
+      document.getElementById("specSafetySub").textContent = `${v.safety >= 4.5 ? "Top Safety Pick" : "Standard Safety Compliance"} • ABS & ESC`;
+
+      // Card 7: RENAMED SPEC MODULE: Cabin, Boot & Tank Capacity
+      document.getElementById("specSeats").textContent = v.seats;
+      document.getElementById("specBoot").textContent = v.boot_space.toLocaleString('en-IN');
+      document.getElementById("specTank").textContent = v.tank_capacity;
+      document.getElementById("specTankUnit").textContent = v.fuel === "Electric" ? "kWh Batt" : "L Tank";
+      document.getElementById("specTankTag").textContent = v.tank_label || (v.fuel === "Electric" ? `${v.tank_capacity} kWh Pack` : `${v.tank_capacity}L Tank`);
+      const tankDescr = v.fuel === "Electric" ? `${v.tank_capacity} kWh Battery Pack` : `${v.tank_capacity}L ${v.fuel} Tank`;
+      document.getElementById("specBootSub").textContent = `${v.seats} Seats • ${v.boot_space.toLocaleString('en-IN')}L Cargo • ${tankDescr}`;
+
+      document.getElementById("specClearance").textContent = v.ground_clearance;
+      document.getElementById("gaugeClearance").style.width = `${Math.min(100, Math.round((v.ground_clearance / 260) * 100))}%`;
+      document.getElementById("specBodyCategory").textContent = v.category;
+      document.getElementById("specClearanceSub").textContent = `${v.ground_clearance} mm Stance for Indian Terrains`;
+
+      // 5. Dynamic Button Highlights Updates:
+      // (a) Brand Logo Tile Highlight
+      document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+        tile.classList.toggle("active", tile.dataset.brand === v.brand);
+      });
+
+      // (b) Model Quick-Chips Highlight & Auto-Refresh if Brand Changed
+      if (renderedBrandForChips !== v.brand) {
+        renderQuickChips();
+      } else {
+        document.querySelectorAll(".model-chip-pill").forEach(pill => {
+          pill.classList.toggle("active", pill.dataset.model === v.model || pill.textContent.trim() === v.model);
+        });
+      }
+
+      // (c) Update Macro KPIs with respective category benchmarking
+      updateMacroKpis(getFilteredVehicles());
+    }
+
+    // Update Macro KPIs (Contextually Tailored to Active Fuel & Category!)
+    function updateMacroKpis(filtered) {
+      if (filtered.length === 0) {
+        document.getElementById("kpiAvgPrice").textContent = "₹0.0L";
+        document.getElementById("kpiAvgHp").textContent = "0 HP";
+        document.getElementById("kpiAvgRange").textContent = "0 km";
+        document.getElementById("kpiSafetyRate").textContent = "0%";
+        return;
+      }
+
+      const avgPrice = filtered.reduce((s, v) => s + v.price, 0) / filtered.length;
+      document.getElementById("kpiAvgPrice").textContent = `₹${avgPrice.toFixed(1)}L`;
+      document.getElementById("kpiAvgPriceSub").textContent = `Across ${filtered.length} active models`;
+
+      // Calculate category-specific power and range benchmarks
+      const targetFuel = activePowertrain !== "ALL" ? activePowertrain : selectedVehicle.fuel;
+      const bench = getCategoryBenchmark(targetFuel, selectedVehicle.trans);
+
+      document.getElementById("kpiAvgHpLabel").textContent = `Avg Engine Power (${targetFuel})`;
+      document.getElementById("kpiAvgHp").textContent = `${bench.avgHp} HP`;
+      document.getElementById("kpiAvgHpSub").textContent = `${targetFuel} Powertrain Average (${bench.peerCount} models)`;
+
+      document.getElementById("kpiAvgRangeLabel").textContent = targetFuel === "Electric" ? "Avg Real-World Range (EV)" : `Avg Fuel Economy (${targetFuel})`;
+      document.getElementById("kpiAvgRange").textContent = `${bench.avgEff} ${bench.unitEff}`;
+      document.getElementById("kpiAvgRangeSub").textContent = `${targetFuel} • ${selectedVehicle.trans} Benchmark`;
+
+      const safetyPass = (filtered.filter(v => v.safety >= 4.5).length / filtered.length) * 100;
+      document.getElementById("kpiSafetyRate").textContent = `${safetyPass.toFixed(0)}% (★5)`;
+    }
+
+    // Draw Price vs Horsepower Scatter Plot (Dual-Mode: Fleet Overview vs Focused Model)
+    function drawScatterPlot() {
+      const canvas = document.getElementById("scatterCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+      ctx.clearRect(0, 0, width, height);
+
+      const padding = { top: 15, right: 25, bottom: 35, left: 45 };
+      const plotW = width - padding.left - padding.right;
+      const plotH = height - padding.top - padding.bottom;
+
+      const minPrice = 0;
+      const maxPrice = 65;
+      const minHp = 0;
+      const maxHp = 260;
+
+      const subEl = document.getElementById("scatterChartSub");
+      if (subEl) {
+        subEl.textContent = isAllShowroomMode
+          ? "● Green=EV, Amber=Petrol, Blue=Diesel ◆ Market Fleet Median"
+          : `Cyan Ring = ${selectedVehicle.model}`;
+      }
+
+      // Draw Grid Lines (Tableau #1f2a44)
+      ctx.strokeStyle = "#1f2a44";
+      ctx.lineWidth = 1;
+
+      // Horizontal lines (HP)
+      for (let hp = 0; hp <= maxHp; hp += 50) {
+        const y = padding.top + plotH - (hp / maxHp) * plotH;
+        ctx.beginPath();
+        ctx.moveTo(padding.left, y);
+        ctx.lineTo(padding.left + plotW, y);
+        ctx.stroke();
+
+        ctx.fillStyle = "#9ca3af";
+        ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText(`${hp} HP`, padding.left - 6, y + 3);
+      }
+
+      // Vertical lines (Price Lakhs)
+      for (let p = 0; p <= maxPrice; p += 15) {
+        const x = padding.left + (p / maxPrice) * plotW;
+        ctx.beginPath();
+        ctx.moveTo(x, padding.top);
+        ctx.lineTo(x, padding.top + plotH);
+        ctx.stroke();
+
+        ctx.fillStyle = "#9ca3af";
+        ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(`₹${p}L`, x, padding.top + plotH + 15);
+      }
+
+      // Axis Labels (Tableau #e5e7eb)
+      ctx.fillStyle = "#e5e7eb";
+      ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Acquisition Price (Lakhs INR)", padding.left + plotW / 2, padding.top + plotH + 28);
+
+      // Plot All Vehicles as Dots
+      MASTER_VEHICLES.forEach(v => {
+        const x = padding.left + (v.price / maxPrice) * plotW;
+        const y = padding.top + plotH - (v.hp / maxHp) * plotH;
+        const isSelected = !isAllShowroomMode && v.model === selectedVehicle.model;
+
+        if (!isSelected) {
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          if (v.fuel === "Electric") ctx.fillStyle = "rgba(16, 185, 129, 0.85)";
+          else if (v.fuel === "Petrol") ctx.fillStyle = "rgba(245, 158, 11, 0.85)";
+          else ctx.fillStyle = "rgba(59, 130, 246, 0.85)";
+          ctx.fill();
+        }
+      });
+
+      if (isAllShowroomMode) {
+        // Highlight Fleet Median Marker (142 HP, 14.5L)
+        const medX = padding.left + (14.5 / maxPrice) * plotW;
+        const medY = padding.top + plotH - (142 / maxHp) * plotH;
+
+        ctx.save();
+        ctx.fillStyle = "#edc948";
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(medX, medY - 6);
+        ctx.lineTo(medX + 6, medY);
+        ctx.lineTo(medX, medY + 6);
+        ctx.lineTo(medX - 6, medY);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
+        ctx.restore();
+
+      } else {
+        // Plot Selected Vehicle with Glowing Highlight Ring
+        const selX = padding.left + (selectedVehicle.price / maxPrice) * plotW;
+        const selY = padding.top + plotH - (selectedVehicle.hp / maxHp) * plotH;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(selX, selY, 11, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(6, 182, 212, 0.28)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(selX, selY, 6.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#06b6d4";
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.fill();
+        ctx.stroke();
+
+        // Tooltip Callout on Selected Dot
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp}HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + 10, selY - 4);
+        ctx.restore();
+      }
+    }
+
+    // Draw Multi-Axis Performance Radar Chart (Overall Market Fleet Spectrum vs Single Vehicle)
+    function drawRadarChart() {
+      const canvas = document.getElementById("radarCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+      ctx.clearRect(0, 0, width, height);
+
+      const centerX = width / 2;
+      const centerY = height / 2 + 6;
+      const maxRadius = Math.min(centerX, centerY) - 28;
+
+      const titleEl = document.getElementById("radarChartTitle");
+      const subEl = document.getElementById("radarChartSub");
+
+      if (isAllShowroomMode) {
+        if (titleEl) titleEl.textContent = "Fleet-Wide Performance Spectrum";
+        if (subEl) subEl.textContent = "Overall Fleet Average (30 Models) vs EV Benchmark";
+      } else {
+        if (titleEl) titleEl.textContent = "Comparative Performance Radar";
+        if (subEl) subEl.textContent = `${selectedVehicle.brand} ${selectedVehicle.model} vs ${selectedVehicle.category} Benchmark`;
+      }
+
+      const axesLabels = ["Price-Value", "Horsepower", "Range/Eff", "Safety", "Cabin & Boot"];
+      const numAxes = axesLabels.length;
+      const angleStep = (Math.PI * 2) / numAxes;
+
+      // 1. Concentric background radar webs (Tableau #1f2a44)
+      ctx.strokeStyle = "#1f2a44";
+      ctx.lineWidth = 1;
+      for (let level = 1; level <= 4; level++) {
+        const r = (maxRadius / 4) * level;
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      // 2. Axis spokes & labels
+      for (let i = 0; i < numAxes; i++) {
+        const angle = i * angleStep - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * maxRadius;
+        const y = centerY + Math.sin(angle) * maxRadius;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        const labelX = centerX + Math.cos(angle) * (maxRadius + 14);
+        const labelY = centerY + Math.sin(angle) * (maxRadius + 14);
+
+        ctx.fillStyle = "#9ca3af";
+        ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(axesLabels[i], labelX, labelY);
+      }
+
+      if (isAllShowroomMode) {
+        // A. OVERALL FLEET SPECTRUM MODE:
+        // Polygon 1: 30-Model Fleet Average
+        const fleetVals = [0.785, 0.516, 0.683, 0.833, 0.673];
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * fleetVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "rgba(96, 165, 250, 0.28)";
+        ctx.fill();
+        ctx.strokeStyle = "#60a5fa";
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        // Vertex dots for Fleet Average
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * fleetVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          ctx.beginPath();
+          ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.strokeStyle = "#2563eb";
+          ctx.lineWidth = 1.8;
+          ctx.fill();
+          ctx.stroke();
+        }
+
+        // Polygon 2: EV Segment Benchmark (Dashed Tableau Emerald)
+        const evVals = [0.738, 0.656, 0.838, 1.0, 0.607];
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * evVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "rgba(89, 161, 79, 0.20)";
+        ctx.fill();
+        ctx.strokeStyle = "#59a14f";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.restore();
+
+        // Legend in Top Corner
+        ctx.fillStyle = "#60a5fa";
+        ctx.fillRect(8, 8, 10, 3);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("Fleet Average (30 Models)", 22, 11);
+
+        ctx.fillStyle = "#59a14f";
+        ctx.fillRect(8, 19, 10, 3);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.fillText("EV Benchmark (6 Models)", 22, 22);
+
+      } else {
+        // B. SINGLE VEHICLE MODE:
+        const vehVals = [
+          Math.min(1, Math.max(0.2, (65 - selectedVehicle.price) / 60)),
+          Math.min(1, Math.max(0.1, selectedVehicle.hp / 240)),
+          Math.min(1, Math.max(0.2, selectedVehicle.eff / (selectedVehicle.fuel === 'Electric' ? 550 : 35))),
+          selectedVehicle.safety / 5.0,
+          Math.min(1, Math.max(0.2, (selectedVehicle.boot_space / 800) * 0.5 + (selectedVehicle.seats / 7) * 0.5))
+        ];
+
+        const catPeers = MASTER_VEHICLES.filter(v => v.category === selectedVehicle.category);
+        const catVals = [
+          catPeers.reduce((s, x) => s + Math.min(1, Math.max(0.2, (65 - x.price) / 60)), 0) / catPeers.length,
+          catPeers.reduce((s, x) => s + Math.min(1, Math.max(0.1, x.hp / 240)), 0) / catPeers.length,
+          catPeers.reduce((s, x) => s + Math.min(1, Math.max(0.2, x.eff / (x.fuel === 'Electric' ? 550 : 35))), 0) / catPeers.length,
+          catPeers.reduce((s, x) => s + (x.safety / 5.0), 0) / catPeers.length,
+          catPeers.reduce((s, x) => s + Math.min(1, Math.max(0.2, (x.boot_space / 800) * 0.5 + (x.seats / 7) * 0.5)), 0) / catPeers.length
+        ];
+
+        // Category Benchmark polygon (dashed amber)
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * catVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "rgba(242, 142, 44, 0.18)";
+        ctx.fill();
+        ctx.strokeStyle = "#f28e2c";
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+        ctx.restore();
+
+        // Vehicle Polygon (cyan/blue)
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * vehVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "rgba(6, 182, 212, 0.35)";
+        ctx.fill();
+        ctx.strokeStyle = "#06b6d4";
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        // Vertex dots
+        for (let i = 0; i < numAxes; i++) {
+          const angle = i * angleStep - Math.PI / 2;
+          const r = maxRadius * vehVals[i];
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          ctx.beginPath();
+          ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.strokeStyle = "#0284c7";
+          ctx.lineWidth = 1.8;
+          ctx.fill();
+          ctx.stroke();
+        }
+
+        // Legend
+        ctx.fillStyle = "#06b6d4";
+        ctx.fillRect(8, 8, 10, 3);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText(`${selectedVehicle.model}`, 22, 11);
+
+        ctx.fillStyle = "#f28e2c";
+        ctx.fillRect(8, 19, 10, 3);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.fillText(`${selectedVehicle.category} Benchmark`, 22, 22);
+      }
+    }
+
+    // URL parameter support (Tableau Web Page Action integration)
+    function handleUrlParameters() {
+      const params = new URLSearchParams(window.location.search);
+      const paramBrand = params.get("brand");
+      const paramModel = params.get("model");
+      const paramBudget = params.get("budget");
+
+      if (paramBrand) selectBrand(paramBrand);
+      if (paramModel) {
+        const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === paramModel.toLowerCase());
+        if (match) selectModelByName(match.model);
+      }
+      if (paramBudget) onBudgetSliderInput(parseInt(paramBudget, 10));
+    }
+
+    window.addEventListener("DOMContentLoaded", initDashboard);
+    window.addEventListener("resize", () => {
+      drawScatterPlot();
+      drawRadarChart();
+    });
+  </script>
+</body>
+</html>

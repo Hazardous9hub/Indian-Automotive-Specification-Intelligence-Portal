@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 45">
+  <!-- Hatchback Profile: Crisp White Body with Deep Dark Windows & Alloy Rims -->
+  <path d="M12 28c1-5 4-11 9-13l16-4c6-1 15 0 24 6l16 3c5 2 9 6 10 9l-1 5H12z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <!-- Windows -->
+  <path d="M37 14h16c5 0 10 2 15 5l-1 6H35l2-11z" fill="#090e1a"/>
+  <path d="M24 16l10-2v11H21c1-4 2-7 3-9z" fill="#090e1a"/>
+  <!-- Alloy Wheels -->
+  <circle cx="27" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="27" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="27" cy="33" r="2.5" fill="#090e1a"/>
+  <circle cx="75" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="75" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="75" cy="33" r="2.5" fill="#090e1a"/>
+</svg>

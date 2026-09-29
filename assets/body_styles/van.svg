@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 45">
+  <!-- Van / MPV / Traveller: White Body with Panoramic Side Glass -->
+  <path d="M10 29V11c0-2 2-3 4-3h62c6 0 12 4 18 10l8 7c2 2 3 4 3 6v1H10z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <path d="M80 14h12l8 8v4H80z" fill="#090e1a"/>
+  <rect x="54" y="14" width="22" height="12" fill="#090e1a"/>
+  <rect x="26" y="14" width="24" height="12" fill="#090e1a"/>
+  <!-- Wheels -->
+  <circle cx="28" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="28" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="86" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="86" cy="33" r="5" fill="#ffffff"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 45">
+  <!-- Pickup Profile: Rugged White Cab + Open Cargo Bed -->
+  <path d="M8 29c2-5 5-9 12-10l18-4c6-1 16-1 22 2l4 12h44v10H8z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <rect x="64" y="21" width="44" height="8" fill="#e2e8f0"/>
+  <!-- Cab Windows -->
+  <path d="M40 18h16v8H40z" fill="#090e1a"/>
+  <path d="M26 19l11-2v8H23c1-3 2-5 3-6z" fill="#090e1a"/>
+  <!-- Heavy Duty Wheels -->
+  <circle cx="27" cy="33" r="8.5" fill="#090e1a"/>
+  <circle cx="27" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="27" cy="33" r="2.5" fill="#090e1a"/>
+  <circle cx="88" cy="33" r="8.5" fill="#090e1a"/>
+  <circle cx="88" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="88" cy="33" r="2.5" fill="#090e1a"/>
+</svg>

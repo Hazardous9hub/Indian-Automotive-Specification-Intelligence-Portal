@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 45">
+  <!-- Sport Motorcycle: White Tank & Cowl, Dark Frame & Spoke Wheels -->
+  <path d="M38 18l12-6 10 2 8 8-16 6-14-10z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <path d="M60 12l8-4m-12 12l16-6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M36 28l18 2 12-4" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Wheels -->
+  <circle cx="22" cy="30" r="11" fill="none" stroke="#090e1a" stroke-width="4"/>
+  <circle cx="22" cy="30" r="5" fill="#ffffff"/>
+  <circle cx="78" cy="30" r="11" fill="none" stroke="#090e1a" stroke-width="4"/>
+  <circle cx="78" cy="30" r="5" fill="#ffffff"/>
+</svg>

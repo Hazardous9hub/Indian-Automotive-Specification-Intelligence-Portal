@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 45">
+  <!-- Sedan Profile: 3-box Sleek White Body with Dark Windows & Alloy Rims -->
+  <path d="M8 29c2-5 5-9 12-10l12-1 14-8c5-3 14-4 24-1l15 9 14 1c6 1 9 4 10 10H8z" fill="#ffffff" stroke="#94a3b8" stroke-width="0.75"/>
+  <!-- Windows -->
+  <path d="M47 13h16c6 0 10 3 14 7l-1 6H45l2-13z" fill="#090e1a"/>
+  <path d="M33 19l11-6v13H28c2-3 4-5 5-7z" fill="#090e1a"/>
+  <!-- Alloy Wheels -->
+  <circle cx="26" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="26" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="26" cy="33" r="2.5" fill="#090e1a"/>
+  <circle cx="84" cy="33" r="8" fill="#090e1a"/>
+  <circle cx="84" cy="33" r="5" fill="#ffffff"/>
+  <circle cx="84" cy="33" r="2.5" fill="#090e1a"/>
+</svg>

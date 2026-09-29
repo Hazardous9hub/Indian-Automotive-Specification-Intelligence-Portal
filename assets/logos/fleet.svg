@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="16" fill="#0f1a2b"/>
+  <rect x="2" y="2" width="96" height="96" rx="14" fill="none" stroke="#60a5fa" stroke-width="3" opacity="0.6"/>
+  <!-- Fleet Icon: 4 mini vehicle squares / grid -->
+  <rect x="18" y="16" width="28" height="24" rx="4" fill="#60a5fa" opacity="0.9"/>
+  <rect x="54" y="16" width="28" height="24" rx="4" fill="#59a14f" opacity="0.9"/>
+  <rect x="18" y="46" width="28" height="24" rx="4" fill="#f28e2c" opacity="0.9"/>
+  <rect x="54" y="46" width="28" height="24" rx="4" fill="#b07aa1" opacity="0.9"/>
+  <!-- Car icon overlay -->
+  <path d="M25 26h14l3 5H22z" fill="#ffffff"/>
+  <circle cx="26" cy="33" r="2.5" fill="#0f1a2b"/>
+  <circle cx="38" cy="33" r="2.5" fill="#0f1a2b"/>
+  <!-- Lightning bolt on EV square -->
+  <path d="M69 20l-4 7h5l-3 9 7-10h-5z" fill="#ffffff"/>
+  <!-- Truck on 3rd square -->
+  <path d="M23 55h12v7h-12z" fill="#ffffff"/>
+  <!-- Star on 4th square -->
+  <path d="M68 51l1.5 3.5h4l-3 2.5 1.5 4-4-2.5-4 2.5 1.5-4-3-2.5h4z" fill="#ffffff"/>
+  <text x="50" y="87" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#e5e7eb" text-anchor="middle" letter-spacing="1">16 OEMS</text>
+</svg>
