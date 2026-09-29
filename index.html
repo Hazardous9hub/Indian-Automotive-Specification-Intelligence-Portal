@@ -431,13 +431,15 @@
     }
 
     .bin-btn {
-      padding: 2px 7px;
+      padding: 4px 8px;
+      min-height: 28px;
+      min-width: 48px;
       border-radius: 5px;
-      font-size: 0.62rem;
+      font-size: 0.64rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
-      color: var(--text-muted);
+      color: #cbd5e1;
       cursor: pointer;
       transition: all 0.15s;
     }
@@ -1643,7 +1645,7 @@
     </div>
   </header>
 
-  <!-- PRIORITY 1: OFFICIAL BRAND LOGO FILTER STRIP (Mouse Wheel & Drag Scrollable) -->
+  <main class="portal-main-container">
   <div class="brand-strip-container">
     <div class="brand-section-header">
       <span class="brand-filter-title">
@@ -1671,13 +1673,13 @@
       <div class="dropdown-pair">
         <div class="dropdown-group">
           <span class="dropdown-sublabel">Step 1: Brand</span>
-          <select id="brandSelectDropdown" class="executive-dropdown" onchange="onBrandDropdownChange(this.value)">
+          <select id="brandSelectDropdown" class="executive-dropdown" aria-label="Select Vehicle Brand" onchange="onBrandDropdownChange(this.value)">
             <!-- Populated dynamically -->
           </select>
         </div>
         <div class="dropdown-group">
           <span class="dropdown-sublabel">Step 2: Model</span>
-          <select id="modelSelectDropdown" class="executive-dropdown" onchange="onModelDropdownChange(this.value)">
+          <select id="modelSelectDropdown" class="executive-dropdown" aria-label="Select Vehicle Model" onchange="onModelDropdownChange(this.value)">
             <!-- Populated dynamically -->
           </select>
         </div>
@@ -1691,7 +1693,7 @@
         <span class="val-highlight" id="lblBudgetVal">All Budgets (≤ ₹65.0L)</span>
       </div>
       <div class="budget-slider-box">
-        <input type="range" class="slider-range-bar" id="budgetRange" min="1000000" max="6500000" step="250000" value="6500000" oninput="onBudgetSliderInput(this.value)">
+        <input type="range" class="slider-range-bar" id="budgetRange" aria-label="Filter by Maximum Acquisition Budget" min="1000000" max="6500000" step="250000" value="6500000" oninput="onBudgetSliderInput(this.value)">
         <div class="budget-bins-strip" id="budgetBinsBar">
           <button class="bin-btn active" data-bin="ALL" onclick="selectBudgetBin('ALL')">All Budgets</button>
           <button class="bin-btn" data-bin="ENTRY" onclick="selectBudgetBin('ENTRY')">&lt; ₹15L</button>
@@ -2143,6 +2145,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- JAVASCRIPT DATA & DYNAMIC INTERACTION ENGINE -->
   <script>
@@ -3031,7 +3034,7 @@
         card.innerHTML = `
           <span class="mini-fuel-indicator fuel-${v.fuel.toLowerCase()}" title="${v.fuel}"></span>
           <div class="mini-card-img-wrap">
-            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" loading="lazy" decoding="async" onerror="handleVehicleImgError(this)">
+            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" width="120" height="70" loading="lazy" decoding="async" onerror="handleVehicleImgError(this)">
           </div>
           <div class="mini-card-info">
             <span class="mini-card-name">${v.model}</span>
@@ -3821,6 +3824,13 @@
           return v.fuel === fuel;
         });
         btn.classList.toggle("filter-opt-zero", !hasMatch);
+        if (!hasMatch) {
+          btn.setAttribute("aria-disabled", "true");
+          btn.title = "0 models match current filter specifications";
+        } else {
+          btn.removeAttribute("aria-disabled");
+          btn.title = "";
+        }
       });
 
       // 2. Check Body Style buttons
@@ -3828,6 +3838,8 @@
         const style = btn.dataset.style;
         if (!style || style === "ALL") {
           btn.classList.remove("filter-opt-zero");
+          btn.removeAttribute("aria-disabled");
+          btn.title = "";
           return;
         }
         const hasMatch = MASTER_VEHICLES.some(v => {
@@ -3840,6 +3852,13 @@
           return v.category === style;
         });
         btn.classList.toggle("filter-opt-zero", !hasMatch);
+        if (!hasMatch) {
+          btn.setAttribute("aria-disabled", "true");
+          btn.title = "0 models match current filter specifications";
+        } else {
+          btn.removeAttribute("aria-disabled");
+          btn.title = "";
+        }
       });
 
       // 3. Check Seating buttons
@@ -3847,6 +3866,8 @@
         const seats = btn.dataset.seats;
         if (!seats || seats === "ALL") {
           btn.classList.remove("filter-opt-zero");
+          btn.removeAttribute("aria-disabled");
+          btn.title = "";
           return;
         }
         const hasMatch = MASTER_VEHICLES.some(v => {
@@ -3863,6 +3884,13 @@
           return true;
         });
         btn.classList.toggle("filter-opt-zero", !hasMatch);
+        if (!hasMatch) {
+          btn.setAttribute("aria-disabled", "true");
+          btn.title = "0 models match current filter specifications";
+        } else {
+          btn.removeAttribute("aria-disabled");
+          btn.title = "";
+        }
       });
 
       // 4. Check Brand Logo Tiles
@@ -3879,6 +3907,13 @@
           return true;
         });
         tile.classList.toggle("brand-opt-zero", !hasMatch);
+        if (!hasMatch) {
+          tile.setAttribute("aria-disabled", "true");
+          tile.title = "No models match this brand under current specifications";
+        } else {
+          tile.removeAttribute("aria-disabled");
+          tile.title = brand;
+        }
       });
     }
 
