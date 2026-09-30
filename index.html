@@ -4000,13 +4000,40 @@
     }
 
     function selectModelByName(name) {
-      const match = MASTER_VEHICLES.find(v => v.model === name);
+      if (!name) return;
+      const clean = name.trim().toLowerCase();
+      const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === clean || v.model.toLowerCase().replace(/\s+/g, '') === clean.replace(/\s+/g, ''));
       if (match) {
         selectedVehicle = match;
         activeModel = match.model;
+        activeBrand = match.brand;
+        activePowertrain = match.fuel;
+        activeBodyStyle = match.category;
+        activeDrivetrain = match.drive;
+
+        // Dismiss conflict state if active
+        isConflictActive = false;
+        const conflictStage = document.getElementById("conflictNoticeStage");
+        if (conflictStage) conflictStage.style.display = "none";
+
+        // Update dropdowns and pills
         const modelDd = document.getElementById("modelSelectDropdown");
         if (modelDd) modelDd.value = match.model;
+        const brandDd = document.getElementById("brandSelectDropdown");
+        if (brandDd) brandDd.value = match.brand;
+
+        document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+          tile.classList.toggle("active", tile.dataset.brand === match.brand);
+        });
+        document.querySelectorAll("#powertrainPillsBar .pill-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.fuel === match.fuel);
+        });
+        document.querySelectorAll("#bodyStylesBar .body-style-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.style === match.category);
+        });
+
         transitionToShowroom("toSingle");
+        updateFilteredView(true);
       }
     }
 
@@ -4621,19 +4648,56 @@
       } catch (e) {}
     }
 
+    function normalizeFuel(f) {
+      if (!f) return null;
+      const lower = f.toLowerCase();
+      if (lower.includes("electric") || lower.includes("ev")) return "Electric";
+      if (lower.includes("petrol") || lower.includes("gasoline")) return "Petrol";
+      if (lower.includes("diesel")) return "Diesel";
+      if (lower.includes("cng")) return "CNG";
+      if (lower.includes("all")) return "ALL";
+      return f;
+    }
+
+    function normalizeStyle(s) {
+      if (!s) return null;
+      const lower = s.toLowerCase().replace(/[\s_-]+/g, "");
+      if (lower.includes("scooter")) return "Scooter";
+      if (lower.includes("motorcycle") || lower.includes("bike")) return "Motorcycle";
+      if (lower.includes("hatch")) return "Hatchback";
+      if (lower.includes("sedan")) return "Sedan";
+      if (lower.includes("suv")) return "SUV";
+      if (lower.includes("electric") || lower.includes("ev")) return "Electric Vehicle";
+      if (lower.includes("van")) return "Van";
+      if (lower.includes("pickup")) return "Pickup Truck";
+      if (lower.includes("truck")) return "Truck";
+      if (lower.includes("bus")) return "Bus";
+      return s;
+    }
+
     // Enterprise URL Parameter Support (Tableau Dashboard Actions & Deep Linking)
     function handleUrlParameters() {
       const params = new URLSearchParams(window.location.search);
-      const brand = params.get("brand");
       const model = params.get("model");
-      const fuel = params.get("fuel") || params.get("powertrain");
+      const brand = params.get("brand");
+      const fuelRaw = params.get("fuel") || params.get("powertrain");
       const drive = params.get("drive") || params.get("drivetrain");
-      const style = params.get("style") || params.get("bodystyle") || params.get("silhouette");
+      const styleRaw = params.get("style") || params.get("bodystyle") || params.get("silhouette") || params.get("category");
       const seats = params.get("seats");
       const budget = params.get("budget");
       const interest = params.get("interest");
       const safety = params.get("safety");
       const view = params.get("view") || params.get("mode");
+
+      // 1. If MODEL is passed, it is the primary ground-truth anchor (from Tableau marks click)
+      if (model) {
+        selectModelByName(model);
+        return;
+      }
+
+      // 2. Otherwise apply normalized categorical filters
+      const fuel = normalizeFuel(fuelRaw);
+      const style = normalizeStyle(styleRaw);
 
       if (brand) selectBrand(brand);
       if (fuel) selectPowertrain(fuel);
@@ -4643,17 +4707,6 @@
       if (interest) selectInterest(interest);
       if (safety) selectSafety(parseInt(safety, 10));
       if (budget) onBudgetSliderInput(parseInt(budget, 10));
-
-      if (model) {
-        const match = MASTER_VEHICLES.find(v => v.model.toLowerCase() === model.toLowerCase());
-        if (match) {
-          selectedVehicle = match;
-          activeModel = match.model;
-          const modelDd = document.getElementById("modelSelectDropdown");
-          if (modelDd) modelDd.value = match.model;
-          updateFilteredView(true);
-        }
-      }
 
       if (view === "showroom") {
         resetAllFiltersToShowroom();
