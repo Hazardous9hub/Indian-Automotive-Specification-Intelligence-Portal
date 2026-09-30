@@ -36,19 +36,19 @@
   </script>
   <style>
     :root {
-      /* Official Tableau-like Palette Specification */
-      --bg-dark: #0b1220;
-      --bg-surface: #0f1a2b;
-      --card-bg: #0f1a2b;
-      --card-border: #1f2a44;
-      --card-border-hover: #60a5fa;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --text-dim: #9ca3af;
-      --table-accent: #60a5fa;
+      /* Official Tableau Executive Clean Palette */
+      --bg-dark: #f8fafc;
+      --bg-surface: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #cbd5e1;
+      --card-border-hover: #1f4e79;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      --table-accent: #1f4e79;
 
-      /* Tableau 8 Core Data Colors */
-      --tab-blue: #4e79a7;
+      /* Official Tableau 10 Data Colors */
+      --tab-blue: #1f4e79;
       --tab-orange: #f28e2c;
       --tab-red: #e15759;
       --tab-teal: #76b7b2;
@@ -57,14 +57,14 @@
       --tab-purple: #b07aa1;
       --tab-pink: #ff9da7;
 
-      /* Visual Accents */
-      --accent-cyan: #60a5fa;
-      --accent-sky: #60a5fa;
-      --accent-emerald: #59a14f;
-      --accent-amber: #f28e2c;
-      --accent-rose: #e15759;
-      --accent-indigo: #4e79a7;
-      --accent-purple: #b07aa1;
+      /* High-Contrast Badges & Accents */
+      --accent-cyan: #0284c7;
+      --accent-sky: #0369a1;
+      --accent-emerald: #15803d;
+      --accent-amber: #b45309;
+      --accent-rose: #b91c1c;
+      --accent-indigo: #1f4e79;
+      --accent-purple: #7e22ce;
     }
 
     * {
@@ -74,12 +74,13 @@
     }
 
     body {
-      background-color: #0b1220; background: radial-gradient(circle at 50% 0%, #16243d 0%, #0b1220 75%);
-      color: var(--text-main);
+      background-color: #f8fafc;
+      background: #f8fafc;
+      color: #0f172a;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
-      padding: 8px 16px 24px 16px;
+      padding: 6px 12px 20px 12px;
       line-height: 1.35;
     }
 
@@ -1624,6 +1625,97 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    /* Elevated High-Contrast Technical Specs Cards */
+    .spec-module-card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid var(--tab-blue) !important;
+      border-radius: 8px !important;
+      padding: 10px 12px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+      transition: all 0.2s ease;
+    }
+    .spec-module-card:hover {
+      border-color: var(--tab-blue) !important;
+      box-shadow: 0 4px 14px rgba(31, 78, 121, 0.15) !important;
+    }
+    .val-metric-large {
+      color: #0f172a !important;
+      font-size: 1.35rem !important;
+      font-weight: 800 !important;
+    }
+    .val-metric-unit {
+      color: #475569 !important;
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+    }
+    .module-icon-tag {
+      color: var(--tab-blue) !important;
+      font-weight: 800 !important;
+      font-size: 0.72rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .module-subtext {
+      color: #64748b !important;
+      font-size: 0.72rem !important;
+    }
+    .spec-gauge-track {
+      background: #e2e8f0 !important;
+    }
+    .single-hero-stage {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+    }
+    .chart-panel-card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+    }
+    .chart-title {
+      color: #0f172a !important;
+      font-weight: 800 !important;
+    }
+    .top-header {
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .portal-title {
+      color: #0f172a !important;
+    }
+    .brand-section-header, .filter-block-title {
+      color: #334155 !important;
+    }
+    .pill-btn, .body-style-btn, .brand-logo-tile {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #334155 !important;
+    }
+    .pill-btn:hover, .body-style-btn:hover, .brand-logo-tile:hover {
+      border-color: var(--tab-blue) !important;
+      color: var(--tab-blue) !important;
+    }
+    .pill-btn.active, .body-style-btn.active, .brand-logo-tile.active {
+      background: #1f4e79 !important;
+      border-color: #1f4e79 !important;
+      color: #ffffff !important;
+    }
+    .kpi-card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+    }
+    .kpi-label {
+      color: #475569 !important;
+    }
+    .kpi-value {
+      color: #0f172a !important;
+    }
+    .kpi-sub {
+      color: #64748b !important;
+    }
+
   </style>
 </head>
 <body>
@@ -2119,27 +2211,27 @@
       </div>
     </div>
 
-    <!-- Comparative Analytics & Scatter Plots -->
+    <!-- Comparative Analytics: Radar Chart First (Immediate Visibility in Tableau), Scatter Plot Below -->
     <div class="charts-row">
-      <!-- Price vs Power Scatter Plot -->
-      <div class="chart-panel-card">
+      <!-- Performance Multi-Axis Radar (FIRST) -->
+      <div class="chart-panel-card" style="border-top:3px solid var(--tab-blue);">
         <div class="chart-header">
-          <span class="chart-title" id="scatterChartTitle">Market Positioning: Price vs Horsepower</span>
-          <span id="scatterChartSub" style="font-size:0.65rem; color:var(--accent-sky); font-weight:700;">Cyan Dot = Selected Vehicle</span>
-        </div>
-        <div class="chart-canvas-wrap">
-          <canvas id="scatterCanvas"></canvas>
-        </div>
-      </div>
-
-      <!-- Performance Multi-Axis Radar -->
-      <div class="chart-panel-card">
-        <div class="chart-header">
-          <span class="chart-title" id="radarChartTitle">Fleet-Wide Performance Spectrum</span>
-          <span id="radarChartSub" style="font-size:0.65rem; color:var(--text-muted); font-weight:700;">Overall Fleet Average (30 Models) vs EV Benchmark (3 Models)</span>
+          <span class="chart-title" id="radarChartTitle">Fleet-Wide Performance Spectrum (6-Axis Telemetry)</span>
+          <span id="radarChartSub" style="font-size:0.68rem; color:var(--tab-blue); font-weight:700;">Active Vehicle Radar Benchmark</span>
         </div>
         <div class="chart-canvas-wrap">
           <canvas id="radarCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Price vs Power Scatter Plot (SECOND / BELOW) -->
+      <div class="chart-panel-card">
+        <div class="chart-header">
+          <span class="chart-title" id="scatterChartTitle">Market Positioning: Price vs Horsepower</span>
+          <span id="scatterChartSub" style="font-size:0.68rem; color:var(--accent-sky); font-weight:700;">Market Cluster Positioning</span>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="scatterCanvas"></canvas>
         </div>
       </div>
     </div>
@@ -4289,7 +4381,7 @@
         ctx.lineTo(padding.left + plotW, y);
         ctx.stroke();
 
-        ctx.fillStyle = "#9ca3af";
+        ctx.fillStyle = "#475569";
         ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "right";
         ctx.fillText(`${hp} HP`, padding.left - 6, y + 3);
@@ -4303,14 +4395,14 @@
         ctx.lineTo(x, padding.top + plotH);
         ctx.stroke();
 
-        ctx.fillStyle = "#9ca3af";
+        ctx.fillStyle = "#475569";
         ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(`₹${p}L`, x, padding.top + plotH + 15);
       }
 
       // Axis Labels (Tableau #e5e7eb)
-      ctx.fillStyle = "#e5e7eb";
+      ctx.fillStyle = "#0f172a";
       ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("Acquisition Price (Lakhs INR)", padding.left + plotW / 2, padding.top + plotH + 28);
@@ -4349,7 +4441,7 @@
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = "#0f172a";
         ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
@@ -4375,7 +4467,7 @@
         ctx.stroke();
 
         // Tooltip Callout on Selected Dot
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = "#0f172a";
         ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp}HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + 10, selY - 4);
@@ -4447,7 +4539,7 @@
         const labelX = centerX + Math.cos(angle) * (maxRadius + 14);
         const labelY = centerY + Math.sin(angle) * (maxRadius + 14);
 
-        ctx.fillStyle = "#9ca3af";
+        ctx.fillStyle = "#475569";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -4492,7 +4584,7 @@
           const y = centerY + Math.sin(angle) * r;
           ctx.beginPath();
           ctx.arc(x, y, 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
+          ctx.fillStyle = "#0f172a";
           ctx.strokeStyle = "#2563eb";
           ctx.lineWidth = 1.8;
           ctx.fill();
@@ -4523,14 +4615,14 @@
         // Legend in Top Corner
         ctx.fillStyle = "#60a5fa";
         ctx.fillRect(8, 8, 10, 3);
-        ctx.fillStyle = "#e5e7eb";
+        ctx.fillStyle = "#0f172a";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText("Fleet Average (30 Models)", 22, 11);
 
         ctx.fillStyle = "#59a14f";
         ctx.fillRect(8, 19, 10, 3);
-        ctx.fillStyle = "#e5e7eb";
+        ctx.fillStyle = "#0f172a";
         ctx.fillText("EV Benchmark (3 Models: XUV400, Nexon EV, ZS EV)", 22, 22);
 
       } else {
@@ -4597,7 +4689,7 @@
           const y = centerY + Math.sin(angle) * r;
           ctx.beginPath();
           ctx.arc(x, y, 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
+          ctx.fillStyle = "#0f172a";
           ctx.strokeStyle = "#0284c7";
           ctx.lineWidth = 1.8;
           ctx.fill();
@@ -4607,14 +4699,14 @@
         // Legend
         ctx.fillStyle = "#06b6d4";
         ctx.fillRect(8, 8, 10, 3);
-        ctx.fillStyle = "#e5e7eb";
+        ctx.fillStyle = "#0f172a";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText(`${selectedVehicle.model}`, 22, 11);
 
         ctx.fillStyle = "#f28e2c";
         ctx.fillRect(8, 19, 10, 3);
-        ctx.fillStyle = "#e5e7eb";
+        ctx.fillStyle = "#0f172a";
         ctx.fillText(`${selectedVehicle.category} Benchmark`, 22, 22);
       }
     }
