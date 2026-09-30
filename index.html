@@ -36,35 +36,35 @@
   </script>
   <style>
     :root {
-      /* Official Tableau Executive Clean Palette */
-      --bg-dark: #f8fafc;
-      --bg-surface: #ffffff;
-      --card-bg: #ffffff;
-      --card-border: #cbd5e1;
-      --card-border-hover: #1f4e79;
-      --text-main: #0f172a;
-      --text-muted: #475569;
+      /* Refined Monotonic Executive Slate Palette (Tableau-Harmonized) */
+      --bg-dark: #111827;
+      --bg-surface: #182335;
+      --card-bg: #1a2538;
+      --card-border: #283950;
+      --card-border-hover: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
       --text-dim: #64748b;
-      --table-accent: #1f4e79;
+      --table-accent: #38bdf8;
 
-      /* Official Tableau 10 Data Colors */
-      --tab-blue: #1f4e79;
-      --tab-orange: #f28e2c;
-      --tab-red: #e15759;
-      --tab-teal: #76b7b2;
-      --tab-green: #59a14f;
-      --tab-yellow: #edc948;
-      --tab-purple: #b07aa1;
-      --tab-pink: #ff9da7;
+      /* Official Tableau Executive Accents (Monotonic Blue Focus) */
+      --tab-blue: #38bdf8;
+      --tab-orange: #f59e0b;
+      --tab-red: #f43f5e;
+      --tab-teal: #14b8a6;
+      --tab-green: #10b981;
+      --tab-yellow: #eab308;
+      --tab-purple: #818cf8;
+      --tab-pink: #f472b6;
 
       /* High-Contrast Badges & Accents */
-      --accent-cyan: #0284c7;
-      --accent-sky: #0369a1;
-      --accent-emerald: #15803d;
-      --accent-amber: #b45309;
-      --accent-rose: #b91c1c;
-      --accent-indigo: #1f4e79;
-      --accent-purple: #7e22ce;
+      --accent-cyan: #38bdf8;
+      --accent-sky: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-indigo: #6366f1;
+      --accent-purple: #8b5cf6;
     }
 
     * {
@@ -74,9 +74,9 @@
     }
 
     body {
-      background-color: #f8fafc;
-      background: #f8fafc;
-      color: #0f172a;
+      background-color: #111827;
+      background: #111827;
+      color: #f8fafc;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
@@ -1520,11 +1520,12 @@
       color: var(--text-dim);
     }
 
-    /* Charts Row */
+    /* Charts Row: Radar Chart on top, Scatter Plot directly below, full width */
     .charts-row {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
     }
 
     .chart-panel-card {
@@ -1532,8 +1533,9 @@
       backdrop-filter: blur(14px);
       border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 9px 13px;
+      padding: 10px 14px;
       box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+      width: 100%;
     }
 
     .chart-header {
@@ -1553,7 +1555,7 @@
 
     .chart-canvas-wrap {
       width: 100%;
-      height: 200px;
+      height: 220px;
       position: relative;
     }
 
@@ -1580,7 +1582,7 @@
         grid-template-columns: 1fr;
       }
       .charts-row {
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
       .kpi-row {
         grid-template-columns: repeat(2, 1fr);
@@ -1626,94 +1628,102 @@
       }
     }
   
-    /* Elevated High-Contrast Technical Specs Cards */
+    /* Highlighted Technical Specs Cards - Focal Information Point */
     .spec-module-card {
-      background: #ffffff !important;
-      border: 1px solid #cbd5e1 !important;
-      border-left: 4px solid var(--tab-blue) !important;
-      border-radius: 8px !important;
-      padding: 10px 12px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+      background: linear-gradient(135deg, #1b263b 0%, #152238 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.4) !important;
+      border-left: 5px solid #38bdf8 !important;
+      border-radius: 9px !important;
+      padding: 9px 12px !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(56, 189, 248, 0.12) !important;
       transition: all 0.2s ease;
     }
     .spec-module-card:hover {
-      border-color: var(--tab-blue) !important;
-      box-shadow: 0 4px 14px rgba(31, 78, 121, 0.15) !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.22) !important;
+      transform: translateY(-1px);
     }
     .val-metric-large {
-      color: #0f172a !important;
+      color: #ffffff !important;
       font-size: 1.35rem !important;
-      font-weight: 800 !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.01em;
     }
     .val-metric-unit {
-      color: #475569 !important;
-      font-size: 0.85rem !important;
+      color: #7dd3fc !important;
+      font-size: 0.82rem !important;
       font-weight: 700 !important;
     }
     .module-icon-tag {
-      color: var(--tab-blue) !important;
+      color: #38bdf8 !important;
       font-weight: 800 !important;
       font-size: 0.72rem !important;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
     .module-subtext {
-      color: #64748b !important;
-      font-size: 0.72rem !important;
+      color: #94a3b8 !important;
+      font-size: 0.70rem !important;
     }
     .spec-gauge-track {
-      background: #e2e8f0 !important;
+      background: #24334a !important;
     }
-    .single-hero-stage {
-      background: #ffffff !important;
-      border: 1px solid #cbd5e1 !important;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+    .single-hero-stage, .hero-center-box {
+      background: #162032 !important;
+      border: 1px solid #283950 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
     }
     .chart-panel-card {
-      background: #ffffff !important;
-      border: 1px solid #cbd5e1 !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+      background: #162032 !important;
+      border: 1px solid #283950 !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+      width: 100% !important;
     }
     .chart-title {
-      color: #0f172a !important;
+      color: #f8fafc !important;
       font-weight: 800 !important;
     }
     .top-header {
-      border-bottom: 1px solid #e2e8f0 !important;
+      border-bottom: 1px solid #283950 !important;
     }
     .portal-title {
-      color: #0f172a !important;
+      color: #f8fafc !important;
     }
     .brand-section-header, .filter-block-title {
-      color: #334155 !important;
+      color: #cbd5e1 !important;
     }
     .pill-btn, .body-style-btn, .brand-logo-tile {
-      background: #ffffff !important;
-      border: 1px solid #cbd5e1 !important;
-      color: #334155 !important;
+      background: #182436 !important;
+      border: 1px solid #283950 !important;
+      color: #cbd5e1 !important;
     }
     .pill-btn:hover, .body-style-btn:hover, .brand-logo-tile:hover {
-      border-color: var(--tab-blue) !important;
-      color: var(--tab-blue) !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      background: #203047 !important;
     }
     .pill-btn.active, .body-style-btn.active, .brand-logo-tile.active {
-      background: #1f4e79 !important;
-      border-color: #1f4e79 !important;
+      background: #0284c7 !important;
+      border-color: #38bdf8 !important;
       color: #ffffff !important;
     }
     .kpi-card {
-      background: #ffffff !important;
-      border: 1px solid #cbd5e1 !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+      background: #162032 !important;
+      border: 1px solid #283950 !important;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3) !important;
     }
     .kpi-label {
-      color: #475569 !important;
+      color: #94a3b8 !important;
     }
     .kpi-value {
-      color: #0f172a !important;
+      color: #ffffff !important;
     }
     .kpi-sub {
       color: #64748b !important;
+    }
+    .control-card, .shelf-card {
+      background: #162032 !important;
+      border: 1px solid #283950 !important;
     }
 
   </style>
@@ -4369,8 +4379,8 @@
           : `Cyan Ring = ${selectedVehicle.model}`;
       }
 
-      // Draw Grid Lines (Tableau #1f2a44)
-      ctx.strokeStyle = "#1f2a44";
+      // Draw Grid Lines (Monotonic Slate #283950)
+      ctx.strokeStyle = "#283950";
       ctx.lineWidth = 1;
 
       // Horizontal lines (HP)
@@ -4381,7 +4391,7 @@
         ctx.lineTo(padding.left + plotW, y);
         ctx.stroke();
 
-        ctx.fillStyle = "#475569";
+        ctx.fillStyle = "#94a3b8";
         ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "right";
         ctx.fillText(`${hp} HP`, padding.left - 6, y + 3);
@@ -4395,14 +4405,14 @@
         ctx.lineTo(x, padding.top + plotH);
         ctx.stroke();
 
-        ctx.fillStyle = "#475569";
+        ctx.fillStyle = "#94a3b8";
         ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(`₹${p}L`, x, padding.top + plotH + 15);
       }
 
-      // Axis Labels (Tableau #e5e7eb)
-      ctx.fillStyle = "#0f172a";
+      // Axis Labels (Crisp Natural #f8fafc)
+      ctx.fillStyle = "#f8fafc";
       ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("Acquisition Price (Lakhs INR)", padding.left + plotW / 2, padding.top + plotH + 28);
@@ -4429,7 +4439,7 @@
         const medY = padding.top + plotH - (142 / maxHp) * plotH;
 
         ctx.save();
-        ctx.fillStyle = "#edc948";
+        ctx.fillStyle = "#eab308";
         ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 1.5;
         ctx.beginPath();
@@ -4441,7 +4451,7 @@
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#f8fafc";
         ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
@@ -4455,19 +4465,19 @@
         ctx.save();
         ctx.beginPath();
         ctx.arc(selX, selY, 11, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(6, 182, 212, 0.28)";
+        ctx.fillStyle = "rgba(56, 189, 248, 0.28)";
         ctx.fill();
 
         ctx.beginPath();
         ctx.arc(selX, selY, 6.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#06b6d4";
+        ctx.fillStyle = "#38bdf8";
         ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 2;
         ctx.fill();
         ctx.stroke();
 
         // Tooltip Callout on Selected Dot
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#ffffff";
         ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp}HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + 10, selY - 4);
@@ -4508,8 +4518,8 @@
       const numAxes = axesLabels.length;
       const angleStep = (Math.PI * 2) / numAxes;
 
-      // 1. Concentric background radar webs (Tableau #1f2a44)
-      ctx.strokeStyle = "#1f2a44";
+      // 1. Concentric background radar webs (Monotonic Slate #283950)
+      ctx.strokeStyle = "#283950";
       ctx.lineWidth = 1;
       for (let level = 1; level <= 4; level++) {
         const r = (maxRadius / 4) * level;
@@ -4539,7 +4549,7 @@
         const labelX = centerX + Math.cos(angle) * (maxRadius + 14);
         const labelY = centerY + Math.sin(angle) * (maxRadius + 14);
 
-        ctx.fillStyle = "#475569";
+        ctx.fillStyle = "#94a3b8";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -4615,14 +4625,14 @@
         // Legend in Top Corner
         ctx.fillStyle = "#60a5fa";
         ctx.fillRect(8, 8, 10, 3);
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#f8fafc";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText("Fleet Average (30 Models)", 22, 11);
 
         ctx.fillStyle = "#59a14f";
         ctx.fillRect(8, 19, 10, 3);
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#f8fafc";
         ctx.fillText("EV Benchmark (3 Models: XUV400, Nexon EV, ZS EV)", 22, 22);
 
       } else {
@@ -4689,7 +4699,7 @@
           const y = centerY + Math.sin(angle) * r;
           ctx.beginPath();
           ctx.arc(x, y, 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = "#0f172a";
+          ctx.fillStyle = "#111827";
           ctx.strokeStyle = "#0284c7";
           ctx.lineWidth = 1.8;
           ctx.fill();
@@ -4699,14 +4709,14 @@
         // Legend
         ctx.fillStyle = "#06b6d4";
         ctx.fillRect(8, 8, 10, 3);
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#f8fafc";
         ctx.font = "bold 8px 'Plus Jakarta Sans', sans-serif";
         ctx.textAlign = "left";
         ctx.fillText(`${selectedVehicle.model}`, 22, 11);
 
         ctx.fillStyle = "#f28e2c";
         ctx.fillRect(8, 19, 10, 3);
-        ctx.fillStyle = "#0f172a";
+        ctx.fillStyle = "#f8fafc";
         ctx.fillText(`${selectedVehicle.category} Benchmark`, 22, 22);
       }
     }
