@@ -1,0 +1,31 @@
+brand,model,vehicle_category,fuel_type,transmission,drivetrain,price_inr,horsepower_hp,torque_nm,mileage_kmpl,ev_range_km,engine_cc,fuel_tank_capacity_liters,seating_capacity,vehicle_weight_kg,ground_clearance_mm,boot_space_liters,top_speed_kmph,acceleration_0_100_sec,airbags,safety_rating,sample_count
+Tata,Starbus,Bus,Diesel,Manual,RWD,2816550.4,140.0,400.1,11.99,0.0,3783,160.0,32,5197.2,210.0,2500,94.9,25.0,1.0,4.0,331
+Ashok Leyland,JanBus,Bus,Diesel,Manual,RWD,3364137.2,222.0,579.6,4.79,0.0,5660,250.0,42,9502.7,210.1,4500,90.1,27.02,1.0,4.0,349
+Volvo,9400,Bus,Diesel,Automatic,RWD,5778215.2,380.3,1752.1,4.51,0.0,10800,400.0,54,14810.8,240.0,9500,110.0,24.0,2.0,5.0,320
+Tata,Nexon EV,Electric Vehicle,Electric,Automatic,FWD,1674701.8,145.0,214.9,0.0,465.7,0,0.0,5,1400.0,189.8,350,150.0,8.9,6.0,5.0,327
+Mahindra,XUV400,Electric Vehicle,Electric,Automatic,FWD,1715185.5,149.9,310.2,0.0,455.8,0,0.0,5,1577.8,200.0,378,149.9,8.3,6.0,5.0,317
+MG,ZS EV,Electric Vehicle,Electric,Automatic,FWD,2176606.7,177.1,280.0,0.0,461.5,0,0.0,5,1620.8,177.1,448,175.2,8.5,6.0,5.0,356
+Tata,Tiago,Hatchback,Petrol,AMT,FWD,665756.5,85.9,113.0,20.02,0.0,1199,35.0,5,980.8,169.9,242,149.8,14.3,3.3,4.0,374
+Maruti Suzuki,Swift,Hatchback,Petrol,AMT,FWD,779030.5,82.0,112.0,25.72,0.0,1197,37.0,5,919.0,163.0,265,165.1,12.5,6.0,4.0,291
+Hyundai,i20,Hatchback,Petrol,Manual,FWD,876919.2,120.0,172.0,19.99,0.0,998,37.0,5,1039.9,169.8,311,174.9,10.18,6.0,4.0,335
+Hero,Splendor,Motorcycle,Petrol,Manual,RWD,78795.1,8.0,8.1,65.58,0.0,97,9.8,2,111.5,165.0,0,86.9,18.02,0.0,3.5,331
+TVS,Apache,Motorcycle,Petrol,Manual,RWD,133426.8,20.8,17.2,42.07,0.0,198,12.0,2,152.6,180.1,0,127.8,10.18,0.0,4.0,325
+Bajaj,Pulsar,Motorcycle,Petrol,Manual,RWD,145298.2,24.1,21.5,43.85,0.0,249,14.0,2,163.5,164.9,0,137.9,9.49,0.0,4.0,344
+Mahindra,Bolero Pickup,Pickup Truck,Diesel,Manual,RWD,948237.8,76.0,200.0,14.32,0.0,2523,60.0,2,1759.9,185.0,1500,114.9,20.98,1.6,3.0,343
+Tata,Yodha,Pickup Truck,Diesel,Manual,RWD,983698.2,100.0,250.2,14.79,0.0,2200,52.0,2,1849.1,210.0,1700,119.9,19.49,1.6,3.5,306
+Isuzu,D-Max,Pickup Truck,Diesel,Automatic,AWD,2276947.1,162.9,359.8,14.49,0.0,1898,76.0,5,1934.1,225.1,1200,159.8,12.01,6.0,4.5,351
+Tata,Nexon,SUV,Petrol,Manual,FWD,1149177.0,120.0,170.0,17.4,0.0,1199,44.0,5,1253.2,207.9,382,179.8,11.21,6.0,5.0,351
+Hyundai,Creta,SUV,Petrol,Automatic,FWD,1490970.6,160.0,252.9,18.18,0.0,1482,50.0,5,1329.5,190.1,433,190.1,8.91,6.0,4.5,327
+Mahindra,Scorpio N,SUV,Petrol,Automatic,RWD,1859892.4,202.8,380.1,13.68,0.0,1997,57.0,7,2060.6,186.9,460,175.0,10.3,6.0,5.0,322
+TVS,Jupiter,Scooter,Petrol,CVT,RWD,81050.7,7.9,8.8,51.49,0.0,113,6.0,2,106.5,163.1,21,85.2,16.79,0.0,3.5,343
+Honda,Activa,Scooter,Petrol,Automatic,RWD,82871.9,7.8,8.9,50.01,0.0,110,5.3,2,105.4,161.9,18,84.8,16.48,0.0,3.5,347
+Suzuki,Access 125,Scooter,Petrol,Automatic,RWD,86796.3,8.7,10.0,47.98,0.0,124,5.0,2,103.5,160.0,22,92.1,15.2,0.0,4.0,310
+Maruti Suzuki,Ciaz,Sedan,Petrol,Manual,FWD,1070023.6,105.1,138.0,20.61,0.0,1462,43.0,5,1059.9,169.9,510,175.1,11.51,3.4,4.0,334
+Honda,City,Sedan,Petrol,CVT,FWD,1381265.5,120.9,145.0,18.41,0.0,1498,40.0,5,1123.9,165.0,506,185.1,10.42,5.3,5.0,329
+Hyundai,Verna,Sedan,Petrol,Automatic,FWD,1381603.2,160.0,253.0,20.58,0.0,1482,45.0,5,1209.4,169.9,528,209.8,8.11,6.0,5.0,337
+Ashok Leyland,Boss,Truck,Diesel,AMT,RWD,2774602.3,204.1,613.5,5.79,0.0,3839,208.0,3,7201.9,229.9,0,99.8,25.98,1.0,4.0,332
+Eicher,Pro 3015,Truck,Diesel,Manual,RWD,2803160.1,211.0,567.9,6.2,0.0,3760,190.0,3,6796.4,229.9,0,89.9,28.01,1.0,4.0,340
+Tata,Prima,Truck,Diesel,Manual,RWD,4070113.5,280.3,1100.6,3.81,0.0,6700,300.0,2,11505.3,260.0,0,105.1,28.99,2.0,4.5,328
+Maruti Suzuki,Eeco,Van,Diesel,Manual,RWD,586234.2,81.0,104.0,19.7,0.0,1197,40.0,7,1049.8,160.0,540,120.0,15.71,2.0,3.0,327
+Force,Traveller,Van,Diesel,Manual,RWD,1678193.9,115.0,349.9,13.99,0.0,2596,70.0,14,2678.2,189.9,1200,110.2,22.04,2.0,3.5,335
+Toyota,Innova,Van,Diesel,Manual,RWD,2354088.6,150.2,359.9,15.61,0.0,2393,55.0,7,1820.2,178.0,300,169.9,12.77,7.0,5.0,338
