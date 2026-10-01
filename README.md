@@ -3,7 +3,7 @@
 [![Live Tableau Dashboard](https://img.shields.io/badge/Tableau%20Public-Live%20Dashboard-E9762B?style=for-the-badge&logo=tableau&logoColor=white)](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)
 [![Live Web Portal](https://img.shields.io/badge/Live%20Showroom-GitHub%20Pages-0284c7?style=for-the-badge&logo=github&logoColor=white)](https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/)
 [![Dataset](https://img.shields.io/badge/Dataset-10%2C000%20Calibrated%20Rows-10b981?style=for-the-badge&logo=databricks&logoColor=white)](data/vehicle_specification_dataset_10000_rows.csv)
-[![Competition](https://img.shields.io/badge/Unstop-Tableau%20Competition%202026-6366f1?style=for-the-badge)]((https://unstop.com/competitions/tableau-data-visualization-challenge-2026-national-institute-of-engineering-nie-mysuru-1753895))
+[![Competition](https://img.shields.io/badge/Unstop-Tableau%20Competition%202026-6366f1?style=for-the-badge)](https://unstop.com/competitions/tableau-data-visualization-challenge-2026-national-institute-of-engineering-nie-mysuru-1753895)
 [![License](https://img.shields.io/badge/License-MIT-gray?style=for-the-badge)](LICENSE)
 
 An enterprise-grade automotive intelligence platform submitted to the **Unstop Tableau Competition (September 2026)**. Built to bridge macro-statistical market analytics with vehicle-level engineering telemetry across **10,000 Indian automotive records** and **30 benchmark models across 16 leading OEMs**.
