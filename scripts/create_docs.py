@@ -102,7 +102,7 @@ def create_documentation():
     add_body("The Indian automotive sector is undergoing its most transformative phase: the simultaneous convergence of Bharat NCAP safety regulations, rapid EV platform evolution, and price tier diversification. However, consumer automotive portals and enterprise BI analytics remain deeply fragmented. Consumer portals provide disjointed spec tables with zero analytical context, while enterprise dashboards present static charts disconnected from the physical vehicle.")
     add_body("The Indian Automotive Specification & Performance Intelligence Platform establishes a real-time, synchronized intelligence cockpit combining:")
     add_bullet("Deep statistical modeling across 10,000 records, dynamic KPI benchmarking, multi-dimensional safety and category matrices, and head-to-head parameter comparators.", "1. Analytical BI Engine in Tableau: ")
-    add_bullet("Embedded natively via a zero-latency Web Page Object, delivering a 360° showroom pedestal, real-time 6-axis performance radar charts, specification conflict diagnostics, and high-contrast specs cards.", "2. Interactive 3D/2D Web Portal: ")
+    add_bullet("Embedded natively via a zero-latency Web Page Object, delivering an isolated showroom pedestal, real-time 6-axis performance radar charts, specification conflict diagnostics, and high-contrast specs cards.", "2. Interactive Digital Web Portal: ")
     add_body("Selecting any vehicle or market segment in Tableau instantly synchronizes the showroom, providing unprecedented clarity for OEMs, fleet buyers, and retail consumers.")
 
     add_h1("2. Significance, Real-World Practicality & Applicability")

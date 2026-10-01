@@ -16,7 +16,7 @@ The Indian automotive sector is undergoing its most radical transformation since
 ### The Breakthrough Solution
 The **Indian Automotive Specification & Performance Intelligence Platform** creates a **two-way synchronized ecosystem** bridging:
 1. **An Analytical Engine in Tableau:** Deep statistical modeling across 10,000 records, dynamic KPI benchmarking, multi-dimensional safety and category matrices, and head-to-head parameter comparators.
-2. **A Responsive Interactive Web Portal:** Embedded natively inside Tableau via a zero-latency Web Page Object, providing a 360° showroom pedestal, real-time 6-axis performance radar charts, conflict detection engines, and high-contrast specs cards.
+2. **A Responsive Interactive Web Portal:** Embedded natively inside Tableau via a zero-latency Web Page Object, providing an isolated showroom pedestal, real-time 6-axis performance radar charts, conflict detection engines, and high-contrast specs cards.
 
 This integration delivers an executive cockpit where clicking any model or segment in Tableau instantly commands the visual and technical showroom, enabling automotive OEMs, fleet managers, and retail buyers to derive instantaneous intelligence.
 

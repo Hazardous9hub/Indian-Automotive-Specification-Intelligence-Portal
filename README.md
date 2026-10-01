@@ -6,14 +6,14 @@
 [![Competition](https://img.shields.io/badge/Unstop-Tableau%20Competition%202026-6366f1?style=for-the-badge)](https://unstop.com)
 [![License](https://img.shields.io/badge/License-MIT-gray?style=for-the-badge)](LICENSE)
 
-An enterprise-grade, dual-engine automotive intelligence platform submitted to the **Unstop Tableau Competition (September 2026)**. Built to bridge deep macro-statistical market analytics with vehicle-level engineering telemetry across **10,000 Indian automotive records** and **30 benchmark models across 16 leading OEMs**.
+An enterprise-grade automotive intelligence platform submitted to the **Unstop Tableau Competition (September 2026)**. Built to bridge macro-statistical market analytics with vehicle-level engineering telemetry across **10,000 Indian automotive records** and **30 benchmark models across 16 leading OEMs**.
 
 ---
 
 ## 🔗 Quick Links
 
 - 📊 **Tableau Public Dashboard**: [Interactive Automotive Intelligence Dashboard](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)
-- 🌐 **Live Web Intelligence Portal**: [Interactive 3D/2D Studio & Radar Telemetry](https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/)
+- 🌐 **Live Web Intelligence Portal**: [Interactive Digital Showroom & Radar Telemetry](https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/)
 - 📄 **Official Submission PDF**: [S.P.B Data Team Documentation (PDF)](docs/S.P.B_DATA_TEAM_Automotive_Intelligence_Platform_Documentation.pdf)
 - 📝 **Editable Documentation**: [Microsoft Word Document (DOCX)](docs/Automotive_Intelligence_Platform_Documentation.docx) | [Markdown Dossier (MD)](docs/Automotive_Intelligence_Platform_Documentation.md)
 - 📦 **Master Tableau Packaged Workbook**: [Download .twbx (2.4 MB)](tableau/Vehicle_Specification_Master_Dashboard.twbx)
@@ -22,7 +22,7 @@ An enterprise-grade, dual-engine automotive intelligence platform submitted to t
 
 ## 🌟 Executive Summary & Dual-Engine Architecture
 
-The platform addresses the disconnect in modern automotive analytics: consumer portals offer fragmented tables with zero cross-segment intelligence, while traditional BI dashboards show static charts detached from the vehicle's physical reality. 
+The platform addresses a critical gap in automotive analytics: consumer portals offer fragmented tables with zero cross-segment intelligence, while traditional BI dashboards show static charts detached from the vehicle's visual identity. 
 
 This platform connects two synchronized systems:
 
@@ -38,8 +38,8 @@ This platform connects two synchronized systems:
                                          │  (?model=Nexon&brand=Tata&fuel=Petrol)
                                          ▼
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    EMBEDDED HARDWARE-GRADE WEB INTELLIGENCE                     │
-│   • 360° Studio Pedestal & All-Models Mosaic Grid (GSAP Animations)             │
+│                    EMBEDDED DIGITAL SHOWROOM & WEB TELEMETRY                    │
+│   • Dual-View Studio Showcase: 30-Model Fleet Mosaic & Isolated Vehicle Pedestal│
 │   • Real-Time 6-Axis Canvas Performance Radar (Active vs Category Benchmark)    │
 │   • Instant Specification Conflict Detection & Auto-Resolution Engine           │
 │   • Monotonic Executive Slate Theme (#111827) & High-Contrast Highlight Cards   │
@@ -62,7 +62,7 @@ This platform connects two synchronized systems:
 6. **Embedded Interactive Portal Object**: Seamlessly updates the showroom pedestal and 6-axis radar charts via URL actions.
 
 ### Dashboard 2: Standalone Head-to-Head 2-Model Comparator
-An offline, self-contained comparative tool:
+An offline, self-contained comparative tool that operates independently of the web container:
 - **Synchronized Model Parameters**: `[Select Model A]` and `[Select Model B]` dynamically populated from all 30 vehicles.
 - **Hero Vehicle Visual Cards**: Displays authentic vehicle shape cutouts from the `Indian_Vehicles` repository palette with ex-showroom price badges.
 - **Head-to-Head Specification Matrix**: Side-by-side tabular comparison across 8 core dimensions: Price, HP, Torque, Efficiency, Safety Rating, Airbags, Boot Capacity, and Ground Clearance.
@@ -72,11 +72,15 @@ An offline, self-contained comparative tool:
 
 ## 🌐 Web Intelligence Portal Highlights
 
-- **Zero-Framework Architecture**: Built using pure HTML5, vanilla JavaScript, and modern CSS3 Grid/Flexbox with zero heavy NPM dependencies, guaranteeing instant loading within Tableau's browser container.
-- **Executive Monotonic Slate Palette**: Calibrated palette (`#111827` base, `#182335` panels, `#283950` borders, `#38bdf8` steel blue accents, `#f8fafc` text) for high contrast and readability.
-- **6-Axis Radar Telemetry**: Custom HTML5 canvas engine rendering Price-Value, Horsepower, Range/Efficiency, Safety Stars, and Spatial Utility with animated dual-polygon overlays.
-- **Specification Conflict Engine**: Real-time diagnostic engine that detects incompatible user filters (e.g. Electric Skateboard architecture combined with Petrol fuel) and provides an instant 1-click Auto-Resolve button.
-- **Vertical Stacked Visualization**: Radar benchmark chart stacked directly above the scatter plot for seamless vertical scrolling inside Tableau.
+- **Dual-View Showcase Pedestal**:
+  - **30-Model Mosaic Grid**: View all 30 benchmark vehicles in a compact miniature gallery with fuel color coding.
+  - **Focused Single-Vehicle Stage**: Smooth GSAP animated transition displaying isolated vehicle cutouts on a studio pedestal with calibrated scaling (`VEHICLE_ZOOM_SCALES`).
+- **6-Axis HTML5 Canvas Performance Radar**: Custom canvas engine rendering Price-Value, Horsepower, Range/Efficiency, Safety Stars, and Spatial Utility (Seats + Boot volume) with dual-polygon benchmark comparisons.
+- **Price vs. Horsepower Scatter Plot**: Interactive canvas scatter plot showing market positioning with the market fleet median callout.
+- **Specification Conflict Engine**: Real-time diagnostic engine that detects incompatible user filter combinations (e.g., selecting an Electric vehicle platform combined with Petrol fuel) and provides an instant 1-click Auto-Resolve button.
+- **Zero-Framework Architecture**: Built using pure HTML5, vanilla JavaScript, and modern CSS3 Grid/Flexbox without heavy NPM frameworks, guaranteeing instant loading within Tableau's CEF browser container.
+- **Executive Monotonic Slate Palette**: Calibrated palette (`#111827` base, `#182335` panels, `#283950` borders, `#38bdf8` steel blue accents, `#f8fafc` text) for high contrast, clean visibility, and zero eye strain.
+- **Vertical Stacked Visualization**: Radar benchmark chart stacked directly above the scatter plot for clean, natural vertical scrolling inside Tableau.
 
 ---
 
