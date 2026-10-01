@@ -14,11 +14,11 @@
 
 ## 👥 Project Team & Competition Details
 
-| Member | Role & Responsibilities | GitHub | LinkedIn | Email |
-| :--- | :--- | :---: | :---: | :--- |
-| **Shivaling Battarki** | **Team Lead**<br>Analytics, Tableau Dashboards & System Architecture | [@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | `shivalingb09@gmail.com` |
-| **Pragatheswaran M** | **Data Engineering**<br>Domain Calibration & Dataset Modeling | [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com` |
-| **Basawaraj Kale** | **Research & Validation**<br>Market Benchmarking & Quality Assurance | [@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com` |
+| Member | GitHub | LinkedIn | Email |
+| :--- | :---: | :---: | :--- |
+| **Shivaling Battarki** | [@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | [Gmail]`shivalingb09@gmail.com` |
+| **Pragatheswaran M** | [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com` |
+| **Basawaraj Kale** | [@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com` |
 
 | Competition Attribute | Details |
 | :--- | :--- |
