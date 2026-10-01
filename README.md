@@ -16,7 +16,7 @@
 
 | Member | GitHub | LinkedIn | Email |
 | :--- | :---: | :---: | :--- |
-| **Shivaling Battarki** | [@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | [Gmail]`shivalingb09@gmail.com` |
+| **Shivaling Battarki** | [@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | `shivalingb09@gmail.com` |
 | **Pragatheswaran M** | [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com` |
 | **Basawaraj Kale** | [@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com` |
 
