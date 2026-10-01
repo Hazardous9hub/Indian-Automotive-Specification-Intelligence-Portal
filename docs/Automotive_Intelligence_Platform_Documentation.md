@@ -1,7 +1,12 @@
 # INDIAN AUTOMOTIVE SPECIFICATION & PERFORMANCE INTELLIGENCE PLATFORM
 ## Technical Project Documentation & Competition Submission Dossier
-**Competition:** Unstop Tableau Competition (September 2026)  
-**Author:** Shivaling Battarki  
+**Competition:** Unstop Tableau & Data Visualization Challenge (September 2026)  
+**Team Name:** S.P.B Data Team  
+**Authors:**
+1. **Shivaling Battarki** (Team Lead | shivalingb09@gmail.com | GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub))
+2. **Pragatheswaran M** (Data Engineering & Domain Calibration)
+3. **Basawaraj** (Research & Analytical Validation)
+
 **Live Tableau Dashboard:** [Tableau Public Link](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)  
 **Live Portal Repository:** [GitHub Repository](https://github.com/Hazardous9hub/Indian-Automotive-Specification-Intelligence-Portal)  
 
@@ -186,5 +191,13 @@ ROUND([Horsepower Hp] / [Price in Lakhs (INR)], 2)
 
 ---
 
-## 9. Conclusion
-The **Indian Automotive Specification & Performance Intelligence Platform** pairs Tableau’s enterprise analytical power with an interactive, responsive web portal. By grounding every data point in authentic Indian market reality, this project offers an intuitive, technically rigorous tool built for executive decision-making.
+## 9. Conclusion & Team Details
+The **Indian Automotive Specification & Performance Intelligence Platform** pairs Tableau’s analytical modeling with a responsive, embedded web intelligence showroom. By grounding every data point in authentic Indian market reality, this project offers an intuitive, technically rigorous tool built for executive decision-making.
+
+---
+
+### Project Team (S.P.B Data Team)
+- **Shivaling Battarki** (Team Lead \| `shivalingb09@gmail.com` \| GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub))
+- **Pragatheswaran M** (Data Engineering & Domain Calibration)
+- **Basawaraj** (Research & Analytical Validation)
+- **Event**: Unstop Tableau & Data Visualization Challenge (September 2026)

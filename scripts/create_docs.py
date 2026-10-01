@@ -87,7 +87,7 @@ def create_documentation():
 
     # Document Header
     add_title("INDIAN AUTOMOTIVE SPECIFICATION & PERFORMANCE INTELLIGENCE PLATFORM")
-    add_subtitle("Comprehensive Project Documentation, Methodology & Competition Submission Dossier\nUnstop Tableau Competition (September 2026) | Author: Shivaling Battarki")
+    add_subtitle("Comprehensive Project Documentation, Methodology & Competition Submission Dossier\nUnstop Tableau & Data Visualization Challenge (September 2026)\nTeam: S.P.B Data Team (Shivaling Battarki, Pragatheswaran M, Basawaraj)")
 
     p_meta = doc.add_paragraph()
     p_meta.paragraph_format.space_after = Pt(12)
@@ -213,6 +213,12 @@ def create_documentation():
     add_bullet("The 15L-22L Mid-SUV Sweet Spot: Vehicles in the 14L-18L tier (Tata Nexon, Hyundai Creta, Mahindra Scorpio N) deliver the highest horsepower-per-lakh ratio (8.5 to 10.9 HP/Lakh) while achieving 5-Star NCAP safety.", "1. ")
     add_bullet("Heavy Commercial Decarbonization Urgency: Multi-axle commercial carriers (Volvo 9400, Ashok Leyland JanBus) produce extreme torque (up to 1,750 Nm) but operate at 4.5 kmpl. Electrification or LNG adoption here produces the largest aggregate carbon reduction.", "2. ")
     add_bullet("Two-Wheeler Urban Mobility Foundation: Sub-1 Lakh commuter vehicles (Honda Activa, Hero Splendor) exceed 50 kmpl, providing the foundation for urban affordability.", "3. ")
+
+    add_h1("9. Project Team & Acknowledgements")
+    add_bullet("Shivaling Battarki (Team Lead | shivalingb09@gmail.com | GitHub: @Hazardous9hub)", "• ")
+    add_bullet("Pragatheswaran M (Data Engineering & Domain Calibration)", "• ")
+    add_bullet("Basawaraj (Research & Analytical Validation)", "• ")
+    add_body("Competition: Unstop Tableau & Data Visualization Challenge (Phase 2 Submission, September 2026)")
 
     doc.save("Automotive_Intelligence_Platform_Documentation.docx")
     print("DOCX successfully generated: Automotive_Intelligence_Platform_Documentation.docx")
