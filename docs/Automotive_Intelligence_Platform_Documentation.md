@@ -2,10 +2,10 @@
 ## Technical Project Documentation & Competition Submission Dossier
 **Competition:** Unstop Tableau & Data Visualization Challenge (September 2026)  
 **Team Name:** S.P.B Data Team  
-**Authors:**
-1. **Shivaling Battarki** (Team Lead | shivalingb09@gmail.com | GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub))
-2. **Pragatheswaran M** (Data Engineering & Domain Calibration)
-3. **Basawaraj** (Research & Analytical Validation)
+**Authors (S.P.B Data Team):**
+1. **Shivaling Battarki** (Team Lead \| `shivalingb09@gmail.com` \| GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub) \| LinkedIn: [shivaling-93000](https://www.linkedin.com/in/shivaling-93000/))
+2. **Pragatheswaran M** (Data Engineering & Domain Calibration \| `pragathes224@gmail.com` \| GitHub: [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) \| LinkedIn: [pragatheswaranm](https://www.linkedin.com/in/pragatheswaranm/))
+3. **Basawaraj Kale** (Research & Analytical Validation \| `kale.sbasawaraj@gmail.com` \| GitHub: [@basawaraj849](https://github.com/basawaraj849) \| LinkedIn: [basawarajkale](https://www.linkedin.com/in/basawarajkale/))
 
 **Live Tableau Dashboard:** [Tableau Public Link](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)  
 **Live Portal Repository:** [GitHub Repository](https://github.com/Hazardous9hub/Indian-Automotive-Specification-Intelligence-Portal)  
@@ -197,7 +197,10 @@ The **Indian Automotive Specification & Performance Intelligence Platform** pair
 ---
 
 ### Project Team (S.P.B Data Team)
-- **Shivaling Battarki** (Team Lead \| `shivalingb09@gmail.com` \| GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub))
-- **Pragatheswaran M** (Data Engineering & Domain Calibration)
-- **Basawaraj** (Research & Analytical Validation)
-- **Event**: Unstop Tableau & Data Visualization Challenge (September 2026)
+- **Shivaling Battarki** — *Team Lead \| Analytics, Tableau Dashboards & Architecture*  
+  GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub) • LinkedIn: [shivaling-93000](https://www.linkedin.com/in/shivaling-93000/) • Email: `shivalingb09@gmail.com`
+- **Pragatheswaran M** — *Data Engineering & Domain Calibration*  
+  GitHub: [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) • LinkedIn: [pragatheswaranm](https://www.linkedin.com/in/pragatheswaranm/) • Email: `pragathes224@gmail.com`
+- **Basawaraj Kale** — *Research & Analytical Validation*  
+  GitHub: [@basawaraj849](https://github.com/basawaraj849) • LinkedIn: [basawarajkale](https://www.linkedin.com/in/basawarajkale/) • Email: `kale.sbasawaraj@gmail.com`
+- **Event**: Unstop Tableau & Data Visualization Challenge (National Institute of Engineering - NIE Mysuru, September 2026)

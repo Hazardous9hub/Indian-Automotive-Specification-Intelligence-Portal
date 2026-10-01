@@ -87,7 +87,7 @@ def create_documentation():
 
     # Document Header
     add_title("INDIAN AUTOMOTIVE SPECIFICATION & PERFORMANCE INTELLIGENCE PLATFORM")
-    add_subtitle("Comprehensive Project Documentation, Methodology & Competition Submission Dossier\nUnstop Tableau & Data Visualization Challenge (September 2026)\nTeam: S.P.B Data Team (Shivaling Battarki, Pragatheswaran M, Basawaraj)")
+    add_subtitle("Comprehensive Project Documentation, Methodology & Competition Submission Dossier\nUnstop Tableau & Data Visualization Challenge (September 2026)\nTeam: S.P.B Data Team (Shivaling Battarki, Pragatheswaran M, Basawaraj Kale)")
 
     p_meta = doc.add_paragraph()
     p_meta.paragraph_format.space_after = Pt(12)
@@ -215,10 +215,10 @@ def create_documentation():
     add_bullet("Two-Wheeler Urban Mobility Foundation: Sub-1 Lakh commuter vehicles (Honda Activa, Hero Splendor) exceed 50 kmpl, providing the foundation for urban affordability.", "3. ")
 
     add_h1("9. Project Team & Acknowledgements")
-    add_bullet("Shivaling Battarki (Team Lead | shivalingb09@gmail.com | GitHub: @Hazardous9hub)", "• ")
-    add_bullet("Pragatheswaran M (Data Engineering & Domain Calibration)", "• ")
-    add_bullet("Basawaraj (Research & Analytical Validation)", "• ")
-    add_body("Competition: Unstop Tableau & Data Visualization Challenge (Phase 2 Submission, September 2026)")
+    add_bullet("Shivaling Battarki (Team Lead | shivalingb09@gmail.com | GitHub: @Hazardous9hub | LinkedIn: in/shivaling-93000)", "• ")
+    add_bullet("Pragatheswaran M (Data Engineering & Domain Calibration | pragathes224@gmail.com | GitHub: @Pragatheswaran-M | LinkedIn: in/pragatheswaranm)", "• ")
+    add_bullet("Basawaraj Kale (Research & Analytical Validation | kale.sbasawaraj@gmail.com | GitHub: @basawaraj849 | LinkedIn: in/basawarajkale)", "• ")
+    add_body("Competition: Unstop Tableau & Data Visualization Challenge (National Institute of Engineering - NIE Mysuru, September 2026)")
 
     doc.save("Automotive_Intelligence_Platform_Documentation.docx")
     print("DOCX successfully generated: Automotive_Intelligence_Platform_Documentation.docx")

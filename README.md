@@ -14,13 +14,18 @@
 
 ## 👥 Project Team & Competition Details
 
-| Category | Information |
+| Member | Role & Responsibilities | GitHub | LinkedIn | Email |
+| :--- | :--- | :---: | :---: | :--- |
+| **Shivaling Battarki** | **Team Lead**<br>Analytics, Tableau Dashboards & System Architecture | [@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | `shivalingb09@gmail.com` |
+| **Pragatheswaran M** | **Data Engineering**<br>Domain Calibration & Dataset Modeling | [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com` |
+| **Basawaraj Kale** | **Research & Validation**<br>Market Benchmarking & Quality Assurance | [@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com` |
+
+| Competition Attribute | Details |
 | :--- | :--- |
 | **Event Name** | **Tableau & Data Visualization Challenge 2026** |
-| **Organized By** | **National Institute of Engineering (NIE), Mysuru** via **Unstop** |
+| **Organized By** | **National Institute of Engineering (NIE), Mysuru** via **Unstop** ([Competition Page](https://unstop.com/competitions/tableau-data-visualization-challenge-2026-national-institute-of-engineering-nie-mysuru-1753895)) |
 | **Competition Track** | Automotive Specifications & Market Analytics |
 | **Team Name** | **S.P.B Data Team** |
-| **Team Members** | **1. Shivaling Battarki** ([@Hazardous9hub](https://github.com/Hazardous9hub) \| `shivalingb09@gmail.com`)<br>**2. Pragatheswaran M** (`pragathes224@gmail.com`)<br>**3. Basawaraj** (`kale.sbasawaraj@gmail.com`) |
 | **Primary Project Links** | • [Live Tableau Public Dashboard](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)<br>• [Live Hosted Web Intelligence Portal](https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/) |
 | **Documentation & Assets** | • [Official Project Documentation (PDF)](docs/S.P.B_DATA_TEAM_Automotive_Intelligence_Platform_Documentation.pdf)<br>• [Editable Documentation (DOCX)](docs/Automotive_Intelligence_Platform_Documentation.docx)<br>• [Master Tableau Workbook (.twbx)](tableau/Vehicle_Specification_Master_Dashboard.twbx) |
 
@@ -186,9 +191,12 @@ Indian-Automotive-Specification-Intelligence-Portal/
 
 ## 📬 Contact & Team Acknowledgements
 
-- **Team Name**: S.P.B Data Team
-- **Authors**:
-  1. **Shivaling Battarki** ([@Hazardous9hub](https://github.com/Hazardous9hub) \| `shivalingb09@gmail.com`)
-  2. **Pragatheswaran M** (`pragathes224@gmail.com`)
-  3. **Basawaraj** (`kale.sbasawaraj@gmail.com`)
-- **Event**: Tableau & Data Visualization Challenge 2026 (National Institute of Engineering - NIE Mysuru on Unstop)
+- **Team Name**: **S.P.B Data Team**
+- **Authors & Collaborators**:
+  1. **Shivaling Battarki** — *Team Lead \| Analytics, Tableau Dashboards & Architecture*  
+     GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub) • LinkedIn: [shivaling-93000](https://www.linkedin.com/in/shivaling-93000/) • Email: `shivalingb09@gmail.com`
+  2. **Pragatheswaran M** — *Data Engineering & Domain Calibration*  
+     GitHub: [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) • LinkedIn: [pragatheswaranm](https://www.linkedin.com/in/pragatheswaranm/) • Email: `pragathes224@gmail.com`
+  3. **Basawaraj Kale** — *Research & Analytical Validation*  
+     GitHub: [@basawaraj849](https://github.com/basawaraj849) • LinkedIn: [basawarajkale](https://www.linkedin.com/in/basawarajkale/) • Email: `kale.sbasawaraj@gmail.com`
+- **Competition**: **Tableau & Data Visualization Challenge 2026** (Organized by **National Institute of Engineering - NIE Mysuru** on [Unstop](https://unstop.com/competitions/tableau-data-visualization-challenge-2026-national-institute-of-engineering-nie-mysuru-1753895))
