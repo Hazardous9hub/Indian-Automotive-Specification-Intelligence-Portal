@@ -157,9 +157,9 @@
     /* PRIORITY 1: BRAND LOGO STRIP (Compact & Mouse-Scrollable) */
     .brand-strip-container {
       background: #0f1a2b;
-      border-radius: 10px;
-      padding: 6px 10px 7px 10px;
-      margin-bottom: 8px;
+      border-radius: 9px;
+      padding: 4px 8px 4px 8px;
+      margin-bottom: 5px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
       border: 1px solid #1f2a44;
     }
@@ -168,12 +168,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       padding: 0 2px;
     }
 
     .brand-filter-title {
-      font-size: 0.66rem;
+      font-size: 0.64rem;
       font-weight: 800;
       color: #e5e7eb;
       text-transform: uppercase;
@@ -193,13 +193,13 @@
       background: #1f2a44;
       border: 1px solid #1f2a44;
       color: #e5e7eb;
-      width: 22px;
-      height: 22px;
-      border-radius: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -212,9 +212,9 @@
     }
 
     .btn-reset-all {
-      font-size: 0.62rem;
+      font-size: 0.60rem;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
       background: #1f2a44;
       color: #e5e7eb;
@@ -232,13 +232,14 @@
 
     .brands-strip {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
       padding-top: 1px;
       scroll-behavior: smooth;
       cursor: grab;
       user-select: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     .brands-strip.active-dragging {
@@ -247,10 +248,10 @@
     }
 
     .brands-strip::-webkit-scrollbar {
-      height: 4px;
+      height: 3px;
     }
     .brands-strip::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
+      background: #475569;
       border-radius: 2px;
     }
 
@@ -259,42 +260,42 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 4px 8px 3px 8px;
-      border-radius: 8px;
+      padding: 2px 6px 2px 6px;
+      border-radius: 6px;
       background: #ffffff;
       border: 2px solid #1f2a44;
       cursor: pointer;
       transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
-      min-width: 106px;
-      height: 72px;
+      min-width: 88px;
+      height: 52px;
     }
 
     .brand-logo-tile:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(96, 165, 250, 0.35);
       border-color: #60a5fa;
       background: #ffffff;
     }
 
     .brand-logo-tile.active {
-      border-color: #60a5fa;
+      border-color: #38bdf8 !important;
       background: #ffffff;
-      box-shadow: 0 0 14px rgba(96, 165, 250, 0.65);
-      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.65) !important;
+      transform: scale(1.02);
     }
 
     .brand-img-box {
       width: 100%;
-      height: 38px;
+      height: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .brand-logo-tile img {
-      max-height: 34px;
-      max-width: 82px;
+      max-height: 24px;
+      max-width: 68px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -307,9 +308,9 @@
 
     .brand-tile-name {
       display: block;
-      font-size: 0.66rem;
-      font-weight: 800;
-      color: #0f172a;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #ffffff !important;
       text-align: center;
       white-space: nowrap;
       margin-top: 1px;
@@ -317,23 +318,24 @@
     }
 
     .brand-logo-tile.active .brand-tile-name {
-      color: #2563eb;
+      color: #ffffff !important;
+      font-weight: 800 !important;
     }
 
     /* PRIORITY 2: UNIFIED CONTROL RIBBON (Tight & Space-Saving) */
     .control-ribbon {
       display: grid;
       grid-template-columns: 1.1fr 1.6fr 1.6fr;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 5px;
     }
 
     .control-card {
       background: var(--card-bg);
       backdrop-filter: blur(14px);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 7px 11px;
+      border-radius: 9px;
+      padding: 5px 9px;
       box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
       display: flex;
       flex-direction: column;
@@ -341,12 +343,12 @@
     }
 
     .control-card-title {
-      font-size: 0.63rem;
+      font-size: 0.60rem;
       font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -355,24 +357,24 @@
     .val-highlight {
       color: var(--accent-cyan);
       font-weight: 800;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
     }
 
     /* Dual Dropdown Box */
     .dropdown-pair {
       display: flex;
-      gap: 6px;
+      gap: 5px;
     }
 
     .dropdown-group {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
     }
 
     .dropdown-sublabel {
-      font-size: 0.58rem;
+      font-size: 0.56rem;
       color: var(--text-dim);
       font-weight: 700;
       text-transform: uppercase;
@@ -382,10 +384,10 @@
       width: 100%;
       background: #0b1220;
       border: 1px solid var(--card-border);
-      border-radius: 6px;
-      padding: 4px 7px;
+      border-radius: 5px;
+      padding: 3px 6px;
       color: #ffffff;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       outline: none;
       cursor: pointer;
@@ -401,14 +403,14 @@
     .budget-slider-box {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
 
     .slider-range-bar {
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: #1f2a44;
-      border-radius: 3px;
+      border-radius: 2px;
       outline: none;
       -webkit-appearance: none;
       cursor: pointer;
@@ -416,8 +418,8 @@
 
     .slider-range-bar::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
       background: var(--accent-cyan);
       box-shadow: 0 0 8px var(--accent-cyan);
@@ -427,16 +429,16 @@
 
     .budget-bins-strip {
       display: flex;
-      gap: 4px;
+      gap: 3px;
       flex-wrap: wrap;
     }
 
     .bin-btn {
-      padding: 4px 8px;
-      min-height: 28px;
-      min-width: 48px;
-      border-radius: 5px;
-      font-size: 0.64rem;
+      padding: 2px 6px;
+      min-height: 22px;
+      min-width: 44px;
+      border-radius: 4px;
+      font-size: 0.60rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
@@ -461,17 +463,17 @@
     /* Category Buttons (Powertrain & Drivetrain) */
     .category-pills-row {
       display: flex;
-      gap: 5px;
+      gap: 4px;
       flex-wrap: wrap;
     }
 
     .pill-btn {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      border-radius: 14px;
-      font-size: 0.66rem;
+      gap: 3px;
+      padding: 2px 6px;
+      border-radius: 12px;
+      font-size: 0.61rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
@@ -481,8 +483,8 @@
     }
 
     .pill-btn img {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
     }
 
     .pill-btn:hover {
@@ -559,16 +561,16 @@
     .dual-selector-shelf {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 6px;
     }
 
     .shelf-card {
       background: var(--card-bg);
       backdrop-filter: blur(14px);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 7px 11px 8px 11px;
+      border-radius: 9px;
+      padding: 5px 9px 5px 9px;
       box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
       display: flex;
       flex-direction: column;
@@ -576,7 +578,7 @@
     }
 
     .shelf-header {
-      font-size: 0.63rem;
+      font-size: 0.60rem;
       font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -584,14 +586,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     /* Available Body Styles 2-Row Grid */
     .body-styles-2row-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 5px;
+      gap: 4px;
     }
 
     .body-style-btn {
@@ -600,14 +602,14 @@
       align-items: center;
       justify-content: center;
       gap: 2px;
-      padding: 4px 4px 3px 4px;
-      border-radius: 7px;
+      padding: 2px 3px;
+      border-radius: 6px;
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(255, 255, 255, 0.16);
       cursor: pointer;
       transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
       color: #ffffff;
-      height: 40px;
+      height: 32px;
     }
 
     .body-style-btn:hover {
@@ -622,18 +624,18 @@
       border-color: var(--accent-cyan) !important;
       box-shadow: 0 0 12px rgba(6, 182, 212, 0.55) !important;
       color: var(--accent-cyan) !important;
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .body-style-btn img {
-      width: 44px;
-      height: 20px;
+      width: 32px;
+      height: 16px;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
     }
 
     .body-style-btn span {
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 800;
       white-space: nowrap;
       line-height: 1;
@@ -643,13 +645,13 @@
     .interest-2row-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
+      gap: 4px;
     }
 
     .pref-pill {
-      padding: 6px 3px;
-      border-radius: 6px;
-      font-size: 0.64rem;
+      padding: 3px 2px;
+      border-radius: 5px;
+      font-size: 0.59rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
@@ -680,28 +682,28 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 4px;
-      padding-top: 4px;
+      margin-top: 2px;
+      padding-top: 2px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .mini-filter-group {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
 
     .mini-sublabel {
-      font-size: 0.58rem;
+      font-size: 0.56rem;
       color: var(--text-dim);
       font-weight: 800;
       text-transform: uppercase;
     }
 
     .pref-pill-mini {
-      padding: 1px 6px;
+      padding: 1px 5px;
       border-radius: 4px;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
@@ -722,6 +724,41 @@
       font-weight: 900 !important;
     }
 
+    /* ACTIVE FOCUS DIMMING: Clear visual focus by fading non-active items when any option is selected */
+    .brands-strip:has(.brand-logo-tile.active) .brand-logo-tile:not(.active),
+    .budget-bins-strip:has(.bin-btn.active) .bin-btn:not(.active),
+    .category-pills-row:has(.pill-btn.active) .pill-btn:not(.active),
+    .body-styles-2row-grid:has(.body-style-btn.active) .body-style-btn:not(.active),
+    .interest-2row-grid:has(.pref-pill.active) .pref-pill:not(.active),
+    .mini-filter-group:has(.pref-pill-mini.active) .pref-pill-mini:not(.active),
+    .showroom-mosaic-grid:has(.mini-showroom-card.active) .mini-showroom-card:not(.active) {
+      opacity: 0.42;
+      filter: saturate(65%);
+      transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+    }
+
+    .brands-strip:has(.brand-logo-tile.active) .brand-logo-tile:not(.active):hover,
+    .budget-bins-strip:has(.bin-btn.active) .bin-btn:not(.active):hover,
+    .category-pills-row:has(.pill-btn.active) .pill-btn:not(.active):hover,
+    .body-styles-2row-grid:has(.body-style-btn.active) .body-style-btn:not(.active):hover,
+    .interest-2row-grid:has(.pref-pill.active) .pref-pill:not(.active):hover,
+    .mini-filter-group:has(.pref-pill-mini.active) .pref-pill-mini:not(.active):hover,
+    .showroom-mosaic-grid:has(.mini-showroom-card.active) .mini-showroom-card:not(.active):hover {
+      opacity: 0.88;
+      filter: saturate(100%);
+    }
+
+    .brand-logo-tile.active,
+    .bin-btn.active,
+    .pill-btn.active,
+    .body-style-btn.active,
+    .pref-pill.active,
+    .pref-pill-mini.active,
+    .mini-showroom-card.active {
+      opacity: 1 !important;
+      filter: none !important;
+    }
+
     /* PRIORITY 3: HERO VEHICLE COCKPIT SHOWCASE (Tight, Low-Profile Panoramic Layout) */
     .hero-cockpit-section {
       margin-bottom: 10px;
@@ -729,8 +766,8 @@
 
     .cockpit-grid {
       display: grid;
-      grid-template-columns: 275px 1fr 275px;
-      gap: 8px;
+      grid-template-columns: 320px minmax(380px, 1fr) 320px;
+      gap: 10px;
       align-items: stretch;
     }
 
@@ -1043,30 +1080,31 @@
     }
 
     .showroom-mosaic-grid {
-      height: 176px;
+      height: 184px;
       display: grid;
-      grid-template-rows: repeat(3, 53px);
+      grid-template-rows: repeat(4, 42px);
       grid-auto-flow: column;
-      grid-auto-columns: minmax(78px, 1fr);
-      gap: 5px;
+      grid-auto-columns: minmax(76px, 1fr);
+      gap: 4px;
       overflow-x: auto;
       overflow-y: hidden;
       padding-bottom: 2px;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 
     .showroom-mosaic-grid::-webkit-scrollbar {
-      height: 4px;
+      height: 3px;
     }
 
     .showroom-mosaic-grid::-webkit-scrollbar-track {
       background: rgba(15, 26, 43, 0.7);
-      border-radius: 4px;
+      border-radius: 2px;
     }
 
     .showroom-mosaic-grid::-webkit-scrollbar-thumb {
       background: #1f2a44;
-      border-radius: 4px;
+      border-radius: 2px;
     }
 
     .showroom-mosaic-grid::-webkit-scrollbar-thumb:hover {
@@ -1077,20 +1115,22 @@
       position: relative;
       background: rgba(15, 26, 43, 0.88);
       border: 1px solid rgba(31, 42, 68, 0.95);
-      border-radius: 6px;
-      padding: 2px 4px;
+      border-radius: 5px;
+      padding: 1px 4px 2px 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
       user-select: none;
       overflow: hidden;
+      height: 42px;
+      box-sizing: border-box;
     }
 
     .mini-showroom-card:hover {
-      transform: scale(1.08) translateY(-2px);
+      transform: scale(1.06) translateY(-1px);
       border-color: #60a5fa;
       box-shadow: 0 4px 12px rgba(96, 165, 250, 0.35);
       background: rgba(26, 42, 70, 0.95);
@@ -1105,8 +1145,8 @@
 
     .mini-fuel-indicator {
       position: absolute;
-      top: 3px;
-      right: 3px;
+      top: 2px;
+      right: 2px;
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -1118,20 +1158,20 @@
 
     .mini-card-img-wrap {
       width: 100%;
-      height: 30px;
+      height: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .mini-card-thumb {
-      max-height: 28px;
-      max-width: 94%;
+      max-height: 20px;
+      max-width: 92%;
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
-      transition: transform 0.2s ease;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+      transition: transform 0.15s ease;
     }
 
     .mini-showroom-card:hover .mini-card-thumb {
@@ -1148,13 +1188,13 @@
     }
 
     .mini-card-name {
-      font-size: 0.56rem;
+      font-size: 0.54rem;
       font-weight: 700;
       color: #e5e7eb;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 65%;
+      max-width: 60%;
     }
 
     .mini-card-price {
@@ -1197,7 +1237,7 @@
       object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.88));
       transform: scale(var(--vehicle-scale));
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform 0.12s ease-out, opacity 0.1s ease-out;
       z-index: 2;
     }
 
@@ -1567,10 +1607,11 @@
     /* Responsive */
     @media (max-width: 1280px) {
       .cockpit-grid {
-        grid-template-columns: 250px 1fr 250px;
+        grid-template-columns: 290px minmax(360px, 1fr) 290px;
+        gap: 8px;
       }
       .control-ribbon {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1.4fr 1.4fr;
       }
       .dual-selector-shelf {
         grid-template-columns: 1fr;
@@ -1579,6 +1620,20 @@
 
     @media (max-width: 1024px) {
       .cockpit-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "center center"
+          "left right";
+        gap: 8px;
+      }
+      .spec-flank:nth-child(1) { grid-area: left; }
+      .hero-center-box { grid-area: center; }
+      .spec-flank:nth-child(3) { grid-area: right; }
+      .control-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+      .dual-selector-shelf {
         grid-template-columns: 1fr;
       }
       .charts-row {
@@ -1591,50 +1646,73 @@
 
     @media (max-width: 768px) {
       body {
-        padding: 6px 8px 20px 8px;
+        padding: 5px 6px 16px 6px;
       }
       .top-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 6px;
+        gap: 5px;
       }
       .header-badges {
         flex-wrap: wrap;
       }
       .control-ribbon {
         grid-template-columns: 1fr;
+        gap: 5px;
+      }
+      .cockpit-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "center"
+          "left"
+          "right";
+        gap: 8px;
+      }
+      .spec-flank:nth-child(1) { grid-area: left; }
+      .hero-center-box { grid-area: center; }
+      .spec-flank:nth-child(3) { grid-area: right; }
+      .body-styles-2row-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .interest-2row-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       .mini-showroom-card {
-        flex: 0 0 110px;
-        min-width: 110px;
+        flex: 0 0 76px;
+        min-width: 76px;
       }
-      .specs-grid {
-        grid-template-columns: 1fr !important;
+      .kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
       }
     }
 
     @media (max-width: 480px) {
-      .header-text h1 {
-        font-size: 0.85rem;
+      .body-styles-2row-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
-      .header-badges {
-        display: none;
+      .header-text h1 {
+        font-size: 0.82rem;
       }
       .hero-title-left h2 {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
+      }
+      .val-metric-large {
+        font-size: 1.15rem !important;
       }
       .kpi-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
     }
   
-    /* Highlighted Technical Specs Cards - Focal Information Point */
+    /* Highlighted Technical Specs Cards - Focal Information Point with Comfortable Negative Space */
     .spec-module-card {
       background: linear-gradient(135deg, #1b263b 0%, #152238 100%) !important;
       border: 1px solid rgba(56, 189, 248, 0.4) !important;
       border-left: 5px solid #38bdf8 !important;
       border-radius: 9px !important;
-      padding: 9px 12px !important;
+      padding: 8px 12px !important;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(56, 189, 248, 0.12) !important;
       transition: all 0.2s ease;
     }
@@ -1663,7 +1741,10 @@
     }
     .module-subtext {
       color: #94a3b8 !important;
-      font-size: 0.70rem !important;
+      font-size: 0.68rem !important;
+      white-space: normal !important;
+      line-height: 1.25 !important;
+      word-break: break-word;
     }
     .spec-gauge-track {
       background: #24334a !important;
@@ -1706,6 +1787,14 @@
       background: #0284c7 !important;
       border-color: #38bdf8 !important;
       color: #ffffff !important;
+    }
+    .brand-tile-name {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+    .brand-logo-tile.active .brand-tile-name {
+      color: #ffffff !important;
+      font-weight: 800 !important;
     }
     .kpi-card {
       background: #162032 !important;
@@ -2236,12 +2325,16 @@
 
       <!-- Price vs Power Scatter Plot (SECOND / BELOW) -->
       <div class="chart-panel-card">
-        <div class="chart-header">
-          <span class="chart-title" id="scatterChartTitle">Market Positioning: Price vs Horsepower</span>
-          <span id="scatterChartSub" style="font-size:0.68rem; color:var(--accent-sky); font-weight:700;">Market Cluster Positioning</span>
+        <div class="chart-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; flex-direction:column; gap:2px;">
+            <span class="chart-title" id="scatterChartTitle">Market Positioning: Price vs Horsepower</span>
+            <span id="scatterChartSub" style="font-size:0.68rem; color:var(--accent-sky); font-weight:700;">Circle Size = Horsepower (HP) • Market Cluster Positioning</span>
+          </div>
+          <button class="btn-reset-all" id="btnFlipScatterAxes" onclick="toggleScatterAxes()" title="Toggle X/Y Axis orientation" style="font-size:0.62rem; padding:2px 8px;">⇄ Flip Axes</button>
         </div>
-        <div class="chart-canvas-wrap">
+        <div class="chart-canvas-wrap" style="position:relative;">
           <canvas id="scatterCanvas"></canvas>
+          <div id="scatterTooltip" style="position:absolute; display:none; pointer-events:none; background:rgba(15,26,43,0.96); border:1px solid #38bdf8; border-radius:6px; padding:5px 9px; font-size:0.66rem; color:#ffffff; z-index:25; box-shadow:0 4px 14px rgba(0,0,0,0.5); white-space:nowrap;"></div>
         </div>
       </div>
     </div>
@@ -3109,13 +3202,40 @@
     let selectedVehicle = MASTER_VEHICLES.find(v => v.model === "Nexon EV") || MASTER_VEHICLES[0];
     let renderedBrandForChips = "";
 
+    // Enterprise Preloading & Zero-Latency Asset Cache for Tableau Embedding
+    const VEHICLE_IMAGE_CACHE = new Map();
+    const BRAND_LOGO_CACHE = new Map();
+
+    function preloadAllAssets() {
+      try {
+        MASTER_VEHICLES.forEach(v => {
+          const img = new Image();
+          img.src = `${v.photo}?v=20260929_rev5`;
+          VEHICLE_IMAGE_CACHE.set(v.model, img);
+
+          if (v.logo && !BRAND_LOGO_CACHE.has(v.brand)) {
+            const lImg = new Image();
+            lImg.src = v.logo;
+            BRAND_LOGO_CACHE.set(v.brand, lImg);
+          }
+        });
+        const fleetImg = new Image();
+        fleetImg.src = "assets/logos/fleet.svg";
+        BRAND_LOGO_CACHE.set("Fleet", fleetImg);
+      } catch (e) {
+        console.warn("Asset preloading notice:", e);
+      }
+    }
+
     // Initialization
     function initDashboard() {
+      preloadAllAssets();
       renderBrandStrip();
       populateDropdowns();
       // Start in All Models Showroom Mosaic by default
       transitionToShowroom("toShowroom");
       handleUrlParameters();
+      initScatterInteractions();
     }
 
     // --- DUAL-MODE SHOWROOM MOSAIC & STAGE TRANSITIONS ---
@@ -3135,7 +3255,7 @@
         card.innerHTML = `
           <span class="mini-fuel-indicator fuel-${v.fuel.toLowerCase()}" title="${v.fuel}"></span>
           <div class="mini-card-img-wrap">
-            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" width="120" height="70" loading="lazy" decoding="async" onerror="handleVehicleImgError(this)">
+            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" width="64" height="20" loading="eager" decoding="async" onerror="handleVehicleImgError(this)">
           </div>
           <div class="mini-card-info">
             <span class="mini-card-name">${v.model}</span>
@@ -3269,20 +3389,20 @@
         if (window.gsap && singleStage && singleStage.style.display !== "none" && singleStage.style.display !== "") {
           gsap.to(singleStage, {
             opacity: 0,
-            scale: 0.90,
-            duration: 0.28,
+            scale: 0.96,
+            duration: 0.10,
             ease: "power2.inOut",
             onComplete: () => {
               singleStage.style.display = "none";
               showroomStage.style.display = "flex";
               renderShowroomMosaic();
               gsap.fromTo(showroomStage,
-                { opacity: 0, scale: 0.95 },
-                { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }
+                { opacity: 0, scale: 0.98 },
+                { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }
               );
               gsap.fromTo(".mini-showroom-card",
-                { opacity: 0, y: 10, scale: 0.9 },
-                { opacity: 1, y: 0, scale: 1, stagger: 0.012, duration: 0.28, ease: "power1.out" }
+                { opacity: 0, scale: 0.95 },
+                { opacity: 1, scale: 1, stagger: 0.004, duration: 0.08, ease: "power1.out" }
               );
             }
           });
@@ -3310,15 +3430,15 @@
         if (window.gsap && showroomStage && showroomStage.style.display !== "none" && showroomStage.style.display !== "") {
           gsap.to(showroomStage, {
             opacity: 0,
-            scale: 0.92,
-            duration: 0.28,
+            scale: 0.96,
+            duration: 0.10,
             ease: "power2.inOut",
             onComplete: () => {
               showroomStage.style.display = "none";
               singleStage.style.display = "flex";
               gsap.fromTo(singleStage,
-                { opacity: 0, scale: 0.86 },
-                { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.2)" }
+                { opacity: 0, scale: 0.96 },
+                { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }
               );
             }
           });
@@ -4214,7 +4334,10 @@
       document.getElementById("heroBrandLogo").alt = `${v.brand} Logo`;
 
       const vehicleImg = document.getElementById("heroVehicleImg");
-      vehicleImg.src = `${v.photo}?v=20260929_rev5`;
+      const targetSrc = `${v.photo}?v=20260929_rev5`;
+      if (vehicleImg.getAttribute("src") !== targetSrc) {
+        vehicleImg.src = targetSrc;
+      }
       vehicleImg.alt = `${v.brand} ${v.model} Cutout`;
       const targetScale = VEHICLE_ZOOM_SCALES[v.model] || 1.15;
       vehicleImg.style.setProperty("--vehicle-scale", targetScale);
@@ -4341,7 +4464,18 @@
       document.getElementById("kpiSafetyRate").textContent = `${safetyPass.toFixed(0)}% (★5)`;
     }
 
-    // Draw Price vs Horsepower Scatter Plot (Dual-Mode: Fleet Overview vs Focused Model)
+    // Global scatter plot axis mode & point cache for tooltips/clicks
+    let scatterAxisMode = "HP_X"; // "HP_X" (matches Tableau Image 4) or "PRICE_X"
+    let scatterPlotPoints = [];
+
+    function toggleScatterAxes() {
+      scatterAxisMode = (scatterAxisMode === "HP_X") ? "PRICE_X" : "HP_X";
+      const btn = document.getElementById("btnFlipScatterAxes");
+      if (btn) btn.textContent = (scatterAxisMode === "HP_X") ? "⇄ Flip Axes (HP on X)" : "⇄ Flip Axes (Price on X)";
+      drawScatterPlot();
+    }
+
+    // Draw Price vs Horsepower Scatter Plot (Dual-Mode & Tableau Parity with Dynamic Bubble Sizing!)
     function drawScatterPlot() {
       const canvas = document.getElementById("scatterCanvas");
       if (!canvas) return;
@@ -4355,9 +4489,11 @@
 
       ctx.clearRect(0, 0, width, height);
 
-      const padding = { top: 15, right: 25, bottom: 35, left: 45 };
+      const padding = { top: 20, right: 30, bottom: 38, left: 52 };
       const plotW = width - padding.left - padding.right;
       const plotH = height - padding.top - padding.bottom;
+
+      scatterPlotPoints = [];
 
       if (isConflictActive) {
         ctx.fillStyle = "rgba(225, 87, 89, 0.95)";
@@ -4367,122 +4503,326 @@
         return;
       }
 
-      const minPrice = 0;
-      const maxPrice = 65;
-      const minHp = 0;
-      const maxHp = 260;
-
       const subEl = document.getElementById("scatterChartSub");
+      const titleEl = document.getElementById("scatterChartTitle");
       if (subEl) {
         subEl.textContent = isAllShowroomMode
-          ? "● Green=EV, Amber=Petrol, Blue=Diesel ◆ Market Fleet Median"
-          : `Cyan Ring = ${selectedVehicle.model}`;
+          ? "● Green=EV, Amber=Petrol, Blue=Diesel • Bubble Size = HP • Click any bubble to inspect"
+          : `Target Ring = ${selectedVehicle.model} (${selectedVehicle.hp} HP, ₹${selectedVehicle.price.toFixed(1)}L)`;
       }
 
-      // Draw Grid Lines (Monotonic Slate #283950)
       ctx.strokeStyle = "#283950";
       ctx.lineWidth = 1;
 
-      // Horizontal lines (HP)
-      for (let hp = 0; hp <= maxHp; hp += 50) {
-        const y = padding.top + plotH - (hp / maxHp) * plotH;
-        ctx.beginPath();
-        ctx.moveTo(padding.left, y);
-        ctx.lineTo(padding.left + plotW, y);
-        ctx.stroke();
+      if (scatterAxisMode === "HP_X") {
+        // --- MODE 1: MATCHES TABLEAU (Image 4): X = HP (0-400), Y = Price in Lakhs (0-60L) ---
+        if (titleEl) titleEl.textContent = "Price v/s Performance (Horsepower vs Price)";
+        const maxHp = 400;
+        const maxPrice = 60;
 
-        ctx.fillStyle = "#94a3b8";
-        ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
-        ctx.textAlign = "right";
-        ctx.fillText(`${hp} HP`, padding.left - 6, y + 3);
-      }
-
-      // Vertical lines (Price Lakhs)
-      for (let p = 0; p <= maxPrice; p += 15) {
-        const x = padding.left + (p / maxPrice) * plotW;
-        ctx.beginPath();
-        ctx.moveTo(x, padding.top);
-        ctx.lineTo(x, padding.top + plotH);
-        ctx.stroke();
-
-        ctx.fillStyle = "#94a3b8";
-        ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(`₹${p}L`, x, padding.top + plotH + 15);
-      }
-
-      // Axis Labels (Crisp Natural #f8fafc)
-      ctx.fillStyle = "#f8fafc";
-      ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("Acquisition Price (Lakhs INR)", padding.left + plotW / 2, padding.top + plotH + 28);
-
-      // Plot All Vehicles as Dots
-      MASTER_VEHICLES.forEach(v => {
-        const x = padding.left + (v.price / maxPrice) * plotW;
-        const y = padding.top + plotH - (v.hp / maxHp) * plotH;
-        const isSelected = !isAllShowroomMode && v.model === selectedVehicle.model;
-
-        if (!isSelected) {
+        // Horizontal lines (Price: 0 to 60L in 20L steps)
+        for (let p = 0; p <= maxPrice; p += 20) {
+          const y = padding.top + plotH - (p / maxPrice) * plotH;
           ctx.beginPath();
-          ctx.arc(x, y, 4, 0, Math.PI * 2);
-          if (v.fuel === "Electric") ctx.fillStyle = "rgba(16, 185, 129, 0.85)";
-          else if (v.fuel === "Petrol") ctx.fillStyle = "rgba(245, 158, 11, 0.85)";
-          else ctx.fillStyle = "rgba(59, 130, 246, 0.85)";
+          ctx.moveTo(padding.left, y);
+          ctx.lineTo(padding.left + plotW, y);
+          ctx.stroke();
+
+          ctx.fillStyle = "#94a3b8";
+          ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "right";
+          ctx.fillText(`₹${p}.0 L`, padding.left - 6, y + 3);
+        }
+        // Subtle 10L intermediate lines
+        ctx.strokeStyle = "rgba(40, 57, 80, 0.4)";
+        for (let p = 10; p < maxPrice; p += 20) {
+          const y = padding.top + plotH - (p / maxPrice) * plotH;
+          ctx.beginPath();
+          ctx.moveTo(padding.left, y);
+          ctx.lineTo(padding.left + plotW, y);
+          ctx.stroke();
+        }
+        ctx.strokeStyle = "#283950";
+
+        // Vertical lines (HP: 0 to 400 in 50 HP steps)
+        for (let hp = 0; hp <= maxHp; hp += 50) {
+          const x = padding.left + (hp / maxHp) * plotW;
+          ctx.beginPath();
+          ctx.moveTo(x, padding.top);
+          ctx.lineTo(x, padding.top + plotH);
+          ctx.stroke();
+
+          ctx.fillStyle = "#94a3b8";
+          ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(`${hp}`, x, padding.top + plotH + 14);
+        }
+
+        // Axis Titles
+        ctx.fillStyle = "#f8fafc";
+        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Avg. Horsepower Hp", padding.left + plotW / 2, padding.top + plotH + 28);
+
+        ctx.save();
+        ctx.translate(14, padding.top + plotH / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = "center";
+        ctx.fillText("Avg. Price in Lakhs (INR)", 0, 0);
+        ctx.restore();
+
+        // Sort vehicles by HP descending so smaller bubbles draw cleanly over larger ones
+        const sortedVehicles = [...MASTER_VEHICLES].sort((a, b) => b.hp - a.hp);
+
+        sortedVehicles.forEach(v => {
+          const x = padding.left + (v.hp / maxHp) * plotW;
+          const y = padding.top + plotH - (Math.min(v.price, maxPrice) / maxPrice) * plotH;
+          // Bubble size scales according to Horsepower like Image 4 (3.5px to 19px)
+          const radius = Math.max(3.5, 3.5 + Math.pow(v.hp / maxHp, 0.75) * 16.5);
+
+          scatterPlotPoints.push({ x, y, r: radius, v });
+
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          if (v.fuel === "Electric") {
+            ctx.fillStyle = "rgba(16, 185, 129, 0.75)";
+            ctx.strokeStyle = "rgba(52, 211, 153, 0.95)";
+          } else if (v.fuel === "Petrol") {
+            ctx.fillStyle = "rgba(245, 158, 11, 0.75)";
+            ctx.strokeStyle = "rgba(251, 191, 36, 0.95)";
+          } else {
+            ctx.fillStyle = "rgba(59, 130, 246, 0.75)";
+            ctx.strokeStyle = "rgba(96, 165, 250, 0.95)";
+          }
+          ctx.lineWidth = 1.2;
           ctx.fill();
+          ctx.stroke();
+        });
+
+        if (isAllShowroomMode) {
+          // Highlight Fleet Median Marker (142 HP, 14.5L)
+          const medX = padding.left + (142 / maxHp) * plotW;
+          const medY = padding.top + plotH - (14.5 / maxPrice) * plotH;
+
+          ctx.save();
+          ctx.fillStyle = "#eab308";
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(medX, medY - 6);
+          ctx.lineTo(medX + 6, medY);
+          ctx.lineTo(medX, medY + 6);
+          ctx.lineTo(medX - 6, medY);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#f8fafc";
+          ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
+          ctx.restore();
+
+        } else {
+          // Focus Selected Vehicle with Glowing Ring
+          const selX = padding.left + (selectedVehicle.hp / maxHp) * plotW;
+          const selY = padding.top + plotH - (Math.min(selectedVehicle.price, maxPrice) / maxPrice) * plotH;
+          const selR = Math.max(3.5, 3.5 + Math.pow(selectedVehicle.hp / maxHp, 0.75) * 16.5);
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(selX, selY, selR + 5, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(56, 189, 248, 0.32)";
+          ctx.fill();
+          ctx.strokeStyle = "#38bdf8";
+          ctx.lineWidth = 2.2;
+          ctx.stroke();
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp} HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + selR + 8, selY - 2);
+          ctx.restore();
+        }
+
+      } else {
+        // --- MODE 2: PRICE ON X (0-60L fitted, no empty dead space after 46L!), HP ON Y (0-400) ---
+        if (titleEl) titleEl.textContent = "Market Positioning: Price vs Horsepower";
+        const maxPrice = 60;
+        const maxHp = 400;
+
+        // Horizontal lines (HP: 0 to 400 in 100 HP steps)
+        for (let hp = 0; hp <= maxHp; hp += 100) {
+          const y = padding.top + plotH - (hp / maxHp) * plotH;
+          ctx.beginPath();
+          ctx.moveTo(padding.left, y);
+          ctx.lineTo(padding.left + plotW, y);
+          ctx.stroke();
+
+          ctx.fillStyle = "#94a3b8";
+          ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "right";
+          ctx.fillText(`${hp} HP`, padding.left - 6, y + 3);
+        }
+
+        // Vertical lines (Price: 0 to 60L in 15L steps: 0, 15, 30, 45, 60)
+        for (let p = 0; p <= maxPrice; p += 15) {
+          const x = padding.left + (p / maxPrice) * plotW;
+          ctx.beginPath();
+          ctx.moveTo(x, padding.top);
+          ctx.lineTo(x, padding.top + plotH);
+          ctx.stroke();
+
+          ctx.fillStyle = "#94a3b8";
+          ctx.font = "8px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(`₹${p}L`, x, padding.top + plotH + 14);
+        }
+
+        // Axis Titles
+        ctx.fillStyle = "#f8fafc";
+        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Avg. Price in Lakhs (INR)", padding.left + plotW / 2, padding.top + plotH + 28);
+
+        ctx.save();
+        ctx.translate(14, padding.top + plotH / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = "center";
+        ctx.fillText("Avg. Horsepower (HP)", 0, 0);
+        ctx.restore();
+
+        const sortedVehicles = [...MASTER_VEHICLES].sort((a, b) => b.hp - a.hp);
+
+        sortedVehicles.forEach(v => {
+          const x = padding.left + (Math.min(v.price, maxPrice) / maxPrice) * plotW;
+          const y = padding.top + plotH - (v.hp / maxHp) * plotH;
+          const radius = Math.max(3.5, 3.5 + Math.pow(v.hp / maxHp, 0.75) * 16.5);
+
+          scatterPlotPoints.push({ x, y, r: radius, v });
+
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          if (v.fuel === "Electric") {
+            ctx.fillStyle = "rgba(16, 185, 129, 0.75)";
+            ctx.strokeStyle = "rgba(52, 211, 153, 0.95)";
+          } else if (v.fuel === "Petrol") {
+            ctx.fillStyle = "rgba(245, 158, 11, 0.75)";
+            ctx.strokeStyle = "rgba(251, 191, 36, 0.95)";
+          } else {
+            ctx.fillStyle = "rgba(59, 130, 246, 0.75)";
+            ctx.strokeStyle = "rgba(96, 165, 250, 0.95)";
+          }
+          ctx.lineWidth = 1.2;
+          ctx.fill();
+          ctx.stroke();
+        });
+
+        if (isAllShowroomMode) {
+          const medX = padding.left + (14.5 / maxPrice) * plotW;
+          const medY = padding.top + plotH - (142 / maxHp) * plotH;
+
+          ctx.save();
+          ctx.fillStyle = "#eab308";
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(medX, medY - 6);
+          ctx.lineTo(medX + 6, medY);
+          ctx.lineTo(medX, medY + 6);
+          ctx.lineTo(medX - 6, medY);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#f8fafc";
+          ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
+          ctx.restore();
+
+        } else {
+          const selX = padding.left + (Math.min(selectedVehicle.price, maxPrice) / maxPrice) * plotW;
+          const selY = padding.top + plotH - (selectedVehicle.hp / maxHp) * plotH;
+          const selR = Math.max(3.5, 3.5 + Math.pow(selectedVehicle.hp / maxHp, 0.75) * 16.5);
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(selX, selY, selR + 5, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(56, 189, 248, 0.32)";
+          ctx.fill();
+          ctx.strokeStyle = "#38bdf8";
+          ctx.lineWidth = 2.2;
+          ctx.stroke();
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp} HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + selR + 8, selY - 2);
+          ctx.restore();
+        }
+      }
+    }
+
+    // Scatter Canvas Mousemove Hover & Click Selection
+    let scatterTooltipEl = null;
+    function initScatterInteractions() {
+      const canvas = document.getElementById("scatterCanvas");
+      if (!canvas) return;
+      scatterTooltipEl = document.getElementById("scatterTooltip");
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        let nearest = null;
+        let minDist = 9999;
+        for (let pt of scatterPlotPoints) {
+          const dx = pt.x - mouseX;
+          const dy = pt.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist <= pt.r + 5 && dist < minDist) {
+            minDist = dist;
+            nearest = pt;
+          }
+        }
+
+        if (nearest && scatterTooltipEl) {
+          canvas.style.cursor = "pointer";
+          scatterTooltipEl.style.display = "block";
+          scatterTooltipEl.innerHTML = `<strong>${nearest.v.brand} ${nearest.v.model}</strong><br>Power: ${nearest.v.hp} HP • Price: ₹${nearest.v.price.toFixed(1)}L (${nearest.v.fuel})`;
+          let tipX = mouseX + 12;
+          let tipY = mouseY - 25;
+          if (tipX + 160 > rect.width) tipX = mouseX - 170;
+          if (tipY < 5) tipY = mouseY + 15;
+          scatterTooltipEl.style.left = `${tipX}px`;
+          scatterTooltipEl.style.top = `${tipY}px`;
+        } else if (scatterTooltipEl) {
+          canvas.style.cursor = "default";
+          scatterTooltipEl.style.display = "none";
         }
       });
 
-      if (isAllShowroomMode) {
-        // Highlight Fleet Median Marker (142 HP, 14.5L)
-        const medX = padding.left + (14.5 / maxPrice) * plotW;
-        const medY = padding.top + plotH - (142 / maxHp) * plotH;
+      canvas.addEventListener("mouseleave", () => {
+        if (scatterTooltipEl) scatterTooltipEl.style.display = "none";
+        canvas.style.cursor = "default";
+      });
 
-        ctx.save();
-        ctx.fillStyle = "#eab308";
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(medX, medY - 6);
-        ctx.lineTo(medX + 6, medY);
-        ctx.lineTo(medX, medY + 6);
-        ctx.lineTo(medX - 6, medY);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
+      canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
 
-        ctx.fillStyle = "#f8fafc";
-        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
-        ctx.textAlign = "left";
-        ctx.fillText("◆ Fleet Median (142 HP, ₹14.5L)", medX + 10, medY - 4);
-        ctx.restore();
-
-      } else {
-        // Plot Selected Vehicle with Glowing Highlight Ring
-        const selX = padding.left + (selectedVehicle.price / maxPrice) * plotW;
-        const selY = padding.top + plotH - (selectedVehicle.hp / maxHp) * plotH;
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(selX, selY, 11, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(56, 189, 248, 0.28)";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(selX, selY, 6.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#38bdf8";
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2;
-        ctx.fill();
-        ctx.stroke();
-
-        // Tooltip Callout on Selected Dot
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 9px 'Plus Jakarta Sans', sans-serif";
-        ctx.textAlign = "left";
-        ctx.fillText(`${selectedVehicle.model} (${selectedVehicle.hp}HP, ₹${selectedVehicle.price.toFixed(1)}L)`, selX + 10, selY - 4);
-        ctx.restore();
-      }
+        for (let pt of scatterPlotPoints) {
+          const dx = pt.x - mouseX;
+          const dy = pt.y - mouseY;
+          if (Math.sqrt(dx * dx + dy * dy) <= pt.r + 5) {
+            selectModelByName(pt.v.model);
+            break;
+          }
+        }
+      });
     }
 
     // Draw Multi-Axis Performance Radar Chart (Overall Market Fleet Spectrum vs Single Vehicle)
