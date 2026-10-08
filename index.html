@@ -766,9 +766,10 @@
 
     .cockpit-grid {
       display: grid;
-      grid-template-columns: 320px minmax(380px, 1fr) 320px;
+      grid-template-columns: minmax(330px, 1.35fr) minmax(320px, 420px) minmax(330px, 1.35fr);
       gap: 10px;
       align-items: stretch;
+      justify-content: center;
     }
 
     /* Flank Spec Cards */
@@ -867,13 +868,16 @@
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 9px 13px 8px 13px;
+      padding: 9px 12px 8px 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       overflow: hidden;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      max-width: 430px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .hero-center-box::before {
@@ -1082,10 +1086,9 @@
     .showroom-mosaic-grid {
       height: 184px;
       display: grid;
-      grid-template-rows: repeat(4, 42px);
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(76px, 1fr);
-      gap: 4px;
+      grid-template-rows: repeat(5, 33px);
+      grid-template-columns: repeat(6, minmax(52px, 1fr));
+      gap: 3px;
       overflow-x: auto;
       overflow-y: hidden;
       padding-bottom: 2px;
@@ -1116,7 +1119,7 @@
       background: rgba(15, 26, 43, 0.88);
       border: 1px solid rgba(31, 42, 68, 0.95);
       border-radius: 5px;
-      padding: 1px 4px 2px 4px;
+      padding: 1px 3px 2px 3px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1125,7 +1128,7 @@
       transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
       user-select: none;
       overflow: hidden;
-      height: 42px;
+      height: 33px;
       box-sizing: border-box;
     }
 
@@ -1145,10 +1148,10 @@
 
     .mini-fuel-indicator {
       position: absolute;
-      top: 2px;
-      right: 2px;
-      width: 5px;
-      height: 5px;
+      top: 1px;
+      right: 1px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
     }
 
@@ -1158,19 +1161,19 @@
 
     .mini-card-img-wrap {
       width: 100%;
-      height: 22px;
+      height: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .mini-card-thumb {
-      max-height: 20px;
+      max-height: 16px;
       max-width: 92%;
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
       transition: transform 0.15s ease;
     }
 
@@ -1184,21 +1187,21 @@
       justify-content: space-between;
       align-items: center;
       line-height: 1;
-      margin-top: 1px;
+      margin-top: 0;
     }
 
     .mini-card-name {
-      font-size: 0.54rem;
+      font-size: 0.50rem;
       font-weight: 700;
       color: #e5e7eb;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 60%;
+      max-width: 58%;
     }
 
     .mini-card-price {
-      font-size: 0.52rem;
+      font-size: 0.48rem;
       font-weight: 800;
       color: #60a5fa;
       font-family: 'Space Grotesk', sans-serif;
@@ -1219,19 +1222,19 @@
 
     .pedestal-glow-ellipse {
       position: absolute;
-      bottom: 14px;
-      width: 80%;
-      height: 36px;
-      background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.45) 0%, rgba(78, 121, 167, 0.18) 50%, transparent 80%);
+      bottom: 12px;
+      width: 86%;
+      height: 38px;
+      background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.5) 0%, rgba(78, 121, 167, 0.2) 50%, transparent 80%);
       border-radius: 50%;
       filter: blur(8px);
       z-index: 1;
     }
 
     .vehicle-isolated-cutout {
-      --vehicle-scale: 1.15;
-      max-height: 182px;
-      max-width: 96%;
+      --vehicle-scale: 1.20;
+      max-height: 186px;
+      max-width: 98%;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -1607,7 +1610,7 @@
     /* Responsive */
     @media (max-width: 1280px) {
       .cockpit-grid {
-        grid-template-columns: 290px minmax(360px, 1fr) 290px;
+        grid-template-columns: minmax(310px, 1.3fr) minmax(310px, 400px) minmax(310px, 1.3fr);
         gap: 8px;
       }
       .control-ribbon {
@@ -1618,7 +1621,7 @@
       }
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 960px) {
       .cockpit-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1628,7 +1631,7 @@
         gap: 8px;
       }
       .spec-flank:nth-child(1) { grid-area: left; }
-      .hero-center-box { grid-area: center; }
+      .hero-center-box { grid-area: center; max-width: 440px; }
       .spec-flank:nth-child(3) { grid-area: right; }
       .control-ribbon {
         grid-template-columns: 1fr 1fr;
@@ -1753,6 +1756,9 @@
       background: #162032 !important;
       border: 1px solid #283950 !important;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+      max-width: 430px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
     }
     .chart-panel-card {
       background: #162032 !important;
@@ -3255,7 +3261,7 @@
         card.innerHTML = `
           <span class="mini-fuel-indicator fuel-${v.fuel.toLowerCase()}" title="${v.fuel}"></span>
           <div class="mini-card-img-wrap">
-            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" width="64" height="20" loading="eager" decoding="async" onerror="handleVehicleImgError(this)">
+            <img class="mini-card-thumb" src="${v.photo}?v=20260929_rev5" alt="${v.model}" width="52" height="16" loading="eager" decoding="async" onerror="handleVehicleImgError(this)">
           </div>
           <div class="mini-card-info">
             <span class="mini-card-name">${v.model}</span>
@@ -4292,33 +4298,33 @@
 
       // Compact Commercial Vans & Light Trucks
       "Traveller": 1.25,
-      "Starbus": 1.22,
-      "Pro 3015": 1.22,
-      "Bolero Pickup": 1.20,
-      "Yodha": 1.18,
-      "Eeco": 1.16,
+      "Starbus": 1.24,
+      "Pro 3015": 1.24,
+      "Bolero Pickup": 1.22,
+      "Yodha": 1.22,
+      "Eeco": 1.20,
 
       // Heavy Commercials & Buses
-      "Boss": 1.16,
-      "Prima": 1.14,
-      "JanBus": 1.12,
-      "9400": 1.12,
+      "Boss": 1.22,
+      "Prima": 1.20,
+      "JanBus": 1.18,
+      "9400": 1.18,
 
       // Passenger Cars, SUVs & Sedans
-      "Swift": 1.18,
-      "Tiago": 1.18,
-      "i20": 1.16,
-      "Creta": 1.15,
-      "Nexon": 1.15,
-      "Nexon EV": 1.15,
-      "XUV400": 1.15,
-      "ZS EV": 1.15,
-      "Scorpio N": 1.14,
-      "City": 1.14,
-      "Verna": 1.14,
-      "Ciaz": 1.14,
-      "Innova": 1.14,
-      "D-Max": 1.15
+      "Swift": 1.22,
+      "Tiago": 1.22,
+      "i20": 1.20,
+      "Creta": 1.20,
+      "Nexon": 1.20,
+      "Nexon EV": 1.20,
+      "XUV400": 1.20,
+      "ZS EV": 1.20,
+      "Scorpio N": 1.18,
+      "City": 1.18,
+      "Verna": 1.18,
+      "Ciaz": 1.18,
+      "Innova": 1.18,
+      "D-Max": 1.18
     };
 
     // Render Center Hero Vehicle & Surrounding Spec Flank Cards (With Dynamic Benchmarks & Tank Capacity!)
