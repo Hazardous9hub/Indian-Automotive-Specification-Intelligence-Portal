@@ -766,7 +766,7 @@
 
     .cockpit-grid {
       display: grid;
-      grid-template-columns: minmax(330px, 1.35fr) minmax(320px, 420px) minmax(330px, 1.35fr);
+      grid-template-columns: minmax(265px, 285px) minmax(450px, 520px) minmax(265px, 285px);
       gap: 10px;
       align-items: stretch;
       justify-content: center;
@@ -868,14 +868,14 @@
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 9px 12px 8px 12px;
+      padding: 9px 14px 8px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       overflow: hidden;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-      max-width: 430px;
+      max-width: 520px;
       width: 100%;
       margin: 0 auto;
     }
@@ -1232,9 +1232,9 @@
     }
 
     .vehicle-isolated-cutout {
-      --vehicle-scale: 1.20;
-      max-height: 186px;
-      max-width: 98%;
+      --vehicle-scale: 1.15;
+      max-height: 182px;
+      max-width: 95%;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -1610,7 +1610,7 @@
     /* Responsive */
     @media (max-width: 1280px) {
       .cockpit-grid {
-        grid-template-columns: minmax(310px, 1.3fr) minmax(310px, 400px) minmax(310px, 1.3fr);
+        grid-template-columns: minmax(260px, 280px) minmax(440px, 1fr) minmax(260px, 280px);
         gap: 8px;
       }
       .control-ribbon {
@@ -1631,7 +1631,7 @@
         gap: 8px;
       }
       .spec-flank:nth-child(1) { grid-area: left; }
-      .hero-center-box { grid-area: center; max-width: 440px; }
+      .hero-center-box { grid-area: center; max-width: 520px; }
       .spec-flank:nth-child(3) { grid-area: right; }
       .control-ribbon {
         grid-template-columns: 1fr 1fr;
@@ -1709,13 +1709,13 @@
       }
     }
   
-    /* Highlighted Technical Specs Cards - Focal Information Point with Comfortable Negative Space */
+    /* Highlighted Technical Specs Cards - Clean, Highly Legible & Balanced Proportions */
     .spec-module-card {
       background: linear-gradient(135deg, #1b263b 0%, #152238 100%) !important;
       border: 1px solid rgba(56, 189, 248, 0.4) !important;
       border-left: 5px solid #38bdf8 !important;
       border-radius: 9px !important;
-      padding: 8px 12px !important;
+      padding: 7px 10px !important;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(56, 189, 248, 0.12) !important;
       transition: all 0.2s ease;
     }
@@ -1726,27 +1726,27 @@
     }
     .val-metric-large {
       color: #ffffff !important;
-      font-size: 1.35rem !important;
+      font-size: 1.25rem !important;
       font-weight: 900 !important;
       letter-spacing: -0.01em;
     }
     .val-metric-unit {
       color: #7dd3fc !important;
-      font-size: 0.82rem !important;
+      font-size: 0.76rem !important;
       font-weight: 700 !important;
     }
     .module-icon-tag {
       color: #38bdf8 !important;
       font-weight: 800 !important;
-      font-size: 0.72rem !important;
+      font-size: 0.68rem !important;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
     .module-subtext {
       color: #94a3b8 !important;
-      font-size: 0.68rem !important;
+      font-size: 0.65rem !important;
       white-space: normal !important;
-      line-height: 1.25 !important;
+      line-height: 1.22 !important;
       word-break: break-word;
     }
     .spec-gauge-track {
@@ -1756,7 +1756,7 @@
       background: #162032 !important;
       border: 1px solid #283950 !important;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      max-width: 430px !important;
+      max-width: 520px !important;
       width: 100% !important;
       margin: 0 auto !important;
     }
@@ -4297,34 +4297,34 @@
       "Splendor": 1.18,
 
       // Compact Commercial Vans & Light Trucks
-      "Traveller": 1.25,
-      "Starbus": 1.24,
-      "Pro 3015": 1.24,
-      "Bolero Pickup": 1.22,
-      "Yodha": 1.22,
-      "Eeco": 1.20,
+      "Traveller": 1.20,
+      "Starbus": 1.20,
+      "Pro 3015": 1.20,
+      "Bolero Pickup": 1.18,
+      "Yodha": 1.18,
+      "Eeco": 1.16,
 
       // Heavy Commercials & Buses
-      "Boss": 1.22,
-      "Prima": 1.20,
-      "JanBus": 1.18,
-      "9400": 1.18,
+      "Boss": 1.18,
+      "Prima": 1.16,
+      "JanBus": 1.14,
+      "9400": 1.14,
 
       // Passenger Cars, SUVs & Sedans
-      "Swift": 1.22,
-      "Tiago": 1.22,
-      "i20": 1.20,
-      "Creta": 1.20,
-      "Nexon": 1.20,
-      "Nexon EV": 1.20,
-      "XUV400": 1.20,
-      "ZS EV": 1.20,
-      "Scorpio N": 1.18,
-      "City": 1.18,
-      "Verna": 1.18,
-      "Ciaz": 1.18,
-      "Innova": 1.18,
-      "D-Max": 1.18
+      "Swift": 1.16,
+      "Tiago": 1.16,
+      "i20": 1.15,
+      "Creta": 1.15,
+      "Nexon": 1.15,
+      "Nexon EV": 1.15,
+      "XUV400": 1.15,
+      "ZS EV": 1.15,
+      "Scorpio N": 1.15,
+      "City": 1.15,
+      "Verna": 1.15,
+      "Ciaz": 1.15,
+      "Innova": 1.14,
+      "D-Max": 1.15
     };
 
     // Render Center Hero Vehicle & Surrounding Spec Flank Cards (With Dynamic Benchmarks & Tank Capacity!)
