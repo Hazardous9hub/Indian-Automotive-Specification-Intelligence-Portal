@@ -766,10 +766,10 @@
 
     .cockpit-grid {
       display: grid;
-      grid-template-columns: minmax(265px, 285px) minmax(450px, 520px) minmax(265px, 285px);
+      grid-template-columns: 1fr 1.35fr 1fr;
       gap: 10px;
       align-items: stretch;
-      justify-content: center;
+      width: 100%;
     }
 
     /* Flank Spec Cards */
@@ -875,9 +875,8 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-      max-width: 520px;
       width: 100%;
-      margin: 0 auto;
+      height: 100%;
     }
 
     .hero-center-box::before {
@@ -1610,8 +1609,9 @@
     /* Responsive */
     @media (max-width: 1280px) {
       .cockpit-grid {
-        grid-template-columns: minmax(260px, 280px) minmax(440px, 1fr) minmax(260px, 280px);
+        grid-template-columns: 1fr 1.35fr 1fr;
         gap: 8px;
+        width: 100%;
       }
       .control-ribbon {
         grid-template-columns: 1fr 1.4fr 1.4fr;
@@ -1621,7 +1621,7 @@
       }
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .cockpit-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1629,9 +1629,10 @@
           "center center"
           "left right";
         gap: 8px;
+        width: 100%;
       }
       .spec-flank:nth-child(1) { grid-area: left; }
-      .hero-center-box { grid-area: center; max-width: 520px; }
+      .hero-center-box { grid-area: center; width: 100%; }
       .spec-flank:nth-child(3) { grid-area: right; }
       .control-ribbon {
         grid-template-columns: 1fr 1fr;
@@ -1671,10 +1672,11 @@
           "left"
           "right";
         gap: 8px;
+        width: 100%;
       }
-      .spec-flank:nth-child(1) { grid-area: left; }
-      .hero-center-box { grid-area: center; }
-      .spec-flank:nth-child(3) { grid-area: right; }
+      .spec-flank:nth-child(1) { grid-area: left; width: 100%; }
+      .hero-center-box { grid-area: center; width: 100%; }
+      .spec-flank:nth-child(3) { grid-area: right; width: 100%; }
       .body-styles-2row-grid {
         grid-template-columns: repeat(4, 1fr);
       }
@@ -1756,9 +1758,8 @@
       background: #162032 !important;
       border: 1px solid #283950 !important;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      max-width: 520px !important;
       width: 100% !important;
-      margin: 0 auto !important;
+      height: 100% !important;
     }
     .chart-panel-card {
       background: #162032 !important;
@@ -1850,7 +1851,7 @@
       <div class="brand-nav-controls">
         <button class="brand-scroll-arrow" onclick="scrollBrandsStrip(-260)" title="Scroll Left">‹</button>
         <button class="brand-scroll-arrow" onclick="scrollBrandsStrip(260)" title="Scroll Right">›</button>
-        <button class="btn-reset-all active" id="btnResetBrand" onclick="selectBrand('ALL')">View All Brands</button>
+        <button class="btn-reset-all active" id="btnResetBrand" onclick="viewAllBrandsShowroom()">View All Brands</button>
       </div>
     </div>
     <div class="brands-strip" id="brandsStrip">
@@ -3358,7 +3359,7 @@
 
     function stepVehicleOrShowroom(dir) {
       if (isConflictActive) {
-        return;
+        resolveSmartConflict();
       } else if (isAllShowroomMode) {
         const grid = document.getElementById("showroomMosaicGrid");
         if (grid) grid.scrollBy({ left: dir * 240, behavior: "smooth" });
@@ -3666,14 +3667,33 @@
     }
 
     // Filter Selection Handlers with Deterministic Dynamic Highlights
+    function viewAllBrandsShowroom() {
+      resetAllFiltersToShowroom();
+      isConflictActive = false;
+      const conflictStage = document.getElementById("conflictNoticeStage");
+      if (conflictStage) conflictStage.style.display = "none";
+
+      transitionToShowroom("toShowroom");
+      renderFleetOverallFlanks();
+      updateMacroKpis(MASTER_VEHICLES);
+      drawScatterPlot();
+      drawRadarChart();
+      updateFilterAvailability();
+      syncUrlState();
+    }
+
     function selectBrand(brand) {
+      if (brand === "ALL") {
+        viewAllBrandsShowroom();
+        return;
+      }
       activeBrand = brand;
       document.querySelectorAll(".brand-logo-tile").forEach(tile => {
         tile.classList.toggle("active", tile.dataset.brand === brand);
       });
 
       const btnReset = document.getElementById("btnResetBrand");
-      if (btnReset) btnReset.classList.toggle("active", brand === "ALL");
+      if (btnReset) btnReset.classList.toggle("active", false);
 
       const brandDd = document.getElementById("brandSelectDropdown");
       if (brandDd) brandDd.value = brand;
@@ -3998,11 +4018,153 @@
     }
 
     function resolveSmartConflict() {
-      if (typeof smartAutoResolveHandler === "function") {
-        smartAutoResolveHandler();
-      } else {
-        resetAllFiltersToShowroom();
+      // 1. Score every vehicle in MASTER_VEHICLES against user preferences to find the best matching vehicle
+      let bestVehicle = null;
+      let maxScore = -1;
+
+      for (const v of MASTER_VEHICLES) {
+        let score = 0;
+        // Brand preference
+        if (activeBrand !== "ALL" && v.brand === activeBrand) score += 12;
+        // Powertrain preference
+        if (activePowertrain !== "ALL" && v.fuel === activePowertrain) score += 8;
+        // Body style preference
+        if (activeBodyStyle !== "ALL") {
+          if (activeBodyStyle === "Electric" && v.fuel === "Electric") score += 8;
+          else if (v.category === activeBodyStyle) score += 8;
+          else if (activeBodyStyle === "Commercial" && ["Truck", "Pickup Truck", "Van", "Bus"].includes(v.category)) score += 6;
+          else if (activeBodyStyle === "Two-Wheeler" && ["Motorcycle", "Scooter"].includes(v.category)) score += 6;
+        }
+        // Drivetrain preference
+        if (activeDrivetrain !== "ALL" && v.drive === activeDrivetrain) score += 4;
+        // Interest preference
+        if (activeInterest !== "ALL" && v.interest === activeInterest) score += 4;
+        // Seating preference
+        if (activeSeats !== "ALL") {
+          if (activeSeats === "2" && v.seats <= 2) score += 3;
+          else if (activeSeats === "4-5" && (v.seats >= 4 && v.seats <= 5)) score += 3;
+          else if (activeSeats === "6-7" && (v.seats >= 6 && v.seats <= 7)) score += 3;
+          else if (activeSeats === "10+" && v.seats >= 10) score += 3;
+        }
+        // Budget match
+        if (v.price_inr <= activeBudget) score += 3;
+        // Safety rating
+        if (activeSafety > 0 && v.safety >= activeSafety) score += 2;
+
+        if (score > maxScore) {
+          maxScore = score;
+          bestVehicle = v;
+        }
       }
+
+      if (!bestVehicle) {
+        bestVehicle = selectedVehicle || MASTER_VEHICLES[0];
+      }
+
+      // 2. Harmonize active filters to make bestVehicle 100% valid
+      if (activeBrand !== "ALL" && bestVehicle.brand !== activeBrand) {
+        activeBrand = bestVehicle.brand;
+      }
+      if (activePowertrain !== "ALL" && activePowertrain !== bestVehicle.fuel) {
+        activePowertrain = bestVehicle.fuel;
+      }
+      if (activeBodyStyle !== "ALL") {
+        if (activeBodyStyle === "Electric" && bestVehicle.fuel !== "Electric") {
+          activeBodyStyle = bestVehicle.category;
+        } else if (activeBodyStyle !== "Electric" && bestVehicle.category !== activeBodyStyle) {
+          activeBodyStyle = bestVehicle.category;
+        }
+      }
+      if (activeDrivetrain !== "ALL" && activeDrivetrain !== bestVehicle.drive) {
+        activeDrivetrain = bestVehicle.drive;
+      }
+      if (activeBudget < bestVehicle.price_inr) {
+        activeBudget = 6500000;
+        activeBudgetBin = "ALL";
+      }
+      if (activeSeats !== "ALL") {
+        const s = bestVehicle.seats;
+        if (activeSeats === "2" && s > 2) activeSeats = "ALL";
+        else if (activeSeats === "4-5" && (s < 4 || s > 5)) activeSeats = "ALL";
+        else if (activeSeats === "6-7" && (s < 6 || s > 7)) activeSeats = "ALL";
+        else if (activeSeats === "10+" && s < 10) activeSeats = "ALL";
+      }
+
+      // 3. Immediately synchronize all UI filter pills & controls
+      document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+        tile.classList.toggle("active", tile.dataset.brand === activeBrand);
+      });
+      const btnResetBrand = document.getElementById("btnResetBrand");
+      if (btnResetBrand) btnResetBrand.classList.toggle("active", activeBrand === "ALL");
+      const brandDd = document.getElementById("brandSelectDropdown");
+      if (brandDd) brandDd.value = activeBrand;
+
+      document.querySelectorAll("#powertrainPillsBar .pill-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.fuel === activePowertrain);
+      });
+      document.querySelectorAll("#drivetrainPillsBar .pill-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.drive === activeDrivetrain);
+      });
+      document.querySelectorAll("#bodyStylesBar .body-style-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.style === activeBodyStyle);
+      });
+      const resetBtnStyle = document.getElementById("btnResetStyle");
+      if (resetBtnStyle) resetBtnStyle.classList.toggle("active", activeBodyStyle === "ALL");
+
+      document.querySelectorAll("#interestPillsBar .pref-pill").forEach(b => {
+        b.classList.toggle("active", b.dataset.interest === activeInterest);
+      });
+      document.querySelectorAll("#seatingPillsBar .pref-pill-mini").forEach(b => {
+        b.classList.toggle("active", b.dataset.seats === activeSeats);
+      });
+
+      const slider = document.getElementById("budgetRange");
+      if (slider) slider.value = activeBudget;
+      const lblBudget = document.getElementById("lblBudgetVal");
+      if (lblBudget) lblBudget.textContent = activeBudget >= 6500000 ? "All Budgets (≤ ₹65.0L)" : `≤ ₹${(activeBudget / 100000).toFixed(1)}L`;
+      document.querySelectorAll("#budgetBinsBar .bin-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.bin === activeBudgetBin);
+      });
+
+      // 4. Dismiss conflict notice and display single vehicle stage immediately
+      isConflictActive = false;
+      isAllShowroomMode = false;
+
+      const conflictStage = document.getElementById("conflictNoticeStage");
+      if (conflictStage) conflictStage.style.display = "none";
+
+      const showroomStage = document.getElementById("allModelsShowroomStage");
+      if (showroomStage) showroomStage.style.display = "none";
+
+      const singleStage = document.getElementById("singleVehicleStage");
+      if (singleStage) {
+        singleStage.style.display = "flex";
+        singleStage.style.opacity = "1";
+        singleStage.style.transform = "none";
+      }
+
+      const toggleBtn = document.getElementById("btnToggleShowroom");
+      const toggleLbl = document.getElementById("lblToggleShowroom");
+      if (toggleBtn) toggleBtn.classList.remove("active");
+      if (toggleLbl) toggleLbl.textContent = "▦ View All 30 Models";
+
+      // 5. Select and render best vehicle synchronously
+      selectedVehicle = bestVehicle;
+      activeModel = bestVehicle.model;
+
+      populateModelDropdown();
+      const modelDd = document.getElementById("modelSelectDropdown");
+      if (modelDd) modelDd.value = bestVehicle.model;
+
+      renderVehicleCockpit(bestVehicle);
+      renderQuickChips();
+
+      const filtered = getFilteredVehicles();
+      updateMacroKpis(filtered.length > 0 ? filtered : [bestVehicle]);
+      drawScatterPlot();
+      drawRadarChart();
+      updateFilterAvailability();
+      syncUrlState();
     }
 
     // Practical Filter Availability & Visual Compatibility Highlighting
@@ -4175,20 +4337,26 @@
         if (window.gsap && showroomStage && showroomStage.style.display !== "none" && showroomStage.style.display !== "") {
           gsap.to(showroomStage, {
             opacity: 0,
-            scale: 0.92,
-            duration: 0.28,
+            scale: 0.94,
+            duration: 0.12,
             ease: "power2.inOut",
             onComplete: () => {
               showroomStage.style.display = "none";
               singleStage.style.display = "flex";
-              gsap.fromTo(singleStage,
-                { opacity: 0, scale: 0.86 },
-                { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(1.2)" }
-              );
+              singleStage.style.opacity = "1";
             }
           });
         } else if (showroomStage && singleStage) {
           showroomStage.style.display = "none";
+          singleStage.style.display = "flex";
+          singleStage.style.opacity = "1";
+        }
+      } else {
+        // Guarantee single vehicle stage is displayed and showroom stage is hidden
+        const showroomStage = document.getElementById("allModelsShowroomStage");
+        const singleStage = document.getElementById("singleVehicleStage");
+        if (showroomStage) showroomStage.style.display = "none";
+        if (singleStage) {
           singleStage.style.display = "flex";
           singleStage.style.opacity = "1";
         }
@@ -4208,23 +4376,69 @@
       syncUrlState();
     }
 
-    // Step through vehicles
+    // Step through vehicles - Seamlessly loops filtered pool, brand pool, or master catalog
     function stepVehicle(dir) {
-      const filtered = getFilteredVehicles();
-      if (filtered.length <= 1) return;
-      const idx = filtered.findIndex(v => v.model === selectedVehicle.model);
-      let nextIdx = idx + dir;
-      if (nextIdx < 0) nextIdx = filtered.length - 1;
-      if (nextIdx >= filtered.length) nextIdx = 0;
-      selectedVehicle = filtered[nextIdx];
-      activeModel = selectedVehicle.model;
+      let pool = getFilteredVehicles();
+      if (!pool || pool.length === 0) {
+        pool = MASTER_VEHICLES;
+      }
+
+      let idx = pool.findIndex(v => v.model === selectedVehicle.model);
+      let nextVehicle = null;
+
+      if (pool.length > 1) {
+        let nextIdx = idx + dir;
+        if (nextIdx < 0) nextIdx = pool.length - 1;
+        if (nextIdx >= pool.length) nextIdx = 0;
+        nextVehicle = pool[nextIdx];
+      } else {
+        // If current filtered pool only has 1 vehicle, step to next vehicle in the same brand or master fleet
+        const brandPool = MASTER_VEHICLES.filter(v => v.brand === selectedVehicle.brand);
+        if (brandPool.length > 1) {
+          let bIdx = brandPool.findIndex(v => v.model === selectedVehicle.model);
+          let nextBIdx = (bIdx + dir + brandPool.length) % brandPool.length;
+          nextVehicle = brandPool[nextBIdx];
+        } else {
+          let mIdx = MASTER_VEHICLES.findIndex(v => v.model === selectedVehicle.model);
+          let nextMIdx = (mIdx + dir + MASTER_VEHICLES.length) % MASTER_VEHICLES.length;
+          nextVehicle = MASTER_VEHICLES[nextMIdx];
+        }
+      }
+
+      if (!nextVehicle) return;
+
+      selectedVehicle = nextVehicle;
+      activeModel = nextVehicle.model;
+
+      if (nextVehicle.brand !== activeBrand && activeBrand !== "ALL") {
+        activeBrand = nextVehicle.brand;
+        document.querySelectorAll(".brand-logo-tile").forEach(tile => {
+          tile.classList.toggle("active", tile.dataset.brand === activeBrand);
+        });
+        const brandDd = document.getElementById("brandSelectDropdown");
+        if (brandDd) brandDd.value = activeBrand;
+        populateModelDropdown();
+      }
 
       const modelDd = document.getElementById("modelSelectDropdown");
       if (modelDd) modelDd.value = selectedVehicle.model;
 
+      // Ensure stage is visible and conflict/showroom are dismissed
+      const singleStage = document.getElementById("singleVehicleStage");
+      if (singleStage) {
+        singleStage.style.display = "flex";
+        singleStage.style.opacity = "1";
+      }
+      const showroomStage = document.getElementById("allModelsShowroomStage");
+      if (showroomStage) showroomStage.style.display = "none";
+      const conflictStage = document.getElementById("conflictNoticeStage");
+      if (conflictStage) conflictStage.style.display = "none";
+
       renderVehicleCockpit(selectedVehicle);
+      renderQuickChips();
       drawScatterPlot();
       drawRadarChart();
+      syncUrlState();
     }
 
     function selectModelByName(name) {
@@ -4273,9 +4487,18 @@
       container.innerHTML = "";
       renderedBrandForChips = selectedVehicle.brand;
 
-      // Show models for currently selected vehicle's brand
-      const brandModels = MASTER_VEHICLES.filter(v => v.brand === selectedVehicle.brand);
-      brandModels.forEach(v => {
+      const filtered = getFilteredVehicles();
+      let chipsVehicles = [];
+
+      if (activeBrand !== "ALL") {
+        chipsVehicles = MASTER_VEHICLES.filter(v => v.brand === activeBrand);
+      } else if (filtered.length > 1 && filtered.length <= 10) {
+        chipsVehicles = filtered;
+      } else {
+        chipsVehicles = MASTER_VEHICLES.filter(v => v.brand === selectedVehicle.brand);
+      }
+
+      chipsVehicles.forEach(v => {
         const pill = document.createElement("button");
         const isActive = v.model === selectedVehicle.model;
         pill.className = "model-chip-pill" + (isActive ? " active" : "");
