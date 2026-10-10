@@ -1,206 +1,190 @@
-# INDIAN AUTOMOTIVE SPECIFICATION & PERFORMANCE INTELLIGENCE PLATFORM
-## Technical Project Documentation & Competition Submission Dossier
-**Competition:** Unstop Tableau & Data Visualization Challenge (September 2026)  
-**Team Name:** S.P.B Data Team  
-**Authors (S.P.B Data Team):**
-1. **Shivaling Battarki** (Team Lead \| `shivalingb09@gmail.com` \| GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub) \| LinkedIn: [shivaling-93000](https://www.linkedin.com/in/shivaling-93000/))
-2. **Pragatheswaran M** (Data Engineering & Domain Calibration \| `pragathes224@gmail.com` \| GitHub: [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) \| LinkedIn: [pragatheswaranm](https://www.linkedin.com/in/pragatheswaranm/))
-3. **Basawaraj Kale** (Research & Analytical Validation \| `kale.sbasawaraj@gmail.com` \| GitHub: [@basawaraj849](https://github.com/basawaraj849) \| LinkedIn: [basawarajkale](https://www.linkedin.com/in/basawarajkale/))
+# Indian Automotive Specification & Performance Intelligence Platform
 
-**Live Tableau Dashboard:** [Tableau Public Link](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)  
-**Live Portal Repository:** [GitHub Repository](https://github.com/Hazardous9hub/Indian-Automotive-Specification-Intelligence-Portal)  
+## Technical Project Documentation & Competition Dossier
+
+> **🏆 1st Place Winner** — **Tableau & Data Visualization Challenge 2026**  
+> Organized by **The National Institute of Engineering (NIE), Mysuru** & **HackerRank Campus Crew** on [Unstop](https://unstop.com/competitions/tableau-data-visualization-challenge-2026-national-institute-of-engineering-nie-mysuru-1753895)  
+> **Team:** S.P.B Data Team  
+> **Authors:**
+> - **Shivaling Battarki** ([@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | `shivalingb09@gmail.com`)
+> - **Pragatheswaran M** ([@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com`)
+> - **Basavaraj Kale** ([@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com`)
+
+---
+
+## 🔗 Project Links
+
+- 📊 **Interactive Tableau Dashboard**: [Tableau Public Live Link](https://public.tableau.com/app/profile/shivaling.battarki/viz/VehicleSpecificationInteractiveDashboard/INTERACTIVESPECSDETAILS?publish=yes)
+- 🌐 **Deployed Web Intelligence Portal**: [GitHub Pages Live Link](https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/)
+- 💼 **LinkedIn Project Walkthrough**: [Official LinkedIn Breakdown](https://lnkd.in/p/gVCpZ_Jw)
+- 💻 **GitHub Repository**: [Hazardous9hub/Indian-Automotive-Specification-Intelligence-Portal](https://github.com/Hazardous9hub/Indian-Automotive-Specification-Intelligence-Portal)
 
 ---
 
 ## 1. Executive Summary & Core Project Idea
 
-The Indian automotive sector is undergoing its most radical transformation since the 1990s: the concurrent convergence of Bharat NCAP safety benchmarks, high-voltage EV skateboard architectures, multi-fuel powertrains (Petrol, Diesel, EV, CNG), and rapid price tier migration. However, consumer automotive portals and enterprise OEM analytics remain severely fragmented:
-- Consumer portals (CarDekho, CarWale) provide disjointed specification tables without analytical cross-segment context.
-- Traditional enterprise BI dashboards present static charts detached from the emotional and physical reality of the vehicle.
+The Indian automotive sector is experiencing a multi-dimensional evolution: concurrent adoption of Bharat NCAP safety benchmarks, high-voltage EV skateboard architectures, multi-fuel powertrains (Petrol, Diesel, EV, CNG), and shifting price segments. 
 
-### The Breakthrough Solution
-The **Indian Automotive Specification & Performance Intelligence Platform** creates a **two-way synchronized ecosystem** bridging:
-1. **An Analytical Engine in Tableau:** Deep statistical modeling across 10,000 records, dynamic KPI benchmarking, multi-dimensional safety and category matrices, and head-to-head parameter comparators.
-2. **A Responsive Interactive Web Portal:** Embedded natively inside Tableau via a zero-latency Web Page Object, providing an isolated showroom pedestal, real-time 6-axis performance radar charts, conflict detection engines, and high-contrast specs cards.
+However, existing resources remain fragmented:
+- **Consumer Portals (CarDekho, CarWale)** present technical specification sheets in isolation without macro segment benchmarking.
+- **Corporate BI Dashboards** typically show abstract aggregate charts with no visual link to the physical vehicle.
 
-This integration delivers an executive cockpit where clicking any model or segment in Tableau instantly commands the visual and technical showroom, enabling automotive OEMs, fleet managers, and retail buyers to derive instantaneous intelligence.
+### The Solution: A Synchronized Two-Layer Architecture
+1. **Analytical BI Core in Tableau**: 10,000 simulated/calibrated records generated around 30 Indian vehicle baseline profiles spanning 16 OEMs, analyzing price-performance frontiers, category averages, safety compliance, and dual-model comparisons.
+2. **Interactive Web Showroom**: A lightweight, client-side web application embedded directly inside Tableau via URL Web Page actions, displaying vehicle cutouts, a 6-axis performance radar chart, and engineering conflict diagnostics.
+
+Selecting any model, silhouette, or fuel type in Tableau triggers URL parameter actions (`?model=<Model>&brand=<Brand>&fuel=<Fuel>`), updating the embedded showroom without page reloads.
 
 ---
 
-## 2. Significance, Practicality & Real-World Applicability
+## 2. Development Workflow & Tool Attribution
 
-### Commercial Significance
-- **For Automotive OEMs & Product Planners:** Instantly identify market whitespace (e.g., the safety-to-cost gap between ₹12L and ₹18L SUVs).
-- **For Fleet Procurement Directors:** Evaluate commercial vehicles (Starbus, JanBus, 9400, Pro 3015) vs. commercial utility pickups on lifecycle payload, engine torque density, and fuel economy.
-- **For Retail Buyers:** Demystify EV adoption by comparing total battery pack size (kWh) vs. certified ARAI range against traditional ICE benchmarks.
+To maintain academic and professional transparency:
 
-### Practicality in the Indian Market
-- **100% Indian Market Calibration:** All 30 representative profiles (from an ₹83,000 Honda Activa up to a ₹58 Lakh Volvo 9400 Multi-Axle Luxury Bus) are calibrated to authentic Indian ex-showroom pricing, ARAI certified fuel figures, Bharat/Global NCAP star ratings, and exact ground clearances engineered for Indian road topography.
-- **Offline & Online Resilience:** Operates with high reliability on Tableau Public, using optimized vehicle cutouts (<70 KB per asset to guarantee compliance with Tableau’s strict 200 KB Image Role limit) and self-contained JavaScript visualization libraries.
+- **Tableau Dashboards & Analytical Modeling**: The S.P.B Data Team independently designed and constructed the Tableau workbooks, calculated fields (`HP_per_Lakh_INR`, `Filter_Selected_A_or_B`, `Model_Comparison_Slot`, `Safety_Stars_Display`), parameter architectures, dual-axis encodings, shape mappings, and visual layouts. Google Antigravity was not used to build the Tableau dashboards.
+- **Interactive Web Portal**: The web portal (`index.html`) was developed with technical assistance from **Google's Antigravity IDE**, which assisted in writing and optimizing the vanilla HTML5, CSS Grid, Canvas 2D telemetry, and URL parameter parser logic. The team directed requirements, verified calculations, and integrated the portal into the project and Tableau.
+- **Tableau-to-Web Integration**: Connected via Tableau's native Web Page Dashboard Object driven by parameter-based URL Actions.
 
 ---
 
 ## 3. Data Engineering & Domain Calibration Pipeline
 
 ### 3.1 Initial Dataset Challenges
-The raw synthetic dataset of 10,000 rows exhibited critical domain anomalies common in synthetic data generation:
-- Scooters and 2-wheelers listed at ₹15,00,000 with 300 HP engines.
-- Commercial multi-axle buses listed with petrol engines and 25 km/l mileage.
-- Electric vehicles listed with 45-liter fuel tanks.
+The raw competition dataset of 10,000 rows contained synthetic anomalies typical of uncalibrated data generators:
+- Two-wheelers listed at ₹15,00,000 with 300 HP engine ratings.
+- Commercial transit buses listed with petrol engines and 25 km/l fuel efficiency.
+- Electric vehicles listed with 45-liter liquid fuel tanks.
 
-### 3.2 Systematic Cleaning & Calibration Methodology
-We built automated calibration engines (`calibrate_entire_ecosystem.py` and `apply_tableau_theme.py`) to systematically re-anchor every row:
-1. **Mathematical Grounding:** Clustered records into 30 representative Indian vehicle profiles across 16 leading OEMs (Tata Motors, Mahindra, Maruti Suzuki, Hyundai, MG, Toyota, Honda, Isuzu, Volvo, Ashok Leyland, Eicher, Force Motors, Hero MotoCorp, TVS, Bajaj, Suzuki).
-2. **Deterministic Distributions:** Synthesized natural variance (±3.5% gaussian variance) around authentic OEM base specs across 10,000 records:
-   - **Tata Nexon EV:** ~₹16.7L, 145 HP, 215 Nm, 465 km ARAI range, 40.5 kWh pack, 5★ NCAP, 205 mm clearance.
-   - **Hyundai Creta:** ~₹14.9L, 160 HP, 253 Nm, 18.2 kmpl, 50L tank, 4.5★ NCAP, 190 mm clearance.
-   - **Volvo 9400 Bus:** ~₹57.8L, 380 HP, 1752 Nm, 4.5 kmpl, 400L tank, 5★ NCAP, 54 seats.
-   - **Honda Activa 6G:** ~₹83k, 7.8 HP, 8.9 Nm, 50 kmpl, 5.3L tank, 162 mm clearance.
-3. **Data Integrity Guarantee:** Zero null values, standardized ISO currency notation (INR / Lakhs), normalized category labels, and synchronized CSV/XLSX assets.
-
----
-
-## 4. Web Portal Engineering (Why, How & Authenticity)
-
-### 4.1 Why Build a Dedicated Web Portal?
-Tableau's native shape rendering cannot natively draw real-time animated multi-axis radar webs, reactive conflict warning modals, or smooth CSS-accelerated showroom carousels. Building the portal allows us to embed a **high-precision hardware interface** inside Tableau's canvas.
-
-### 4.2 How It Was Engineered
-- **Architecture:** Zero-framework, vanilla HTML5, modern CSS3 Grid/Flexbox, and Canvas API. Zero heavy NPM dependencies for instantaneous loading in Tableau's CEF (Chromium Embedded Framework) browser.
-- **Monotonic Executive Palette:** Engineered with a deep slate/navy palette (`#111827` base, `#182335` surfaces, `#283950` borders, `#38bdf8` steel blue accents, and `#f8fafc` text) that integrates into Tableau Desktop and Tableau Public.
-- **Dynamic 6-Axis Radar Telemetry:** Custom HTML5 canvas engine rendering Price-Value, Horsepower, Range/Efficiency, Safety Stars, and Spatial Utility with animated dual-polygon overlays.
-- **Specification Conflict Engine:** A diagnostic rules engine that detects physical incompatibilities (e.g., selecting an Electric Skateboard platform with Petrol fuel) and provides a 1-click Auto-Resolve button.
-- **Tableau Deep Linking:** Bi-directional communication parsing URL query parameters:
-  `?model=Nexon&category=SUV&fuel=Petrol&brand=Tata` automatically focuses the showroom pedestal and radar benchmark.
-
-### 4.3 Authenticity & Anti-Plagiarism Statement
-> **AUTHENTICITY DECLARATION:**  
-> The web application, JavaScript logic, CSS layout, canvas rendering algorithms, conflict diagnostics, and Tableau calculation schemas were **created entirely from scratch by the author**. No pre-built web templates, Bootstrap kits, or cloned external repositories were utilized. All vehicle cutouts were manually processed and compressed to meet enterprise benchmarks.
+### 3.2 Calibration Methodology
+The team authored an automated calibration engine (`scripts/calibrate_entire_ecosystem.py`) to ground every row in Indian automotive reality:
+1. **Anchor Profiles**: Established 30 authentic baseline profiles (`MODEL_SPECS`) across 16 OEMs (Tata Motors, Mahindra, Maruti Suzuki, Hyundai, Honda, Toyota, MG, Isuzu, Force, Eicher, Ashok Leyland, Volvo, Hero, Bajaj, TVS, Suzuki).
+2. **Controlled Variance**: Synthesized realistic Gaussian variance (±3.5%) around authentic baseline specifications across 10,000 records:
+   - **Tata Nexon EV**: ~₹16.7L, 145 HP, 215 Nm, 465 km certified ARAI range, 40.5 kWh battery, 5★ NCAP, 205 mm clearance.
+   - **Hyundai Creta**: ~₹14.9L, 160 HP, 253 Nm, 18.2 kmpl ARAI, 50L fuel tank, 4.5★ NCAP, 190 mm clearance.
+   - **Volvo 9400 Bus**: ~₹57.8L, 380 HP, 1752 Nm, 4.5 kmpl, 400L tank, 5★ NCAP, 240 mm clearance.
+   - **Honda Activa 6G**: ~₹83k, 7.8 HP, 8.9 Nm, 50 kmpl ARAI, 5.3L tank, 162 mm clearance.
+3. **Data Integrity**: Handled null values, verified valid powertrain-fuel compatibility, and established standardized numeric data types for Tableau integration.
 
 ---
 
-## 5. Tableau Dashboard Walkthrough & Interactive Architecture
+## 4. Web Portal Technical Architecture
 
-### 5.1 Dashboard 1: Master Specification & Market Intelligence Cockpit
-1. **Executive KPI Ribbon (Top):**
-   - Total Monitored Fleet: 30 OEM Models across 16 Brands.
-   - Market Median Ex-Showroom Price: Dynamic across filtered segments.
-   - Average Powertrain Output: Contextual horsepower benchmarks.
-   - Bharat/Global NCAP 5-Star Compliance Rate.
-2. **Price vs. Performance Market Positioning (Scatter Plot):**
-   - **X-Axis:** Acquisition Price in Lakhs (₹0L to ₹65L).
-   - **Y-Axis:** Engine Output in Horsepower (0 to 400 HP).
-   - **Visual Encoding:** Color-coded by Fuel Type (Green = EV, Amber = Petrol, Blue = Diesel). Sized by Safety Rating.
-   - **Hover Experience:** Clean, high-density text tooltip providing complete engine, torque, cargo, and price breakdown.
-3. **Category Benchmark & Powertrain Matrix:**
-   - Multi-measure bar charts highlighting average torque output and fuel economy across vehicle silhouettes (SUV, Sedan, Hatchback, Commercial, Bus, Two-Wheeler).
-4. **Safety & Occupant Protection Matrix:**
-   - Visualizing Global NCAP stars against standard airbag counts across budget tiers.
-5. **Electric Vehicle (EV) Profiler:**
-   - Dedicated segment card isolated from ICE cross-filter contamination, comparing battery pack capacities (kWh) against real-world ARAI range for Nexon EV, XUV400, and ZS EV.
-6. **Embedded Interactive Portal Object:**
-   - Sits in the lower canvas, dynamically synchronizing to the user's Tableau selections via URL dashboard actions.
+### 4.1 Implementation
+- **Zero-Dependency Architecture**: Built using vanilla HTML5, CSS3 Grid/Flexbox, and Canvas 2D API with local GSAP (`assets/gsap.min.js`) for pedestal transitions. No heavy external frameworks or UI kits were used.
+- **Monotonic Slate Theme**: Uses a dark slate palette (`#111827` base, `#182335` card surface, `#283950` borders, `#38bdf8` steel-blue accents, and `#f8fafc` typography) matching Tableau's executive color scheme.
+- **6-Axis Canvas Radar Telemetry**: Normalizes Power, Torque, Range/Mileage, Safety, Boot Capacity, and Ground Clearance against category averages.
+- **Conflict Diagnostics**: Rules engine detecting physical mismatches (e.g., selecting Electric silhouette with Petrol fuel) with an auto-resolve mechanism.
+- **URL Parameter Router**: Client-side parameter parser reading query strings to focus the active vehicle model and update specifications instantly.
 
-### 5.2 Dashboard 2: Standalone Head-to-Head 2-Model Comparator
-An offline comparative tool that operates independently of the web container:
-1. **Dynamic Model A & Model B Selectors:** Two synchronized String parameters populated from `[Model]`.
-2. **Side-by-Side Hero Vehicle Cards:** Displays high-resolution vehicle shape cutouts from the `Indian_Vehicles` repository palette with ex-showroom price badges.
-3. **Head-to-Head Specification Matrix:** Complete side-by-side tabular comparison across 8 core dimensions: Price, HP, Torque, Efficiency, Safety Rating, Airbags, Boot Capacity, and Ground Clearance.
-4. **Performance Advantage Diverging Bar:** Visual delta chart showing which vehicle takes the lead in Power, Torque, and Cargo volume.
+---
+
+## 5. Tableau Dashboard Walkthrough & Verified Chart Encodings
+
+### 5.1 Dashboard 1: Master Specification & Market Intelligence Cockpit (`INTERACTIVE SPECS DETAILS`)
+1. **Executive KPI Ribbon (Top)**:
+   - Total Monitored Fleet: 30 benchmark models across 16 OEMs.
+   - Segment Median Ex-Showroom Price (INR).
+   - Fleet Average Engine Output (HP).
+   - Bharat/Global NCAP 5-Star Safety Compliance Rate.
+2. **Price vs. Horsepower Market Positioning (Scatter Plot)**:
+   - **X-Axis**: Engine Output in Horsepower (0 to 400 HP).
+   - **Y-Axis**: Ex-Showroom Price in Lakhs (₹0L to ₹65L).
+   - **Color Encoding**: 🟢 Pure Electric (EV), 🟡 Petrol (ICE), 🔵 Diesel (ICE).
+   - **Size Encoding**: Peak Torque (Nm).
+   - **Detail**: Sliced across Brand and Model.
+3. **Category Benchmark (Dual-Axis Chart)**:
+   - **Columns**: Vehicle Category (Hatchback, Sedan, SUV, Commercial, Bus, Motorcycle, Scooter, etc.).
+   - **Primary Axis (Vertical Bars)**: Average Price in Lakhs (INR), colored by Fuel Type.
+   - **Secondary Axis (Circle Dots)**: Average certified ARAI fuel efficiency (km/l) or EV driving range (km), highlighted in red dots with value labels.
+4. **Safety & Occupant Protection Matrix**:
+   - Visualizes Bharat/Global NCAP star ratings against standard airbag counts across budget tiers.
+5. **Electric Vehicle (EV) Profiler**:
+   - Compares battery pack capacities (kWh) directly against certified ARAI range for India's mass EV models (Nexon EV, XUV400, ZS EV).
+6. **Embedded Interactive Portal Object**:
+   - Embedded web frame responding to user filter clicks via parameter-driven URL dashboard actions.
+
+### 5.2 Dashboard 2: Standalone Head-to-Head 2-Model Comparator (`MODEL COMPARATOR`)
+An offline comparative tool that operates independently within Tableau:
+1. **Model A & Model B Selectors**: Two synchronized String parameters populated from `[Model]`.
+2. **Side-by-Side Vehicle Cards**: Displays custom shape marks from the `Indian_Vehicles` shape palette with price, category, and fuel badges.
+3. **Head-to-Head Specification Matrix**: Side-by-side tabular comparison across 8 core dimensions: Price, HP, Torque, ARAI Efficiency/Range, NCAP Rating, Airbags, Boot Capacity, and Ground Clearance.
+4. **Performance Advantage Diverging Bar**: Visual delta bars indicating which vehicle leads in Power (HP), Torque (Nm), and Cargo volume (Liters).
 
 ---
 
 ## 6. Complete Tableau Calculations & Formulas
 
-### 1. Model Comparator Filter
 ```tableau
-// Name: Filter_Selected_A_or_B
-// Purpose: Isolates canvas to the two user-selected models
+// 1. Comparator Filter (keeps only the two selected models in view)
 [Model] = [Select Model A] OR [Model] = [Select Model B]
-```
 
-### 2. Side-by-Side Column Slot
-```tableau
-// Name: Model_Comparison_Slot
-// Purpose: Splits data into dedicated side-by-side comparison columns
+// 2. Dynamic Column Header for Comparison Table
 IF [Model] = [Select Model A] THEN "★ MODEL A: " + UPPER([Select Model A])
 ELSEIF [Model] = [Select Model B] THEN "★ MODEL B: " + UPPER([Select Model B])
 END
-```
 
-### 3. Star Rating Formatter
-```tableau
-// Name: Safety_Stars_Display
-// Purpose: Converts numerical safety score into visual stars
+// 3. Safety Stars Formatter
 IF [Safety Rating] >= 5.0 THEN "★★★★★ (5.0)"
 ELSEIF [Safety Rating] >= 4.5 THEN "★★★★½ (4.5)"
 ELSEIF [Safety Rating] >= 4.0 THEN "★★★★☆ (4.0)"
 ELSEIF [Safety Rating] >= 3.0 THEN "★★★☆☆ (3.0)"
 ELSE "★★☆☆☆ (" + STR(ROUND([Safety Rating], 1)) + ")"
 END
-```
 
-### 4. Interactive URL Action Trigger
-```tableau
-// Name: Interactive_Portal_URL
-// Purpose: Constructs URL with parameters to drive embedded portal
+// 4. Tableau-to-Web URL Action
 "https://hazardous9hub.github.io/Indian-Automotive-Specification-Intelligence-Portal/?model=" 
 + REPLACE([Model], " ", "%20")
 + "&brand=" + REPLACE([Brand], " ", "%20")
 + "&category=" + REPLACE([Category], " ", "%20")
 + "&fuel=" + REPLACE([Fuel Type], " ", "%20")
-```
 
-### 5. Power-to-Price Value Ratio
-```tableau
-// Name: HP_per_Lakh_INR
-// Purpose: Measures mechanical performance delivered per unit investment
+// 5. Horsepower per Lakh Index (Value Metric)
 ROUND([Horsepower Hp] / [Price in Lakhs (INR)], 2)
-```
 
-### 6. One-Click Reset Filter Label
-```tableau
-// Name: Reset_Label
-// Purpose: Provides clickable text for dashboard filter reset action
+// 6. Reset Filters Button Label
 "↺ Reset All Filters"
 ```
 
 ---
 
-## 7. Visual Encodings & Chart Selection Rationale
+## 7. Verified Visual Encodings & Chart Selection Rationale
 
 | Visualization | Chart Type | Dimensions & Measures | Visual Rationale |
 | :--- | :--- | :--- | :--- |
-| **Market Positioning** | Scatter Plot | Price (X), HP (Y), Fuel (Color), Safety (Size) | Reveals market density and performance premiums across price brackets. |
-| **Category Benchmarking** | Grouped Horizontal Bar | Category (Rows), Avg Torque & Mileage (Cols) | Facilitates cross-segment comparison between high-torque diesels and high-efficiency petrols. |
-| **Occupant Safety** | Step Matrix / Heatmap | NCAP Stars (Rows), Airbags (Cols), Model Count (Size) | Demonstrates the democratization of safety equipment in the Indian mass market. |
-| **EV Profiler** | Dual-Metric Bullet Card | Battery kWh (Bar), ARAI Range km (Target) | Directly correlates battery pack investment with driving autonomy. |
-| **Comparator Matrix** | Side-by-Side Tabular Matrix | Measure Names (Rows), Model Slot (Cols) | Eliminates cognitive friction for direct vehicle comparisons. |
-| **Performance Delta** | Diverging Bar Chart | Measure Values (Cols), Selected Models (Color) | Highlights the competitive delta between vehicles. |
+| **Market Positioning** | Scatter Plot | X: Horsepower (HP), Y: Price in Lakhs (INR), Color: Fuel Type, Size: Torque (Nm) | Surfaces the value frontier and power density per price tier. |
+| **Category Benchmarking** | Dual-Axis Chart | Cols: Category, Rows 1: Avg Price (Bars by Fuel), Rows 2: Avg Mileage/Range (Red Dots) | Evaluates acquisition price against daily operating economy on a single canvas. |
+| **Occupant Safety** | Heatmap / Step Matrix | Rows: NCAP Stars, Cols: Airbag Counts | Evaluates the democratization of passive safety across vehicle segments. |
+| **EV Profiler** | Dual-Metric Card | Battery kWh vs. Certified ARAI Range km | Correlates battery capacity with certified driving autonomy. |
+| **Comparator Matrix** | Tabular Matrix | Measure Names (Rows), Model Slot (Cols) | Facilitates direct side-by-side engineering evaluation. |
+| **Performance Delta** | Diverging Horizontal Bar | Measure Values (Cols), Selected Models (Color) | Quantifies lead margins in Horsepower, Torque, and Cargo capacity. |
 
 ---
 
-## 8. Strategic Insights & Industry Recommendations
+## 8. Strategic Market Insights & Analytical Findings
 
-1. **The ₹15L–₹22L Mid-SUV Value Crossover:**
-   Vehicles in the ₹14L–₹18L bracket (Tata Nexon, Hyundai Creta, Mahindra Scorpio N) deliver the highest horsepower-per-lakh ratio (between 8.5 and 10.9 HP/Lakh) while delivering 5-star NCAP safety, making this the most contested value battlefield in India.
-2. **The Commercial Efficiency Divide:**
-   Multi-axle commercial carriers (Volvo 9400, Ashok Leyland JanBus) exhibit extreme torque density (up to 1,750 Nm), but operate at fuel economies below 5 km/l. Electrification or LNG transition in this heavy tier represents the highest potential for aggregate carbon reduction.
-3. **The Two-Wheeler Mobility Anchor:**
-   Sub-₹1 Lakh commuter vehicles (Honda Activa, Hero Splendor) deliver over 50 km/l fuel economy, anchoring India’s urban last-mile transportation efficiency.
-
----
-
-## 9. Conclusion & Team Details
-The **Indian Automotive Specification & Performance Intelligence Platform** pairs Tableau’s analytical modeling with a responsive, embedded web intelligence showroom. By grounding every data point in authentic Indian market reality, this project offers an intuitive, technically rigorous tool built for executive decision-making.
+1. **The ₹15L–₹22L Mid-SUV Value Crossover**:
+   Vehicles in the ₹14L–₹18L tier (Creta, Nexon, Scorpio N) exhibit the highest horsepower-per-lakh ratio (8.5 to 10.9 HP/Lakh) while achieving 5-star NCAP compliance.
+2. **Commercial Fleet Decarbonization**:
+   Heavy commercial vehicles (Volvo 9400, JanBus) deliver up to 1,750 Nm torque but operate at ~4.5 km/l. Electrification or alternative fuels in this tier offer high potential for aggregate carbon reduction.
+3. **Two-Wheeler Urban Mobility Foundation**:
+   Sub-₹1 Lakh commuter vehicles (Activa, Splendor) exceed 50 km/l fuel economy, anchoring urban last-mile transport efficiency.
 
 ---
 
-### Project Team (S.P.B Data Team)
-- **Shivaling Battarki** — *Team Lead \| Analytics, Tableau Dashboards & Architecture*  
-  GitHub: [@Hazardous9hub](https://github.com/Hazardous9hub) • LinkedIn: [shivaling-93000](https://www.linkedin.com/in/shivaling-93000/) • Email: `shivalingb09@gmail.com`
-- **Pragatheswaran M** — *Data Engineering & Domain Calibration*  
-  GitHub: [@Pragatheswaran-M](https://github.com/Pragatheswaran-M) • LinkedIn: [pragatheswaranm](https://www.linkedin.com/in/pragatheswaranm/) • Email: `pragathes224@gmail.com`
-- **Basawaraj Kale** — *Research & Analytical Validation*  
-  GitHub: [@basawaraj849](https://github.com/basawaraj849) • LinkedIn: [basawarajkale](https://www.linkedin.com/in/basawarajkale/) • Email: `kale.sbasawaraj@gmail.com`
-- **Event**: Unstop Tableau & Data Visualization Challenge (National Institute of Engineering - NIE Mysuru, September 2026)
+## 9. Limitations & Project Context
+
+- **Simulated Variance**: While anchored in verified OEM baseline specifications, the 10,000 dataset records contain simulated Gaussian variance (±3.5%) around those baselines for competition modeling. They should not be interpreted as official factory build sheets.
+- **Tableau Web Object Dependency**: In Tableau Desktop or Tableau Public, the embedded web container requires an active internet connection to load the GitHub Pages application.
+- **Analytical Scope**: Conclusions represent findings from the competition modeling scenario and are intended as decision-support demonstrations rather than definitive industry-wide absolutes.
+
+---
+
+## 10. Project Team & Acknowledgements
+
+### S.P.B Data Team:
+- **Shivaling Battarki** ([@Hazardous9hub](https://github.com/Hazardous9hub) | [LinkedIn](https://www.linkedin.com/in/shivaling-93000/) | `shivalingb09@gmail.com`)
+- **Pragatheswaran M** ([@Pragatheswaran-M](https://github.com/Pragatheswaran-M) | [LinkedIn](https://www.linkedin.com/in/pragatheswaranm/) | `pragathes224@gmail.com`)
+- **Basavaraj Kale** ([@basawaraj849](https://github.com/basawaraj849) | [LinkedIn](https://www.linkedin.com/in/basawarajkale/) | `kale.sbasawaraj@gmail.com`)
+
+### Event Acknowledgements:
+Organized by **The National Institute of Engineering (NIE), Mysuru** and **HackerRank Campus Crew** via **Unstop** (Tableau & Data Visualization Challenge 2026). Special thanks to **Chandan Shridhar Hegde**, **Dr. Vanamala C K**, and the evaluation committee.
