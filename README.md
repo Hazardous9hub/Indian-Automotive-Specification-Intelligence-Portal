@@ -126,7 +126,7 @@ The web portal (`index.html`) is a standalone single-page application hosted on 
 
 We maintain complete transparency regarding tool usage and development:
 
-- **Tableau Dashboards**: **100% conceived, designed, calculated, and built by the S.P.B Data Team**. All worksheets, calculated fields (`HP_per_Lakh_INR`, `Filter_Selected_A_or_B`, `Safety_Stars_Display`), parameter architectures, dual-axis encodings, and layouts were built by our team. Antigravity was not used to build the Tableau dashboards.
+- **Tableau Dashboards**: **100% conceived, designed, calculated, and built by the S.P.B Data Team**. All worksheets, calculated fields (`HP_per_Lakh_INR`, `Filter_Selected_A_or_B`, `Safety_Stars_Display`), parameter architectures, dual-axis encodings, and layouts were built by our team.
 - **Interactive Web Portal**: Developed with technical assistance from **Google's Antigravity IDE**, which assisted in writing and optimizing the vanilla HTML5, CSS Grid, Canvas 2D telemetry, and URL parameter parser logic under our direction, review, and integration.
 - **Integration**: Joined via Tableau's native Web Page Dashboard Object and URL Actions.
 
